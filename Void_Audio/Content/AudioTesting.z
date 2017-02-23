@@ -1,0 +1,22 @@
+class AudioTesting : ZilchComponent
+{
+  [Property]
+  var SoundCue : SoundCue = null;
+  
+  var MyCue : SoundCue = null;
+  
+  function Initialize(init : CogInitializer)
+  {
+    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    
+    //if (this.SoundCue != null)
+    //{
+    //  this.SoundCue.Volume = 0;
+    //  this.SoundCue.AddSoundEntry(Sound.DefaultSound, 1.0);
+    //}
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+  }
+}

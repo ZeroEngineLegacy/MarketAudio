@@ -1,0 +1,56 @@
+[Version:1]
+Cog 
+{
+	var Name = ""
+	MainConfig 
+	{
+		var ApplicationName = "ZeroEditor"
+	}
+	TimeConfig 
+	{
+		var LimitFrameRate = true
+		var FrameRate = 60
+	}
+	MainWindowConfig 
+	{
+		var Title = "Zero - Editor"
+		var MaxSize = false
+		var DesktopIndex = 0
+		var Width = 1024
+		var Height = 768
+	}
+	GraphicsConfig 
+	{
+		var PerformanceMode = PerformanceMode.HighPerformance
+		var FullScreen = false
+		var VerticalSync = true
+		var MultiSample = 0
+		var Quality = GraphicsQuality.Low
+		var FullscreenWidth = 0
+		var FullscreenHeight = 0
+		var DebugGraphics = false
+	}
+	ContentConfig 
+	{
+		var ContentOutput = ""
+		var ToolsDirectory = ""
+		var LibraryDirectories = Array
+		{
+		}
+		var ContentVerbosity = Verbosity.Minimal
+		var HistoryEnabled = true
+	}
+	TextEditorConfig 
+	{
+		var ShowWhiteSpace2 = true
+		var ConfidentAutoCompleteOnSymbols6 = true
+		var LocalWordCompletion = true
+		var KeywordAndTypeCompletion = true
+		var AutoCompleteOnEnter6 = true
+		var FontSize = 13
+		var ColorScheme = "DarkZero"
+		var LineNumbers = true
+		var CodeFolding = false
+		var TabWidth = TabWidth.TwoSpaces
+	}
+}

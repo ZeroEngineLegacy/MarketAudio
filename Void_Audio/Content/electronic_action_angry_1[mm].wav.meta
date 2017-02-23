@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "electronic_action_angry_1[mm]"
+		var ResourceId = 0x58a759349d667563
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}
