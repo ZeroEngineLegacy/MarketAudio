@@ -85,6 +85,29 @@ Level
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.382683456, 0, 0, 0.923879504}
 		}
+		SelectionIcon 
+		{
+			var Visible = true
+			var Material = "56581e2bb81777be:DebugDrawOnTop"
+			var SpriteSource = "58f8e4be736f5ea2:LightIcon"
+			var ViewScale = 1
+			var OverrideSelections = true
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = false
+			var VisibilityEvents = true
+			var Material = ""
+			var Mesh = ""
+		}
+		DirectionalLight 
+		{
+			var LightColorValue = Vec3{1, 1, 1}
+			var LightIntensityValue = 2
+			var CastShadowsValue = true
+			var NormalOffsetBias = 0.100000001
+		}
 		CameraViewport 
 		{
 			var RenderInEditor = true
@@ -141,24 +164,6 @@ Level
 		{
 			var ResolutionValue = ShadowResolution.High
 		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = false
-			var VisibilityEvents = true
-			var Material = ""
-			var Mesh = ""
-		}
-		DirectionalLight 
-		{
-			var LightColorValue = Vec3{1, 1, 1}
-			var LightIntensityValue = 2
-			var CastShadowsValue = true
-			var NormalOffsetBias = 0.100000001
-		}
-		Hierarchy 
-		{
-		}
 	}
 	Cog 
 	{
@@ -166,9 +171,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{-4.78668976, 2.99442577, 4.20760918}
+			var Translation = Vec3{-4.43427563, 1.56647384, 6.39467716}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.206362247, -0.38000986, -0.0873830095, 0.897424817}
+			var Rotation = Quat{-0.110539727, -0.355847061, -0.04243223, 0.927013218}
 		}
 		CameraViewport 
 		{
@@ -225,10 +230,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 6.70319939
-			var VerticalAngle = 0.452040583
-			var HorizontalAngle = 0.801105261
-			var LookTarget = Vec3{-0.456453443, 0.0664543808, 0.0113108736}
+			var LookDistance = 6.70319986
+			var VerticalAngle = 0.237364963
+			var HorizontalAngle = 0.733038306
+			var LookTarget = Vec3{-0.0747232065, -0.00973190833, 1.55290425}
 			var MoveSensitivity = 1
 		}
 	}
@@ -238,9 +243,17 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{0, 2, 9}
+			var Translation = Vec3{0, 0, 5}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
+		}
+		SelectionIcon 
+		{
+			var Visible = true
+			var Material = "56581e2bb81777be:DebugDrawOnTop"
+			var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
+			var ViewScale = 1
+			var OverrideSelections = true
 		}
 		CameraViewport 
 		{
@@ -321,21 +334,42 @@ Level
 		{
 			var Volume = 1
 			var Pitch = 0
-			var Attenuator = "58a7ae9845a36092:ButtonAttenuator"
-			var Directional = false
+			var Attenuator = "57ca8a6ad262efe5:DefaultNoAttenuation"
+			var Directional = true
 			var EmitAngle = 90
-			var RearVolume = 0.200000003
+			var RearVolume = 0
 		}
 		SimpleSound 
 		{
-			var StartPlaying = false
+			var StartPlaying = true
 			var Positional = true
 			var Cue = "58a7a2e267ffcf07:Button"
 		}
-		AudioTesting 
+		Rotator 
 		{
-			var SoundCue = "58a7a2e267ffcf07:Button"
-			var SoundCue2 = "58a759349d6258ac:electronic_action_angry_1"
+			var Rate = 5
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Cylinder"
+				var LinkId = 7
+				Transform 
+				{
+					var Translation = Vec3{0, 0.0268672705, -0.984741807}
+					var Scale = Vec3{0.410799563, 1.26278698, 0.43042931}
+					var Rotation = Quat{0.69891566, 0, 0, 0.71520406}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b3572e:Cylinder"
+				}
+			}
 		}
 	}
 }

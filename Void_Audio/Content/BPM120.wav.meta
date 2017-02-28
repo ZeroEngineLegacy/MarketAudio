@@ -3,8 +3,8 @@ AudioContent
 {
 	SoundBuilder 
 	{
-		var Name = "ui_button_06"
-		var ResourceId = 0x58a7a2ce636fcef4
+		var Name = "BPM120"
+		var ResourceId = 0x58b4d37715f971f7
 		var Compressed = false
 		var Streamed = false
 		var CompressionQuality = 3

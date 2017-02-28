@@ -3,8 +3,8 @@ AudioContent
 {
 	SoundBuilder 
 	{
-		var Name = "electronic_action_angry_1[mm]"
-		var ResourceId = 0x58a759349d667563
+		var Name = "UiButton"
+		var ResourceId = 0x58a7a2ce636fcef4
 		var Compressed = false
 		var Streamed = false
 		var CompressionQuality = 3
