@@ -2,12 +2,12 @@
 SoundCue 
 {
 	var PlayMode = SoundPlayMode.Single
-	var Volume = 1.8499999
-	var UseDecibelVariation = true
+	var Volume = 1
+	var UseDecibelVariation = false
 	var VolumeVariation = 0
 	var DecibelVariation = 0
 	var Pitch = 0
-	var UseSemitoneVariation = true
+	var UseSemitoneVariation = false
 	var PitchVariation = 0
 	var SemitoneVariation = 0
 	var ShowMusicOptions = true
@@ -18,7 +18,7 @@ SoundCue
 	{
 		Object
 		{
-			var Sound = "58a759349d667563:Electronic_Action_Angry_1"
+			var Sound = "58a759349d667563:ElectronicActionAngry"
 			var Weight = 1
 			var StartTime = 0
 			var EndTime = 94.1176682

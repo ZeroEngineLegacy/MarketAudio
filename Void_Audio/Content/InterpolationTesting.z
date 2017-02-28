@@ -1,0 +1,22 @@
+class InterpolationTesting : ZilchComponent
+{
+  [Dependency]
+  var SoundEmitter : SoundEmitter = null;
+  
+  function Initialize(init : CogInitializer)
+  {
+    this.SoundEmitter.InterpolateVolume(0.0, 2.0);
+    
+    Zero.Connect(this.SoundEmitter, Events.InterpolationFinished, this.OnInterpolationFinished);
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnInterpolationFinished(event : SoundEvent)
+  {
+    
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+  }
+}

@@ -18,7 +18,7 @@ SoundCue
 	{
 		Object
 		{
-			var Sound = "58a7a2ce636fcef4:ui_button_06"
+			var Sound = "58a7a2ce636fcef4:UiButton"
 			var Weight = 1
 			var StartTime = 0
 			var EndTime = 1
