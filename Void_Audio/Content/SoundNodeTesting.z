@@ -151,7 +151,11 @@ class SoundNodeTesting : ZilchComponent
     }
     else if (this.TestNodeType == NodeType.Equilizer)
     {
-      node = Audio.EqualizerNode();
+      var equalizer = Audio.EqualizerNode();
+      
+      equalizer.LowPassGain = 5.0;
+      
+      node = equalizer;
     }
     else if (this.TestNodeType == NodeType.Flanger)
     {
@@ -205,21 +209,6 @@ class SoundNodeTesting : ZilchComponent
     // Audio.GetSystemVolume
     // Audio.SetSystemVolume
     // Audio.SoundBuffer
-    
-    foreach (var info in Audio.GetNodeGraphInfo())
-    {
-      this.PrintNodeInfo(info, "");
-    }
-  }
-  
-  function PrintNodeInfo(info : NodePrintInfo, spaces : String)
-  {
-    Console.WriteLine("`spaces``info.Name` [output : `info.HasOutput`]");
-    
-    foreach (var connect in info.Connections)
-    {
-      this.PrintNodeInfo(connect, String.Concatenate(spaces, "    "));
-    }
   }
   
   function OnSoundEvent(event : SoundEvent)

@@ -3,20 +3,20 @@ class InterpolationTesting : ZilchComponent
   [Dependency]
   var SoundEmitter : SoundEmitter = null;
   
+  [Property]
+  var Cue : SoundCue;
+  
   function Initialize(init : CogInitializer)
   {
     this.SoundEmitter.InterpolateVolume(0.0, 2.0);
     
-    Zero.Connect(this.SoundEmitter, Events.InterpolationFinished, this.OnInterpolationFinished);
-    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    var instance = this.SoundEmitter.PlayCue(this.Cue);
+    
+    Zero.Connect(instance.SoundNode, Events.InterpolationFinished, this.OnInterpolationFinished);
   }
 
   function OnInterpolationFinished(event : SoundEvent)
   {
-    
-  }
-
-  function OnLogicUpdate(event : UpdateEvent)
-  {
+    Console.WriteLine("HERE");
   }
 }

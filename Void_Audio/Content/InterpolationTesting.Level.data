@@ -332,14 +332,18 @@ Level
 		}
 		SoundEmitter 
 		{
-			var Volume = 1
+			var Volume = 1.00999999
 			var Pitch = 0
-			var Attenuator = ""
+			var Attenuator = "57ca8a6ad262efe5:DefaultNoAttenuation"
 			var Directional = false
 			var EmitAngle = 90
 			var RearVolume = 0.200000003
 		}
 		InterpolationTesting 
+		{
+			var Cue = "58a7a2e267ffcf07:Button"
+		}
+		DebugSoundNodeGraph 
 		{
 		}
 	}

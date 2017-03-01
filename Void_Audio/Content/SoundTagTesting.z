@@ -19,8 +19,8 @@ class SoundTagTesting : ZilchComponent
       return;
     
     this.ChangeAccum += event.Dt * this.ChangeRate;
-    
     this.Tag.Volume = Math.Abs(Math.Sin(this.ChangeAccum));
+    
     Console.WriteLine("InstanceCount: `this.Tag.InstanceCount`");
     Console.WriteLine("Volume: `this.Tag.Volume`");
     
