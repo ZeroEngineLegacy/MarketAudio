@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "AudioTestsBraveCobra",
+	uint64 LibraryId = 57bf8b8126e2fdf6,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},

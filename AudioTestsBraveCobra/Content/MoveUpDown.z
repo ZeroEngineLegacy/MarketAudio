@@ -1,0 +1,29 @@
+class MoveUpDown : ZilchComponent
+{
+  [Dependency]
+  var Transform : Transform;
+  
+  var MoveIncrement : Real = 0.2;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    var position = this.Transform.WorldTranslation;
+    
+    if (Zero.Keyboard.KeyIsDown(Keys.Up))
+    {
+        position.Y += this.MoveIncrement;
+    }
+    if (Zero.Keyboard.KeyIsDown(Keys.Down))
+    {
+        position.Y -= this.MoveIncrement;
+    }
+    
+    this.Transform.WorldTranslation = position;
+  
+  }
+}

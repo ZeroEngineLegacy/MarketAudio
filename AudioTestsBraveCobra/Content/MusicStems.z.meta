@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "MusicStems"
+		var ResourceId = 0x58dd46351c5368d4
+	}
+}

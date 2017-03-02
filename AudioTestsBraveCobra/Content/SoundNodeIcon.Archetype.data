@@ -1,0 +1,312 @@
+[Version:1]
+Cog 
+{
+	var Name = "SoundNode"
+	var LinkId = 1
+	Transform 
+	{
+		var Translation = Vec3{0, 0, 0}
+		var Scale = Vec3{1, 1, 1}
+		var Rotation = Quat{0, 0, 0, 1}
+	}
+	Area 
+	{
+		var Size = Vec2{78, 28}
+		var Origin = Location.Center
+	}
+	UiWidget 
+	{
+		var Active = true
+		var Visible = true
+		var Interactive = true
+		var InLayout = false
+		var ClipChildren = false
+		var CanTakeFocus = false
+		var LocalColor = Vec4{0.454999983, 0.454999983, 0.454999983, 1}
+		var HierarchyColor = Vec4{1, 1, 1, 1}
+		var SizePolicyX = UiSizePolicy.Fixed
+		var SizePolicyY = UiSizePolicy.Fixed
+		var FlexSize = Vec2{1, 1}
+		var AbsoluteMinSize = Vec2{1, 1}
+		var VerticalAlignment = UiVerticalAlignment.Top
+		var HorizontalAlignment = UiHorizontalAlignment.Left
+		var MarginLeft = 0
+		var MarginTop = 0
+		var MarginRight = 0
+		var MarginBottom = 0
+		var DockMode = UiDockMode.Left
+	}
+	Hierarchy 
+	{
+		Cog [Id:0x5821215ba5f01866]
+		{
+			var Name = "CircleHighlight"
+			var LinkId = 2
+			Transform 
+			{
+				var Translation = Vec3{0, 0, 0}
+				var Scale = Vec3{1, 1, 1}
+				var Rotation = Quat{0, 0, 0, 1}
+			}
+			Sprite 
+			{
+				var Visible = true
+				var ViewCulling = true
+				var VisibilityEvents = true
+				var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+				var VertexColor = Vec4{0.329999983, 0.698500156, 1, 1}
+				var GeometryMode = SpriteGeometryMode.ZPlane
+				var SpriteSource = "58250ff7e07f8893:SoundNodeGraph__0001_BGHighLight"
+				var FlipX = false
+				var FlipY = false
+				var AnimationActive = true
+				var AnimationSpeed = 1
+				var StartFrame = 0
+			}
+			Area 
+			{
+				var Size = Vec2{100, 100}
+				var Origin = Location.Center
+			}
+			UiWidget 
+			{
+				var Active = true
+				var Visible = true
+				var Interactive = true
+				var InLayout = false
+				var ClipChildren = false
+				var CanTakeFocus = false
+				var LocalColor = Vec4{0.329999983, 0.698500156, 1, 1}
+				var HierarchyColor = Vec4{1, 1, 1, 1}
+				var SizePolicyX = UiSizePolicy.Fixed
+				var SizePolicyY = UiSizePolicy.Fixed
+				var FlexSize = Vec2{1, 1}
+				var AbsoluteMinSize = Vec2{1, 1}
+				var VerticalAlignment = UiVerticalAlignment.Top
+				var HorizontalAlignment = UiHorizontalAlignment.Left
+				var MarginLeft = 0
+				var MarginTop = 0
+				var MarginRight = 0
+				var MarginBottom = 0
+				var DockMode = UiDockMode.Left
+			}
+			Hierarchy 
+			{
+			}
+		}
+		Cog [Id:0x5821215ba5f0186d]
+		{
+			var Name = "Circle"
+			var LinkId = 3
+			Transform 
+			{
+				var Translation = Vec3{0, 0, 0}
+				var Scale = Vec3{1, 1, 1}
+				var Rotation = Quat{0, 0, 0, 1}
+			}
+			Sprite 
+			{
+				var Visible = true
+				var ViewCulling = true
+				var VisibilityEvents = true
+				var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+				var VertexColor = Vec4{1, 1, 1, 1}
+				var GeometryMode = SpriteGeometryMode.ZPlane
+				var SpriteSource = "58250ff7e07f39e8:SoundNodeGraph__0000_Background"
+				var FlipX = false
+				var FlipY = false
+				var AnimationActive = true
+				var AnimationSpeed = 1
+				var StartFrame = 0
+			}
+			Area 
+			{
+				var Size = Vec2{100, 100}
+				var Origin = Location.Center
+			}
+			UiWidget 
+			{
+				var Active = true
+				var Visible = true
+				var Interactive = true
+				var InLayout = false
+				var ClipChildren = false
+				var CanTakeFocus = false
+				var LocalColor = Vec4{1, 1, 1, 1}
+				var HierarchyColor = Vec4{1, 1, 1, 1}
+				var SizePolicyX = UiSizePolicy.Fixed
+				var SizePolicyY = UiSizePolicy.Fixed
+				var FlexSize = Vec2{1, 1}
+				var AbsoluteMinSize = Vec2{1, 1}
+				var VerticalAlignment = UiVerticalAlignment.Top
+				var HorizontalAlignment = UiHorizontalAlignment.Left
+				var MarginLeft = 0
+				var MarginTop = 0
+				var MarginRight = 0
+				var MarginBottom = 0
+				var DockMode = UiDockMode.Left
+			}
+		}
+		Cog [Id:0x5821215ba5f0186f]
+		{
+			var Name = "BoxHighlight"
+			var LinkId = 4
+			Transform 
+			{
+				var Translation = Vec3{0, 0, 0}
+				var Scale = Vec3{1, 1, 1}
+				var Rotation = Quat{0, 0, 0, 1}
+			}
+			Sprite 
+			{
+				var Visible = true
+				var ViewCulling = true
+				var VisibilityEvents = true
+				var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+				var VertexColor = Vec4{0.262745112, 0.556862772, 0.800000072, 1}
+				var GeometryMode = SpriteGeometryMode.ZPlane
+				var SpriteSource = "5275aa4d802dd6dc:Square"
+				var FlipX = false
+				var FlipY = false
+				var AnimationActive = true
+				var AnimationSpeed = 1
+				var StartFrame = 0
+			}
+			Area 
+			{
+				var Size = Vec2{80, 30}
+				var Origin = Location.Center
+			}
+			UiWidget 
+			{
+				var Active = true
+				var Visible = true
+				var Interactive = true
+				var InLayout = false
+				var ClipChildren = false
+				var CanTakeFocus = false
+				var LocalColor = Vec4{0.262745112, 0.556862772, 0.800000072, 1}
+				var HierarchyColor = Vec4{1, 1, 1, 1}
+				var SizePolicyX = UiSizePolicy.Fixed
+				var SizePolicyY = UiSizePolicy.Fixed
+				var FlexSize = Vec2{1, 1}
+				var AbsoluteMinSize = Vec2{1, 1}
+				var VerticalAlignment = UiVerticalAlignment.Top
+				var HorizontalAlignment = UiHorizontalAlignment.Left
+				var MarginLeft = 0
+				var MarginTop = 0
+				var MarginRight = 0
+				var MarginBottom = 0
+				var DockMode = UiDockMode.Left
+			}
+		}
+		Cog [Id:0x5821215ba5f01871]
+		{
+			var Name = "Box"
+			var LinkId = 5
+			Transform 
+			{
+				var Translation = Vec3{0, 0, 0}
+				var Scale = Vec3{1, 1, 1}
+				var Rotation = Quat{0, 0, 0, 1}
+			}
+			Sprite 
+			{
+				var Visible = true
+				var ViewCulling = true
+				var VisibilityEvents = true
+				var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+				var VertexColor = Vec4{0.454999983, 0.454999983, 0.454999983, 1}
+				var GeometryMode = SpriteGeometryMode.ZPlane
+				var SpriteSource = "5275aa4d802dd6dc:Square"
+				var FlipX = false
+				var FlipY = false
+				var AnimationActive = true
+				var AnimationSpeed = 1
+				var StartFrame = 0
+			}
+			Area 
+			{
+				var Size = Vec2{78, 28}
+				var Origin = Location.Center
+			}
+			UiWidget 
+			{
+				var Active = true
+				var Visible = true
+				var Interactive = true
+				var InLayout = false
+				var ClipChildren = false
+				var CanTakeFocus = false
+				var LocalColor = Vec4{0.454999983, 0.454999983, 0.454999983, 1}
+				var HierarchyColor = Vec4{1, 1, 1, 1}
+				var SizePolicyX = UiSizePolicy.Fixed
+				var SizePolicyY = UiSizePolicy.Fixed
+				var FlexSize = Vec2{1, 1}
+				var AbsoluteMinSize = Vec2{1, 1}
+				var VerticalAlignment = UiVerticalAlignment.Top
+				var HorizontalAlignment = UiHorizontalAlignment.Left
+				var MarginLeft = 0
+				var MarginTop = 0
+				var MarginRight = 0
+				var MarginBottom = 0
+				var DockMode = UiDockMode.Left
+			}
+			Hierarchy 
+			{
+			}
+		}
+		Cog [Id:0x5821215ba5f01873]
+		{
+			var Name = "Text"
+			var LinkId = 6
+			Transform 
+			{
+				var Translation = Vec3{-37.5, 8, 1.28865686e-05}
+				var Scale = Vec3{1, 1, 1}
+				var Rotation = Quat{0, 0, 0, 1}
+			}
+			Area 
+			{
+				var Size = Vec2{75, 20}
+				var Origin = Location.TopLeft
+			}
+			UiWidget 
+			{
+				var Active = true
+				var Visible = true
+				var Interactive = true
+				var InLayout = false
+				var ClipChildren = false
+				var CanTakeFocus = false
+				var LocalColor = Vec4{1, 1, 1, 1}
+				var HierarchyColor = Vec4{1, 1, 1, 1}
+				var SizePolicyX = UiSizePolicy.Fixed
+				var SizePolicyY = UiSizePolicy.Fixed
+				var FlexSize = Vec2{1, 2}
+				var AbsoluteMinSize = Vec2{1, 1}
+				var VerticalAlignment = UiVerticalAlignment.Top
+				var HorizontalAlignment = UiHorizontalAlignment.Left
+				var MarginLeft = 0
+				var MarginTop = 0
+				var MarginRight = 0
+				var MarginBottom = 0
+				var DockMode = UiDockMode.Left
+			}
+			SpriteText 
+			{
+				var Visible = true
+				var ViewCulling = true
+				var VisibilityEvents = true
+				var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+				var VertexColor = Vec4{1, 1, 1, 1}
+				var GeometryMode = SpriteGeometryMode.ZPlane
+				var Font = "57343753bb4eaaec:NotoSans-Regular"
+				var FontSize = 8
+				var Text = "Volume Node"
+				var Align = TextAlign.Center
+				var PixelsPerUnit = 1
+			}
+		}
+	}
+}

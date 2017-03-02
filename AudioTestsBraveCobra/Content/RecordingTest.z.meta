@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "RecordingTest",
+		uint64 ResourceId = 585fb9f919425f22,
+	},
+},

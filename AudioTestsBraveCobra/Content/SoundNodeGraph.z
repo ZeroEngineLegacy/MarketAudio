@@ -1,0 +1,19 @@
+[Command(autoRegister:true)]
+class SoundNodeGraph : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.CommandExecute, this.OnCommandExecute);
+    }
+
+    function OnCommandExecute(event : CommandEvent)
+    {
+        var editorGameSession = this.GameSession;
+        var space = editorGameSession.CreateNamedSpace("GraphDisplay", Archetype.Space);
+        space.LoadLevel(Level.GraphDisplay);
+        
+        var camViewport = space.FindObjectByName("Camera").CameraViewport;
+        
+        Zero.Editor.CreateDockableWindow("GraphDisplay", camViewport, Real2(500, 500), true, DockArea.Floating);
+    }
+}

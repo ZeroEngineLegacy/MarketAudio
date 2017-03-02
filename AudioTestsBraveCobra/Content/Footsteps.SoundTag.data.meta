@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "Footsteps"
+		var ResourceId = 0x581824ba29baf9cc
+		var LoaderType = "SoundTag"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

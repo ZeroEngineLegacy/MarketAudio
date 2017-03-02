@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Wood_Walk_2"
+		var ResourceId = 0x58c7ee5adbdbb583
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

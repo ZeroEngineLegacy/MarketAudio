@@ -1,0 +1,19 @@
+[Command(autoRegister:true)]
+class Equalizer : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.CommandExecute, this.OnCommandExecute);
+  }
+
+  function OnCommandExecute(event : CommandEvent)
+  {
+    var editorGameSession = this.GameSession;
+    var space = editorGameSession.CreateNamedSpace("Equalizer", Archetype.Space);
+    space.LoadLevel(Level.Equalizer);
+    
+    var camViewport = space.FindObjectByName("Camera").CameraViewport;
+    
+    Zero.Editor.CreateDockableWindow("Equalizer", camViewport, Real2(300, 330), true, DockArea.Floating);
+  }
+}

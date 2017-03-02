@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Voice_Amazing_1"
+		var ResourceId = 0x58e245c8a97eb2e2
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

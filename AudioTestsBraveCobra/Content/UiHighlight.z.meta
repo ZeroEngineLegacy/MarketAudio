@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "UiHighlight",
+		uint64 ResourceId = 586a058e6df3027f,
+	},
+},

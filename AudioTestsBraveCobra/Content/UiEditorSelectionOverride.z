@@ -1,0 +1,32 @@
+[RunInEditor]
+class UiEditorSelectionOverride : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.SelectToolPreSelect, this.OnSelectToolPreSelect);
+  }
+
+  function GetRootWidget() : Cog
+  {
+    return this.Space.FindObjectByName("Root");
+  }
+
+  function OnSelectToolPreSelect(event : ViewportMouseEvent)
+  {
+    var rootWidget = this.GetRootWidget().UiWidget;
+    var mousePosWorld = event.ToWorldZPlane(0);
+    var mousePosRoot = rootWidget.WorldToRoot(mousePosWorld);
+    var widgetHit = rootWidget.CastPoint(mousePosRoot, null, event.CtrlPressed);
+    if(widgetHit != null)
+    {
+      var selection = Zero.Editor.ActiveSelection;
+      if(event.ShiftPressed)
+        selection.AddObject(widgetHit.Owner);
+      else
+        selection.SelectOnly(widgetHit.Owner);
+        
+      selection.FinalSelectionChanged();
+      event.HandledEvent = true;
+    }
+  }
+}

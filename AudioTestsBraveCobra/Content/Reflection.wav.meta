@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Reflection"
+		var ResourceId = 0x58c7e4e43d918ea9
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

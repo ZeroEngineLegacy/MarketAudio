@@ -1,0 +1,64 @@
+Cog = 
+{
+	LinkId = 
+	{
+		uint Id = 1,
+	},
+	Named = 
+	{
+		string Name = "EqualizerBar",
+	},
+	Archetyped = 
+	{
+		string Name = "584e2bf7cf9c3730:UiEqualizerBar",
+		bool ModifiedFromArchetype = false,
+	},
+	Transform = 
+	{
+		Vec3 Translation = [215, -233.000015, 0],
+		Vec3 Scale = [1, 1, 1],
+		Quat Rotation = [0, 0, 0, 1],
+	},
+	Area = 
+	{
+		Vec2 Size = [45, 17],
+		Location Origin = TopLeft,
+	},
+	UiWidget = 
+	{
+		bool Active = true,
+		bool Visible = true,
+		bool Interactive = false,
+		bool InLayout = false,
+		bool ClipChildren = false,
+		bool CanTakeFocus = false,
+		Vec4 LocalColor = [1, 1, 1, 1],
+		Vec4 HierarchyColor = [1, 1, 1, 1],
+		UiSizePolicy SizePolicyX = Auto,
+		UiSizePolicy SizePolicyY = Auto,
+		Vec2 FlexSize = [1, 1],
+		Vec2 AbsoluteMinSize = [1, 1],
+		UiVerticalAlignment VerticalAlignment = Top,
+		UiHorizontalAlignment HorizontalAlignment = Left,
+		float MarginLeft = 0,
+		float MarginTop = 0,
+		float MarginRight = 0,
+		float MarginBottom = 0,
+		UiDockMode DockMode = Left,
+	},
+	Sprite = 
+	{
+		bool Visible = true,
+		bool ViewCulling = true,
+		bool VisibilityEvents = true,
+		string Material = "56dcc7b15f51207d:DefaultSpriteMaterial",
+		Vec4 VertexColor = [1, 1, 1, 1],
+		SpriteGeometryMode GeometryMode = ZPlane,
+		string SpriteSource = "584e2beec0a35682:Bar",
+		bool FlipX = false,
+		bool FlipY = false,
+		bool AnimationActive = true,
+		float AnimationSpeed = 1,
+		uint StartFrame = 0,
+	},
+},

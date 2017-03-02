@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "SystemVolumeMeter",
+		uint64 ResourceId = 586a058e6df4b17c,
+	},
+},

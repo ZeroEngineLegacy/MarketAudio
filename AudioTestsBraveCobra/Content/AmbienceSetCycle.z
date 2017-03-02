@@ -1,0 +1,33 @@
+// Event to notify other objects to switch between day and night
+class DayCycleEvent : ZilchEvent
+{
+  var Day : Boolean;
+}
+
+// Responds to a mouse click to set day or night
+class AmbienceSetCycle : ZilchComponent
+{
+  sends DayCycleEvent : DayCycleEvent;
+  
+  // This script requires a Reactive component on the same object
+  [Dependency]
+  var Reactive : Reactive;
+  
+  // If true clicking on this object will set the ambience to Day
+  [Property]
+  var SetAmbienceToDay : Boolean = true;
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Connect to the left-click events from the Reactive component
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnLeftClick);
+  }
+
+  function OnLeftClick(event : ViewportMouseEvent)
+  {
+    // Send an event to set the ambience to day/night
+    var newEvent = DayCycleEvent();
+    newEvent.Day = this.SetAmbienceToDay;
+    this.Space.DispatchEvent(Events.DayCycleEvent, newEvent);
+  }
+}

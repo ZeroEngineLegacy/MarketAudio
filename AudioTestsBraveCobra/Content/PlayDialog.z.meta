@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "PlayDialog"
+		var ResourceId = 0x58e26147e84f54e0
+	}
+}

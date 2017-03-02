@@ -1,0 +1,36 @@
+class VolumeBarSegments : ZilchComponent
+{
+    [Property]
+    var DecibelLimit : Real = 0;
+    [Property]
+    var Color : Real4 = Real4(0.05, 0.36, 0.08, 1.0);
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    { 
+      var decibels = this.ToDecibels(Audio.GetRMSOutputLevel());
+        
+      if (decibels >= this.DecibelLimit)
+      {
+         this.Owner.UiWidget.LocalColor = this.Color;
+      }
+      else
+      {
+         this.Owner.UiWidget.LocalColor = Real4(1,1,1,1);
+      }
+    }
+    
+    function ToDecibels(volume : Real) : Real
+    {
+        if (volume == 0.0)
+            return -100.0;
+        
+        var decibels = 20.0 * Math.Log10(volume);
+        
+        return decibels;
+    }
+}

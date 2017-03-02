@@ -1,0 +1,36 @@
+class Looping : ZilchComponent
+{
+    [Property]
+    var Cue : SoundCue;
+    
+    var Instance : SoundInstance;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Space.FindObjectByName("Camera"), Events.LeftMouseDown, this.OnLeftMouseDown);
+        Zero.Connect(this.Space.FindObjectByName("Camera"), Events.RightMouseDown, this.OnRightMouseDown);
+        
+        this.Space.SoundSpace.Volume = 0.3;
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if (Zero.Keyboard.KeyIsPressed(Keys.T))
+            this.Instance.Time = 0.5;
+    }
+    
+    function OnLeftMouseDown(event : ViewportMouseEvent)
+    {
+        //Console.WriteLine("Mouse function");
+        
+        if (event.HitObject == this.Owner)
+            this.Instance = this.Space.SoundSpace.PlayCue(this.Cue);
+    }
+    
+    function OnRightMouseDown(event : ViewportMouseEvent)
+    {
+        if (event.HitObject == this.Owner)
+            this.Instance.Looping = false;
+    }
+}

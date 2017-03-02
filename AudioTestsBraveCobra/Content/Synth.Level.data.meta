@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "Synth"
+		var ResourceId = 0x58d46422607c35ff
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

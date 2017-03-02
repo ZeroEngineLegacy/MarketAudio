@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Wood_Run_2"
+		var ResourceId = 0x58c7ee5adbdad802
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

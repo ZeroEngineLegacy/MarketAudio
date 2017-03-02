@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "MoveUpDown"
+		var ResourceId = 0x5806b2675d9e1a0a
+	}
+}

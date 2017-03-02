@@ -1,0 +1,23 @@
+class Rotation : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+        Console.WriteLine("`this.Owner.Transform.EulerAngles`");
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if (Zero.Keyboard.KeyIsDown(Keys.NumPad4))
+        {
+            var rotation = Real3(0, -0.01, 0);
+            this.Owner.Transform.RotateAnglesLocal(rotation);
+        }
+        if (Zero.Keyboard.KeyIsDown(Keys.NumPad6))
+        {
+            var rotation = Real3(0, 0.01, 0);
+            this.Owner.Transform.RotateAnglesLocal(rotation);
+        }
+    }
+}

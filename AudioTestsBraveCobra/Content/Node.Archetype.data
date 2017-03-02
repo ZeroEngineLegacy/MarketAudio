@@ -1,0 +1,66 @@
+[Version:1]
+Cog 
+{
+	var Name = "Node"
+	var LinkId = 1
+	Transform 
+	{
+		var Translation = Vec3{54.9999847, -154, 0}
+		var Scale = Vec3{1, 1, 1}
+		var Rotation = Quat{0, 0, 0, 1}
+	}
+	Area 
+	{
+		var Size = Vec2{40, 40}
+		var Origin = Location.TopLeft
+	}
+	Sprite 
+	{
+		var Visible = true
+		var ViewCulling = true
+		var VisibilityEvents = true
+		var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+		var VertexColor = Vec4{0.534734964, 0.497249991, 0.764999986, 1}
+		var GeometryMode = SpriteGeometryMode.ZPlane
+		var SpriteSource = "5275aa4d802dd6dc:Square"
+		var FlipX = false
+		var FlipY = false
+		var AnimationActive = true
+		var AnimationSpeed = 1
+		var StartFrame = 0
+	}
+	UiWidget 
+	{
+		var Active = true
+		var Visible = true
+		var Interactive = true
+		var InLayout = false
+		var ClipChildren = false
+		var CanTakeFocus = false
+		var LocalColor = Vec4{0.534734964, 0.497249991, 0.764999986, 1}
+		var HierarchyColor = Vec4{1, 1, 1, 1}
+		var SizePolicyX = UiSizePolicy.Fixed
+		var SizePolicyY = UiSizePolicy.Fixed
+		var FlexSize = Vec2{1, 1}
+		var AbsoluteMinSize = Vec2{1, 1}
+		var VerticalAlignment = UiVerticalAlignment.Top
+		var HorizontalAlignment = UiHorizontalAlignment.Left
+		var MarginLeft = 0
+		var MarginTop = 0
+		var MarginRight = 0
+		var MarginBottom = 0
+		var DockMode = UiDockMode.Left
+	}
+	Hierarchy 
+	{
+		Cog [Id:0x586b220f1d033e7f][InheritId:"586b220f1d039fbe:NodeText"]
+		{
+			Transform 
+			{
+				var Translation = Vec3{0, -5, 1.14440918e-05}
+				var Rotation = Quat{0, 0, 0, 1}
+				var Scale = Vec3{1, 1, 1}
+			}
+		}
+	}
+}

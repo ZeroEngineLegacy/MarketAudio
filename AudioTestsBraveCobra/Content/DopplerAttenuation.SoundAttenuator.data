@@ -1,0 +1,11 @@
+SoundAttenuator = 
+{
+	float StartDistance = 1,
+	float StopDistance = 100,
+	float MinAttenuatedVolume = 0,
+	bool UseLowPassFilter = false,
+	float LowPassStartDistance = 20,
+	float LowPassCutoffFreq = 1000,
+	string CustomFalloffCurve = "",
+	FalloffCurveType FalloffCurveType = Log,
+},

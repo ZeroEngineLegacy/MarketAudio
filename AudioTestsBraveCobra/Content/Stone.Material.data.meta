@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "Stone"
+		var ResourceId = 0x58dc4da31f083238
+		var LoaderType = "Material"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

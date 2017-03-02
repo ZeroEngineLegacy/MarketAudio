@@ -1,0 +1,102 @@
+class Stems : ZilchComponent
+{
+  [Property]
+  var Cue1 : SoundCue;
+  [Property]
+  var Cue2 : SoundCue;
+  [Property]
+  var Cue3 : SoundCue;
+  [Property]
+  var Cue4 : SoundCue;
+  
+  var Volume : VolumeNode = Audio.VolumeNode();
+  var Volume1 : VolumeNode = Audio.VolumeNode();
+  var Volume2 : VolumeNode = Audio.VolumeNode();
+  var Volume3 : VolumeNode = Audio.VolumeNode();
+  
+  function Initialize(init : CogInitializer)
+  {
+    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    
+    this.Cue1.PlayCueOnNode(this.Volume1, false);
+    this.Cue2.PlayCueOnNode(this.Volume2, false);
+    this.Cue3.PlayCueOnNode(this.Volume2, false);
+    this.Cue4.PlayCueOnNode(this.Volume3, false);
+    
+    this.Volume.Volume = 0.5;
+    this.Volume.AddInputNode(this.Volume1);
+    this.Volume.AddInputNode(this.Volume2);
+    this.Volume.AddInputNode(this.Volume3);
+    this.Space.SoundSpace.SoundNode.AddInputNode(this.Volume);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+  }
+}
+
+class Stem1 : ZilchComponent
+{
+  [Dependency]
+  var Reactive : Reactive;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnLeftClick);
+    Zero.Connect(this.Reactive, Events.RightMouseDown, this.OnRightClick);
+  }
+  
+  function OnLeftClick(event : ViewportMouseEvent)
+  {
+    this.Space.LevelSettings.Stems.Volume1.InterpolateVolume(0.0, 2.0);
+  }
+  
+  function OnRightClick(event : ViewportMouseEvent)
+  {
+    this.Space.LevelSettings.Stems.Volume1.InterpolateVolume(1.0, 2.0);
+  }
+}
+
+class Stem2 : ZilchComponent
+{
+  [Dependency]
+  var Reactive : Reactive;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnLeftClick);
+    Zero.Connect(this.Reactive, Events.RightMouseDown, this.OnRightClick);
+  }
+  
+  function OnLeftClick(event : ViewportMouseEvent)
+  {
+    this.Space.LevelSettings.Stems.Volume2.InterpolateVolume(0.0, 2.0);
+  }
+  
+  function OnRightClick(event : ViewportMouseEvent)
+  {
+    this.Space.LevelSettings.Stems.Volume2.InterpolateVolume(1.0, 2.0);
+  }
+}
+
+class Stem3 : ZilchComponent
+{
+  [Dependency]
+  var Reactive : Reactive;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnLeftClick);
+    Zero.Connect(this.Reactive, Events.RightMouseDown, this.OnRightClick);
+  }
+  
+  function OnLeftClick(event : ViewportMouseEvent)
+  {
+    this.Space.LevelSettings.Stems.Volume3.InterpolateVolume(0.0, 2.0);
+  }
+  
+  function OnRightClick(event : ViewportMouseEvent)
+  {
+    this.Space.LevelSettings.Stems.Volume3.InterpolateVolume(1.0, 2.0);
+  }
+}

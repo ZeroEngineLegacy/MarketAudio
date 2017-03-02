@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Stems_Harmony_2"
+		var ResourceId = 0x58c7e042e29886ef
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

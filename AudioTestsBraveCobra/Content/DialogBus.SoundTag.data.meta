@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "DialogBus"
+		var ResourceId = 0x58e26abfaad9f6da
+		var LoaderType = "SoundTag"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "RandomMovement"
+		var ResourceId = 0x58d17b55b6e8ade4
+	}
+}

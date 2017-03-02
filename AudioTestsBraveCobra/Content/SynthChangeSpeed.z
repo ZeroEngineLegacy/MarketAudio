@@ -1,0 +1,16 @@
+class SynthChangeSpeed : ZilchComponent
+{
+  [Dependency] var Reactive : Reactive;
+  
+  [Property] var Speed : MusicSpeeds;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnLeftClick);
+  }
+
+  function OnLeftClick(event : MouseEvent)
+  {
+    this.LevelSettings.MusicManager.ChangeSpeed(this.Speed);
+  }
+}

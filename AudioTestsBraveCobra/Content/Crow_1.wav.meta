@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Crow_1"
+		var ResourceId = 0x58d94d0f36d0b75e
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

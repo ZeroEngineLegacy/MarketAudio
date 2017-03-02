@@ -1,0 +1,803 @@
+
+enum MusicSpeeds { Slow, Medium, Fast }
+
+enum ChordNames 
+{
+    One_Major,
+    Two_Minor,
+    Four_Major,
+    Five_Major,
+    Five_Major_7,
+    Six_Minor
+}
+
+class ChordSequence
+{
+  var ChordList : Array[ChordNames] = Array[ChordNames](4);
+}
+
+class MusicManager : ZilchComponent
+{
+  [Property]
+  var Speed : MusicSpeeds = MusicSpeeds.Medium;
+  [Property]
+  var SlowBackground : SoundCue;
+  [Property]
+  var MediumBackground : SoundCue;
+  [Property]
+  var FastBackground : SoundCue;
+  
+  var BaseMusicInstance : SoundInstance;
+  var Sequences : Array[ChordSequence];
+  var MeasuresPerSequence : Integer = 4;
+  var Group2Start : Integer = 9;
+  var Group1 : Boolean = true;
+  var CurrentSequence : Integer = 0;
+  var MeasureCount : Integer = 0;
+  var RandomGenerator : Random = Random();
+  
+  var SwitchSpeed : Boolean = false;
+  
+  function Initialize(init : CogInitializer)
+  {
+    this.SetSequences();
+    
+    if (this.Speed == MusicSpeeds.Slow)
+      this.BaseMusicInstance = this.Space.SoundSpace.PlayCue(this.SlowBackground);
+    else if (this.Speed == MusicSpeeds.Medium)
+      this.BaseMusicInstance = this.Space.SoundSpace.PlayCue(this.MediumBackground);
+    else if (this.Speed == MusicSpeeds.Fast)
+      this.BaseMusicInstance = this.Space.SoundSpace.PlayCue(this.FastBackground);
+    
+    Zero.Connect(this.BaseMusicInstance, Events.MusicEighthNote, this.OnNote);
+    Zero.Connect(this.BaseMusicInstance, Events.MusicQuarterNote, this.OnNote);
+    Zero.Connect(this.BaseMusicInstance, Events.MusicHalfNote, this.OnNote);
+    Zero.Connect(this.BaseMusicInstance, Events.MusicWholeNote, this.OnNote);
+    Zero.Connect(this.BaseMusicInstance, Events.MusicBar, this.OnNote);
+    Zero.Connect(this.BaseMusicInstance, Events.MusicBeat, this.OnNote);
+  }
+  
+  function ChangeSpeed(newSpeed : MusicSpeeds)
+  {
+    if (newSpeed == this.Speed)
+      return;
+      
+    this.Speed = newSpeed;
+    
+    this.SwitchSpeed = true;
+  }
+  
+  function OnNote(event : SoundInstanceEvent)
+  {
+    this.Owner.DispatchEvent(event.EventId, event);
+    
+    if (event.EventId == Events.MusicBar)
+      this.OnBar();
+  }
+  
+  function OnBar()
+  {
+    var lastChord = this.GetCurrentChord();
+    ++this.MeasureCount;
+    
+    if (this.MeasureCount == this.MeasuresPerSequence)
+    {
+      this.MeasureCount = 0;
+      var maxIndex = 0;
+      var minIndex = 0;
+      
+      if (this.Group1)
+      {
+        maxIndex = this.Group2Start - 1;
+      }
+      else
+      {
+        minIndex = this.Group2Start;
+        maxIndex = this.Sequences.Count - 1;
+      }
+      
+      this.CurrentSequence = this.RandomGenerator.RangeInclusiveMax(minIndex, maxIndex);
+      while (lastChord == this.GetCurrentChord())
+        this.CurrentSequence = this.RandomGenerator.RangeInclusiveMax(minIndex, maxIndex);
+      
+      this.Group1 = !this.Group1;
+    }
+    
+    if (this.SwitchSpeed == true)
+    {
+      this.SwitchSpeed = false;
+      this.MeasureCount = 0;
+      
+      this.BaseMusicInstance.Looping = false; // WHY
+      this.BaseMusicInstance.Stop();
+      
+      Zero.Disconnect(this.BaseMusicInstance, Events.MusicEighthNote, this);
+      Zero.Disconnect(this.BaseMusicInstance, Events.MusicQuarterNote, this);
+      Zero.Disconnect(this.BaseMusicInstance, Events.MusicHalfNote, this);
+      Zero.Disconnect(this.BaseMusicInstance, Events.MusicWholeNote, this);
+      Zero.Disconnect(this.BaseMusicInstance, Events.MusicBar, this);
+      Zero.Disconnect(this.BaseMusicInstance, Events.MusicBeat, this);
+      
+      if (this.Speed == MusicSpeeds.Slow)
+        this.BaseMusicInstance = this.Space.SoundSpace.PlayCue(this.SlowBackground);
+      else if (this.Speed == MusicSpeeds.Medium)
+        this.BaseMusicInstance = this.Space.SoundSpace.PlayCue(this.MediumBackground);
+      else if (this.Speed == MusicSpeeds.Fast)
+        this.BaseMusicInstance = this.Space.SoundSpace.PlayCue(this.FastBackground);
+      
+      Zero.Connect(this.BaseMusicInstance, Events.MusicEighthNote, this.OnNote);
+      Zero.Connect(this.BaseMusicInstance, Events.MusicQuarterNote, this.OnNote);
+      Zero.Connect(this.BaseMusicInstance, Events.MusicHalfNote, this.OnNote);
+      Zero.Connect(this.BaseMusicInstance, Events.MusicWholeNote, this.OnNote);
+      Zero.Connect(this.BaseMusicInstance, Events.MusicBar, this.OnNote);
+      Zero.Connect(this.BaseMusicInstance, Events.MusicBeat, this.OnNote);
+    }
+  }
+  
+  function GetCurrentChord() : ChordNames
+  {
+    return this.Sequences[this.CurrentSequence].ChordList[this.MeasureCount];
+  }
+
+  function SetSequences()
+  {
+    this.Sequences = new Array[ChordSequence](21);
+    this.Sequences[0] = new ChordSequence();
+    this.Sequences[0].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[0].ChordList[1] = ChordNames.Five_Major;
+    this.Sequences[0].ChordList[2] = ChordNames.Four_Major;
+    this.Sequences[0].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[1] = new ChordSequence();
+    this.Sequences[1].ChordList[0] = ChordNames.Five_Major;
+    this.Sequences[1].ChordList[1] = ChordNames.One_Major;
+    this.Sequences[1].ChordList[2] = ChordNames.Four_Major;
+    this.Sequences[1].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[2] = new ChordSequence();
+    this.Sequences[2].ChordList[0] = ChordNames.Four_Major;
+    this.Sequences[2].ChordList[1] = ChordNames.One_Major;
+    this.Sequences[2].ChordList[2] = ChordNames.Five_Major;
+    this.Sequences[2].ChordList[3] = ChordNames.One_Major;
+    
+    this.Sequences[3] = new ChordSequence();
+    this.Sequences[3].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[3].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[3].ChordList[2] = ChordNames.Five_Major;
+    this.Sequences[3].ChordList[3] = ChordNames.One_Major;
+    
+    this.Sequences[4] = new ChordSequence();
+    this.Sequences[4].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[4].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[4].ChordList[2] = ChordNames.Five_Major_7;
+    this.Sequences[4].ChordList[3] = ChordNames.One_Major;
+    
+    this.Sequences[5] = new ChordSequence();
+    this.Sequences[5].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[5].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[5].ChordList[2] = ChordNames.One_Major;
+    this.Sequences[5].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[6] = new ChordSequence();
+    this.Sequences[6].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[6].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[6].ChordList[2] = ChordNames.One_Major;
+    this.Sequences[6].ChordList[3] = ChordNames.Five_Major_7;
+    
+    this.Sequences[7] = new ChordSequence();
+    this.Sequences[7].ChordList[0] = ChordNames.Five_Major;
+    this.Sequences[7].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[7].ChordList[2] = ChordNames.One_Major;
+    this.Sequences[7].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[8] = new ChordSequence();
+    this.Sequences[8].ChordList[0] = ChordNames.Four_Major;
+    this.Sequences[8].ChordList[1] = ChordNames.One_Major;
+    this.Sequences[8].ChordList[2] = ChordNames.Four_Major;
+    this.Sequences[8].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[9] = new ChordSequence();
+    this.Sequences[9].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[9].ChordList[1] = ChordNames.Five_Major;
+    this.Sequences[9].ChordList[2] = ChordNames.Four_Major;
+    this.Sequences[9].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[10] = new ChordSequence();
+    this.Sequences[10].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[10].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[10].ChordList[2] = ChordNames.Five_Major_7;
+    this.Sequences[10].ChordList[3] = ChordNames.One_Major;
+    
+    this.Sequences[11] = new ChordSequence();
+    this.Sequences[11].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[11].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[11].ChordList[2] = ChordNames.One_Major;
+    this.Sequences[11].ChordList[3] = ChordNames.Five_Major_7;
+    
+    this.Sequences[12] = new ChordSequence();
+    this.Sequences[12].ChordList[0] = ChordNames.Five_Major;
+    this.Sequences[12].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[12].ChordList[2] = ChordNames.One_Major;
+    this.Sequences[12].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[13] = new ChordSequence();
+    this.Sequences[13].ChordList[0] = ChordNames.Four_Major;
+    this.Sequences[13].ChordList[1] = ChordNames.One_Major;
+    this.Sequences[13].ChordList[2] = ChordNames.Four_Major;
+    this.Sequences[13].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[14] = new ChordSequence();
+    this.Sequences[14].ChordList[0] = ChordNames.Five_Major;
+    this.Sequences[14].ChordList[1] = ChordNames.Six_Minor;
+    this.Sequences[14].ChordList[2] = ChordNames.Four_Major;
+    this.Sequences[14].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[15] = new ChordSequence();
+    this.Sequences[15].ChordList[0] = ChordNames.Five_Major;
+    this.Sequences[15].ChordList[1] = ChordNames.One_Major;
+    this.Sequences[15].ChordList[2] = ChordNames.Six_Minor;
+    this.Sequences[15].ChordList[3] = ChordNames.Four_Major;
+    
+    this.Sequences[16] = new ChordSequence();
+    this.Sequences[16].ChordList[0] = ChordNames.Six_Minor;
+    this.Sequences[16].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[16].ChordList[2] = ChordNames.Five_Major;
+    this.Sequences[16].ChordList[3] = ChordNames.Six_Minor;
+    
+    this.Sequences[17] = new ChordSequence();
+    this.Sequences[17].ChordList[0] = ChordNames.Six_Minor;
+    this.Sequences[17].ChordList[1] = ChordNames.Two_Minor;
+    this.Sequences[17].ChordList[2] = ChordNames.Five_Major;
+    this.Sequences[17].ChordList[3] = ChordNames.One_Major;
+    
+    this.Sequences[18] = new ChordSequence();
+    this.Sequences[18].ChordList[0] = ChordNames.Six_Minor;
+    this.Sequences[18].ChordList[1] = ChordNames.Four_Major;
+    this.Sequences[18].ChordList[2] = ChordNames.Six_Minor;
+    this.Sequences[18].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[19] = new ChordSequence();
+    this.Sequences[19].ChordList[0] = ChordNames.One_Major;
+    this.Sequences[19].ChordList[1] = ChordNames.Six_Minor;
+    this.Sequences[19].ChordList[2] = ChordNames.Two_Minor;
+    this.Sequences[19].ChordList[3] = ChordNames.Five_Major;
+    
+    this.Sequences[20] = new ChordSequence();
+    this.Sequences[20].ChordList[0] = ChordNames.Four_Major;
+    this.Sequences[20].ChordList[1] = ChordNames.One_Major;
+    this.Sequences[20].ChordList[2] = ChordNames.Six_Minor;
+    this.Sequences[20].ChordList[3] = ChordNames.Four_Major;
+  }
+}
+
+
+
+class NoteList
+{
+  var Notes : Array[Integer];
+  var RandomValues : Random = Random();
+  
+  constructor()
+  {
+    this.Notes = Array[Integer]();
+  }
+  
+  function AddNote(note : Integer)
+  {
+    this.Notes.Push(note);
+  }
+  
+  function GetNote() : Integer
+  {
+    var index = this.RandomValues.RangeInclusiveMax(0, this.Notes.Count - 1);
+    return this.Notes[index];
+  }
+}
+
+enum MidiNotes { C3 = 60, Cs3, D3, Ds3, E3, F3, Fs3, G3, Gs3, A3, As3, B3 }
+
+enum NoteTypes { EighthNote, QuarterNote, HalfNote, WholeNote, Bar, Beat }
+
+class MelodyInstrument : ZilchComponent
+{
+  [Dependency]
+  var Manager : MusicManager;
+  
+  [Property]
+  var PlayOnNoteType : NoteTypes = NoteTypes.EighthNote;
+  [Property]
+  var MaxBeatsToWait : Integer = 3;
+  [Property]
+  var MinVolume : Real = 0.15;
+  [Property]
+  var MaxVolume : Real = 0.25;
+  
+  var NotesPerChord : Array[NoteList];
+  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var LastNote : Integer = -1;
+  var WaitBeats : Integer = 1;
+  var BeatCount : Integer = 0;
+  var RandomValues : Random = Random();
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.MusicEighthNote, this.OnEighthNote);
+    Zero.Connect(this.Owner, Events.MusicQuarterNote, this.OnQuarterNote);
+    Zero.Connect(this.Owner, Events.MusicHalfNote, this.OnHalfNote);
+    Zero.Connect(this.Owner, Events.MusicWholeNote, this.OnWholeNote);
+    Zero.Connect(this.Owner, Events.MusicBar, this.OnBar);
+    Zero.Connect(this.Owner, Events.MusicBeat, this.OnBeat);
+    
+    this.Space.SoundSpace.SoundNode.AddInputNode(this.Synth);
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = 0.09;
+    envelope.DecayTime = 2.0;
+    envelope.SustainTime = 0.07;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 3.0;
+    this.Synth.AddHarmonic(1.0, 0.5, envelope);
+    envelope.AttackTime = 0.02;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.02;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 1.0;
+    this.Synth.AddHarmonic(3.0, 0.25, envelope);
+    
+    this.AddChordNotes();
+    
+  }
+  
+  function OnEighthNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.EighthNote)
+      this.PlayNote();
+  }
+  
+  function OnQuarterNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.QuarterNote)
+      this.PlayNote();
+  }
+  
+  function OnHalfNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.HalfNote)
+      this.PlayNote();
+  }
+  
+  function OnWholeNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.WholeNote)
+      this.PlayNote();
+  }
+  
+  function OnBar(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.Bar)
+      this.PlayNote();
+  }
+  
+  function OnBeat(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.Beat)
+      this.PlayNote();
+  }
+
+  function PlayNote()
+  {
+    ++this.BeatCount;
+    if (this.BeatCount >= this.WaitBeats)
+    {
+      this.BeatCount = 0;
+      if (this.MaxBeatsToWait == 1)
+        this.WaitBeats = 1;
+      else
+        this.WaitBeats = this.RandomValues.RangeInclusiveMax(1, this.MaxBeatsToWait);
+      
+      var chord = this.Manager.GetCurrentChord();
+      var note = this.NotesPerChord[chord].GetNote();
+      
+      if (this.LastNote >= 0)
+      {
+        var count = 0;
+        while ((note == this.LastNote || Math.Abs(note - this.LastNote) > 6) && count < 10)
+        {
+          note = this.NotesPerChord[chord].GetNote();
+          ++count;
+        }
+      }
+      
+      this.LastNote = note;
+      
+      this.Synth.NoteOn(note, this.RandomValues.Range(this.MinVolume, this.MaxVolume));
+    }
+  }
+  
+  function AddChordNotes()
+  {
+    this.NotesPerChord = Array[NoteList](11);
+    
+    this.NotesPerChord[ChordNames.One_Major] = NoteList();
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.D3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.F3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.A3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.B3);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 + 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.D3 + 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 + 12);
+    
+    this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.G3);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.C3 + 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 + 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 + 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.G3 + 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 + 12);
+    
+    this.NotesPerChord[ChordNames.Four_Major] = NoteList();
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.D3);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.E3);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.G3);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 + 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.D3 + 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 + 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 + 12);
+    
+    this.NotesPerChord[ChordNames.Five_Major] = NoteList();
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.A3);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.C3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 + 12);
+    
+    this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.A3);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.C3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 + 12);
+    
+    this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.F3);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 + 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 + 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 + 12);
+  }
+}
+
+
+class BassInstrument : ZilchComponent
+{
+  [Dependency]
+  var Manager : MusicManager;
+  
+  [Property]
+  var PlayOnNoteType : NoteTypes = NoteTypes.WholeNote;
+  [Property]
+  var MaxBeatsToWait : Integer = 1;
+  [Property]
+  var MinVolume : Real = 0.45;
+  [Property]
+  var MaxVolume : Real = 0.5;
+  
+  var NotesPerChord : Array[NoteList];
+  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var RandomValues : Random = Random();
+  var WaitBeats : Integer = 1;
+  var BeatCount : Integer = 0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.MusicEighthNote, this.OnEighthNote);
+    Zero.Connect(this.Owner, Events.MusicQuarterNote, this.OnQuarterNote);
+    Zero.Connect(this.Owner, Events.MusicHalfNote, this.OnHalfNote);
+    Zero.Connect(this.Owner, Events.MusicWholeNote, this.OnWholeNote);
+    Zero.Connect(this.Owner, Events.MusicBar, this.OnBar);
+    Zero.Connect(this.Owner, Events.MusicBeat, this.OnBeat);
+    
+    this.Space.SoundSpace.SoundNode.AddInputNode(this.Synth);
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = 0.09;
+    envelope.DecayTime = 2.0;
+    envelope.SustainTime = 0.07;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 8.0;
+    this.Synth.AddHarmonic(1.0, 0.5, envelope);
+    envelope.AttackTime = 0.02;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.02;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 5.0;
+    this.Synth.AddHarmonic(2.0, 0.25, envelope);
+    envelope.AttackTime = 0.05;
+    envelope.DecayTime = 0.05;
+    envelope.SustainTime = 0.02;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 4.0;
+    this.Synth.AddHarmonic(3.0, 0.15, envelope);
+    
+    this.AddChordNotes();
+  }
+  
+  function OnEighthNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.EighthNote)
+      this.PlayNote();
+  }
+  
+  function OnQuarterNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.QuarterNote)
+      this.PlayNote();
+  }
+  
+  function OnHalfNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.HalfNote)
+      this.PlayNote();
+  }
+  
+  function OnWholeNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.WholeNote)
+      this.PlayNote();
+  }
+  
+  function OnBar(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.Bar)
+      this.PlayNote();
+  }
+  
+  function OnBeat(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.Beat)
+      this.PlayNote();
+  }
+
+  function PlayNote()
+  {
+    ++this.BeatCount;
+    if (this.BeatCount >= this.WaitBeats)
+    {
+      this.BeatCount = 0;
+      if (this.MaxBeatsToWait == 1)
+        this.WaitBeats = 1;
+      else
+        this.WaitBeats = this.RandomValues.RangeInclusiveMax(1, this.MaxBeatsToWait);
+      
+      this.Synth.NoteOn(this.NotesPerChord[this.Manager.GetCurrentChord()].GetNote(), this.RandomValues.Range(this.MinVolume, this.MaxVolume));
+    }
+  }
+  
+  function AddChordNotes()
+  {
+    this.NotesPerChord = Array[NoteList](6);
+    
+    this.NotesPerChord[ChordNames.One_Major] = NoteList();
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - 24);
+    
+    this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - 24);
+    
+    this.NotesPerChord[ChordNames.Four_Major] = NoteList();
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - 24);
+    
+    this.NotesPerChord[ChordNames.Five_Major] = NoteList();
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - 24);
+    
+    this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - 24);
+    
+    this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - 24);
+  }
+}
+
+
+class BellInstrument : ZilchComponent
+{
+  [Dependency]
+  var Manager : MusicManager;
+  
+  [Property]
+  var PlayOnNoteType : NoteTypes = NoteTypes.WholeNote;
+  [Property]
+  var MaxBeatsToWait : Integer = 1;
+  [Property]
+  var MinVolume : Real = 0.25;
+  [Property]
+  var MaxVolume : Real = 0.35;
+  
+  var NotesPerChord : Array[NoteList];
+  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var Reverb : ReverbNode = Audio.ReverbNode();
+  var Modulator : ModulationNode = Audio.ModulationNode();
+  var Modulator2 : ModulationNode = Audio.ModulationNode();
+  var LastNote : Integer = -1;
+  var WaitBeats : Integer = 1;
+  var BeatCount : Integer = 0;
+  var RandomValues : Random = Random();
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.MusicEighthNote, this.OnEighthNote);
+    Zero.Connect(this.Owner, Events.MusicQuarterNote, this.OnQuarterNote);
+    Zero.Connect(this.Owner, Events.MusicHalfNote, this.OnHalfNote);
+    Zero.Connect(this.Owner, Events.MusicWholeNote, this.OnWholeNote);
+    Zero.Connect(this.Owner, Events.MusicBar, this.OnBar);
+    Zero.Connect(this.Owner, Events.MusicBeat, this.OnBeat);
+    
+    this.Modulator.AddInputNode(this.Synth);
+    this.Modulator.Frequency = 4.0;
+    this.Modulator.UseAmplitudeModulation = true;
+    
+    this.Modulator2.AddInputNode(this.Modulator);
+    this.Modulator2.Frequency = 2000.0;
+    this.Modulator2.WetPercent = 10.0;
+    
+    this.Reverb.AddInputNode(this.Modulator2);
+    this.Reverb.WetPercent = 70;
+    this.Space.SoundSpace.SoundNode.AddInputNode(this.Reverb);
+    
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = 0.5;
+    envelope.DecayTime = 2.0;
+    envelope.SustainTime = 0.5;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 4.0;
+    this.Synth.AddHarmonic(1.0, 0.5, envelope);
+    envelope.AttackTime = 0.3;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.6;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 3.0;
+    this.Synth.AddHarmonic(2.0, 0.25, envelope);
+    envelope.AttackTime = 0.4;
+    envelope.DecayTime = 0.5;
+    envelope.SustainTime = 0.2;
+    envelope.SustainLevel = 0.8;
+    envelope.ReleaseTime = 2.0;
+    this.Synth.AddHarmonic(3.0, 0.2, envelope);
+    envelope.AttackTime = 0.6;
+    envelope.DecayTime = 0.2;
+    envelope.SustainTime = 0.02;
+    envelope.SustainLevel = 0.6;
+    envelope.ReleaseTime = 3.0;
+    this.Synth.AddHarmonic(4.0, 0.2, envelope);
+    
+    this.AddChordNotes();
+  }
+  
+  function OnEighthNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.EighthNote)
+      this.PlayNote();
+  }
+  
+  function OnQuarterNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.QuarterNote)
+      this.PlayNote();
+  }
+  
+  function OnHalfNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.HalfNote)
+      this.PlayNote();
+  }
+  
+  function OnWholeNote(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.WholeNote)
+      this.PlayNote();
+  }
+  
+  function OnBar(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.Bar)
+      this.PlayNote();
+  }
+  
+  function OnBeat(event : SoundInstanceEvent)
+  {
+    if (this.PlayOnNoteType == NoteTypes.Beat)
+      this.PlayNote();
+  }
+
+  function PlayNote()
+  {
+    ++this.BeatCount;
+    if (this.BeatCount >= this.WaitBeats)
+    {
+      this.BeatCount = 0;
+      if (this.MaxBeatsToWait == 1)
+        this.WaitBeats = 1;
+      else
+        this.WaitBeats = this.RandomValues.RangeInclusiveMax(1, this.MaxBeatsToWait);
+      
+      var chord = this.Manager.GetCurrentChord();
+      var note = this.NotesPerChord[chord].GetNote();
+      
+      if (this.LastNote >= 0)
+      {
+        var count = 0;
+        while ((note == this.LastNote || Math.Abs(note - this.LastNote) > 8) && count < 10)
+        {
+          note = this.NotesPerChord[chord].GetNote();
+          ++count;
+        }
+      }
+      
+      this.LastNote = note;
+      
+      this.Synth.NoteOn(note, 0.3);
+    }
+  }
+  
+  function AddChordNotes()
+  {
+    this.NotesPerChord = Array[NoteList](6);
+    
+    this.NotesPerChord[ChordNames.One_Major] = NoteList();
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - 24);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 - 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3);
+    
+    this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - 24);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - 24);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - 12);
+    
+    this.NotesPerChord[ChordNames.Four_Major] = NoteList();
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - 24);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 - 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3);
+    
+    this.NotesPerChord[ChordNames.Five_Major] = NoteList();
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - 24);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3);
+    
+    this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - 24);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3);
+    
+    this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 - 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 - 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3);
+  }
+}

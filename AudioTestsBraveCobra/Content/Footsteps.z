@@ -1,0 +1,113 @@
+
+enum Materials { Grass, Wood }
+enum Speed { Walk, Run }
+
+// This script will play footsteps at set intervals, with the interval changing depending
+// on speed, and the footsteps changing depending on the material being walked on.
+// Grass will be used by default, unless colliding with an object named "Wood".
+class Footsteps : ZilchComponent
+{
+  // This script requires a SoundEmitter component on the same object
+  [Dependency] var Emitter : SoundEmitter;
+  // This script requires a RamdomContext component on the same object
+  [Dependency] var Random : RandomContext;
+  
+  // The time (in seconds) between playing footsteps while walking
+  [Property] var WalkTime : Real = 0.5;
+  // The time (in seconds) between playing footsteps while running
+  [Property] var RunTime : Real = 0.25;
+  // The SoundCue to use when walking on grass
+  [Property] var GrassWalkCue : SoundCue;
+  // The SoundCue to use when running on grass
+  [Property] var GrassRunCue : SoundCue;
+  // The SoundCue to use when walking on wood
+  [Property] var WoodWalkCue : SoundCue;
+  // The SoundCue to use when running on wood
+  [Property] var WoodRunCue : SoundCue;
+  
+  // Keeps track of whether we are currently moving
+  var Moving : Boolean = false;
+  // Keeps track of the current material we're walking on
+  var Material : Materials = Materials.Grass;
+  // The switch object based on materials
+  var MaterialSwitch : SoundSwitch = SoundSwitch();
+  // The switch object based on speed for grass
+  var SpeedSwitchGrass : SoundCueSwitch = SoundCueSwitch();
+  // The switch object based on speed for wood
+  var SpeedSwitchWood : SoundCueSwitch = SoundCueSwitch();
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Connect to the event when this object starts colliding with another object
+    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStart);
+    // Connect to the event when this object stops colliding with another object
+    Zero.Connect(this.Owner, Events.CollisionEnded, this.OnCollisionEnd);
+    
+    // Set the switches and current values
+    this.MaterialSwitch.SetSwitch(Materials.Grass, this.SpeedSwitchGrass);
+    this.MaterialSwitch.SetSwitch(Materials.Wood, this.SpeedSwitchWood);
+    this.MaterialSwitch.CurrentValue = this.Material;
+    this.SpeedSwitchGrass.SetCue(Speed.Walk, this.GrassWalkCue);
+    this.SpeedSwitchGrass.SetCue(Speed.Run, this.GrassRunCue);
+    this.SpeedSwitchGrass.CurrentValue = Speed.Walk;
+    this.SpeedSwitchWood.SetCue(Speed.Walk, this.WoodWalkCue);
+    this.SpeedSwitchWood.SetCue(Speed.Run, this.WoodRunCue);
+    this.SpeedSwitchWood.CurrentValue = Speed.Walk;
+  }
+  
+  function StartMoving(moveSpeed : Speed)
+  {
+    // Mark that we are now moving
+    this.Moving = true;
+    // Set the movement speed on the switches
+    this.SpeedSwitchGrass.CurrentValue = moveSpeed;
+    this.SpeedSwitchWood.CurrentValue = moveSpeed;
+    // Start playing footsteps
+    this.PlayFootstep();
+  }
+  
+  function StopMoving()
+  {
+    // Mark that we are not moving
+    this.Moving = false;
+    // Clear the current actions
+    this.Owner.Actions.Cancel();
+  }
+  
+  function PlayFootstep()
+  {
+    // If we're not moving stop the chain of footsteps
+    if (this.Moving == false)
+      return;
+      
+    this.Emitter.PlayCue(this.MaterialSwitch.GetCue());
+    
+    // Delay the next call of this function with the appropriate time
+    var sequence = Action.Sequence(this.Owner.Actions);
+    if (this.SpeedSwitchGrass.CurrentValue == Speed.Walk)
+      Action.Delay(sequence, this.WalkTime + this.Random.Range(-0.08, 0.08));
+    else
+      Action.Delay(sequence, this.RunTime + this.Random.Range(-0.03, 0.03));
+    Action.Call(sequence, this.PlayFootstep);
+  }
+  
+  function OnCollisionStart(event : CollisionEvent)
+  {
+    // If the object we're colliding with is wood, set the material
+    if (event.OtherObject.Name == "Wood")
+    {
+      this.Material = Materials.Wood;
+      this.MaterialSwitch.CurrentValue = this.Material;
+    }
+  }
+  
+  function OnCollisionEnd(event : CollisionEvent)
+  {
+    // If the object we stopped colliding with is wood, set the material back to grass
+    if (event.OtherObject.Name == "Wood")
+    {
+      this.Material = Materials.Grass;
+      this.MaterialSwitch.CurrentValue = this.Material;
+    }
+  }
+}

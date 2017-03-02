@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "UiChangeCursor",
+		uint64 ResourceId = 586a058e6df5e773,
+	},
+},

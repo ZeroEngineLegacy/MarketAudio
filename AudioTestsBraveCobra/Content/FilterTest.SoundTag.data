@@ -1,0 +1,17 @@
+[Version:1]
+SoundTag 
+{
+	var Volume = 1
+	var EQLowPassGain = 1
+	var EQBand1Gain = 1
+	var EQBand2Gain = 0.319999993
+	var EQBand3Gain = 1
+	var EQHighPassGain = 1.70999992
+	var CompressorThreshold = 0
+	var CompressorAttack = 20
+	var CompressorRelease = 1000
+	var CompressorRatio = 1
+	var CompressorKneeWidth = 0
+	var UseEqualizer = true
+	var UseCompressor = false
+}

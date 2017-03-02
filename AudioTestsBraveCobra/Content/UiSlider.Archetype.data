@@ -1,0 +1,237 @@
+Cog = 
+{
+	LinkId = 
+	{
+		uint Id = 1,
+	},
+	Named = 
+	{
+		string Name = "SemitoneSlider",
+	},
+	Archetyped = 
+	{
+		string Name = "584fd93c93d10915:UiSlider",
+		bool ModifiedFromArchetype = false,
+	},
+	Transform = 
+	{
+		Vec3 Translation = [40.9999847, -23, 0],
+		Vec3 Scale = [1, 1, 1],
+		Quat Rotation = [0, 0, 0, 1],
+	},
+	Area = 
+	{
+		Vec2 Size = [28, 147],
+		Location Origin = TopLeft,
+	},
+	UiWidget = 
+	{
+		bool Active = true,
+		bool Visible = true,
+		bool Interactive = true,
+		bool InLayout = false,
+		bool ClipChildren = false,
+		bool CanTakeFocus = false,
+		Vec4 LocalColor = [0.444999993, 0.153525025, 0.153525025, 1],
+		Vec4 HierarchyColor = [1, 1, 1, 1],
+		UiSizePolicy SizePolicyX = Fixed,
+		UiSizePolicy SizePolicyY = Fixed,
+		Vec2 FlexSize = [1, 1],
+		Vec2 AbsoluteMinSize = [1, 1],
+		UiVerticalAlignment VerticalAlignment = Top,
+		UiHorizontalAlignment HorizontalAlignment = Left,
+		float MarginLeft = 0,
+		float MarginTop = 0,
+		float MarginRight = 0,
+		float MarginBottom = 0,
+		UiDockMode DockMode = Left,
+	},
+	UiFillLayout = 
+	{
+		float PaddingLeft = 0,
+		float PaddingTop = 0,
+		float PaddingRight = 0,
+		float PaddingBottom = 0,
+	},
+	UiSlider = 
+	{
+		CogPath Handle = 
+		{
+			string Path = "Handle",
+			bool ErrorOnResolveToNull = false,
+			bool ErrorOnPathCantCompute = false,
+			bool ErrorOnDirectLinkFail = false,
+			bool UpdateCogOnPathChange = true,
+			bool UpdatePathOnCogChange = true,
+			bool UpdateCogOnInitialize = true,
+			bool ResolvedNullErrorOccurred = false,
+			uint ResolvedCog = 2,
+			CogPathPreference PathPreference0 = CogRelative,
+			CogPathPreference PathPreference1 = SpaceRelative,
+			CogPathPreference PathPreference2 = Absolute,
+		},
+	},
+	Hierarchy = 
+	{
+		Cog:584fd65282225760 = 
+		{
+			LinkId = 
+			{
+				uint Id = 3,
+			},
+			Named = 
+			{
+				string Name = "BackgroundBar",
+			},
+			Transform = 
+			{
+				Vec3 Translation = [13, 0, 0],
+				Vec3 Scale = [1, 1, 1],
+				Quat Rotation = [0, 0, 0, 1],
+			},
+			Area = 
+			{
+				Vec2 Size = [2, 147],
+				Location Origin = TopLeft,
+			},
+			Sprite = 
+			{
+				bool Visible = true,
+				bool ViewCulling = true,
+				bool VisibilityEvents = true,
+				string Material = "56dcc7b15f51207d:DefaultSpriteMaterial",
+				Vec4 VertexColor = [0.105000019, 0.105000019, 0.105000019, 1],
+				SpriteGeometryMode GeometryMode = ZPlane,
+				string SpriteSource = "569f1512127e0619:WhiteSquare",
+				bool FlipX = false,
+				bool FlipY = false,
+				bool AnimationActive = true,
+				float AnimationSpeed = 1,
+				uint StartFrame = 0,
+			},
+			UiWidget = 
+			{
+				bool Active = true,
+				bool Visible = true,
+				bool Interactive = true,
+				bool InLayout = true,
+				bool ClipChildren = false,
+				bool CanTakeFocus = false,
+				Vec4 LocalColor = [0.105000019, 0.105000019, 0.105000019, 1],
+				Vec4 HierarchyColor = [1, 1, 1, 1],
+				UiSizePolicy SizePolicyX = Fixed,
+				UiSizePolicy SizePolicyY = Flex,
+				Vec2 FlexSize = [1, 2],
+				Vec2 AbsoluteMinSize = [1, 1],
+				UiVerticalAlignment VerticalAlignment = Top,
+				UiHorizontalAlignment HorizontalAlignment = Center,
+				float MarginLeft = 0,
+				float MarginTop = 0,
+				float MarginRight = 0,
+				float MarginBottom = 0,
+				UiDockMode DockMode = Left,
+			},
+		},
+		Cog:584fd65282225766 = 
+		{
+			LinkId = 
+			{
+				uint Id = 2,
+			},
+			Named = 
+			{
+				string Name = "Handle",
+			},
+			Transform = 
+			{
+				Vec3 Translation = [3, -137, 0],
+				Vec3 Scale = [1, 1, 1],
+				Quat Rotation = [0, 0, 0, 1],
+			},
+			Area = 
+			{
+				Vec2 Size = [23, 9],
+				Location Origin = TopLeft,
+			},
+			Sprite = 
+			{
+				bool Visible = true,
+				bool ViewCulling = true,
+				bool VisibilityEvents = true,
+				string Material = "56dcc7b15f51207d:DefaultSpriteMaterial",
+				Vec4 VertexColor = [0.774999976, 0.774999976, 0.774999976, 1],
+				SpriteGeometryMode GeometryMode = ZPlane,
+				string SpriteSource = "584e2beec0a35682:Bar",
+				bool FlipX = false,
+				bool FlipY = false,
+				bool AnimationActive = true,
+				float AnimationSpeed = 1,
+				uint StartFrame = 0,
+			},
+			UiWidget = 
+			{
+				bool Active = true,
+				bool Visible = true,
+				bool Interactive = true,
+				bool InLayout = false,
+				bool ClipChildren = false,
+				bool CanTakeFocus = false,
+				Vec4 LocalColor = [0.774999976, 0.774999976, 0.774999976, 1],
+				Vec4 HierarchyColor = [1, 1, 1, 1],
+				UiSizePolicy SizePolicyX = Fixed,
+				UiSizePolicy SizePolicyY = Fixed,
+				Vec2 FlexSize = [1, 2],
+				Vec2 AbsoluteMinSize = [1, 1],
+				UiVerticalAlignment VerticalAlignment = Top,
+				UiHorizontalAlignment HorizontalAlignment = Center,
+				float MarginLeft = 0,
+				float MarginTop = 0,
+				float MarginRight = 0,
+				float MarginBottom = 0,
+				UiDockMode DockMode = Left,
+			},
+			UiHighlight = 
+			{
+				bool Active = true,
+				Enum MouseMode = Enter,
+				CogPath MouseOverCog = 
+				{
+					string Path = ".",
+					bool ErrorOnResolveToNull = false,
+					bool ErrorOnPathCantCompute = false,
+					bool ErrorOnDirectLinkFail = false,
+					bool UpdateCogOnPathChange = true,
+					bool UpdatePathOnCogChange = true,
+					bool UpdateCogOnInitialize = true,
+					bool ResolvedNullErrorOccurred = false,
+					uint ResolvedCog = 2,
+					CogPathPreference PathPreference0 = CogRelative,
+					CogPathPreference PathPreference1 = SpaceRelative,
+					CogPathPreference PathPreference2 = Absolute,
+				},
+				CogPath HighlightCog = 
+				{
+					string Path = ".",
+					bool ErrorOnResolveToNull = false,
+					bool ErrorOnPathCantCompute = false,
+					bool ErrorOnDirectLinkFail = false,
+					bool UpdateCogOnPathChange = true,
+					bool UpdatePathOnCogChange = true,
+					bool UpdateCogOnInitialize = true,
+					bool ResolvedNullErrorOccurred = false,
+					uint ResolvedCog = 2,
+					CogPathPreference PathPreference0 = CogRelative,
+					CogPathPreference PathPreference1 = SpaceRelative,
+					CogPathPreference PathPreference2 = Absolute,
+				},
+				Enum ColorMode = Local,
+				Vec4 MouseHoverColor = [1, 1, 1, 1],
+				Vec4 MouseDownColor = [1, 1, 1, 1],
+				float AnimateTime = 0.200000003,
+			},
+			MouseCapture = 
+			{
+			},
+		},
+	},
+},

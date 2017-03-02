@@ -1,0 +1,460 @@
+[Version:1]
+Level 
+{
+	Cog 
+	{
+		var Name = "LevelSettings"
+		var LinkId = 1
+		GravityEffect 
+		{
+			var Active = true
+			var WakeUpOnChange = false
+			var LocalSpaceDirection = true
+			var Strength = 10
+			var Direction = Vec3{0, -1, 0}
+		}
+		DragEffect 
+		{
+			var Active = true
+			var WakeUpOnChange = false
+			var LinearDamping = 0.200000003
+			var AngularDamping = 0.100000001
+			var LinearDrag = 0
+			var AngularDrag = 0.100000001
+		}
+		GridDraw 
+		{
+			var Active = true
+			var HalfCellOffset = false
+			var CellSize = 1
+			var Axis = GridAxis.YAxis
+			var Lines = 100
+			var DrawAxisOrigins = true
+			var AlwaysDrawInEditor = true
+			var DrawInGame = false
+			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
+			var GridHighlight = Vec4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
+			var FollowEditorCamera = false
+		}
+	}
+	Cog 
+	{
+		var Name = "EditorCamera"
+		var LinkId = 2
+		Transform 
+		{
+			var Translation = Vec3{-0.45882979, 24.0876865, 43.8129349}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-0.248686507, -0.00507146772, -0.00130213238, 0.968569934}
+		}
+		CameraViewport 
+		{
+			var RenderInEditor = true
+			var RenderInGame = false
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
+			var RenderOrder = 0
+			var NormalizedSize = Vec2{1, 1}
+			var NormalizedOffset = Vec2{0, 0}
+			var Camera = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 2
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var Renderer = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 2
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var Resolution = Vec2{1920, 1080}
+			var ViewportScaling = ViewportScaling.Fill
+			var MarginColor = Vec4{0, 0, 0, 1}
+		}
+		Camera 
+		{
+			var NearPlane = 0.5
+			var FarPlane = 500
+			var PerspectiveMode = PerspectiveMode.Perspective
+			var FieldOfView = 45
+			var Size = 20
+		}
+		DefaultRenderer 
+		{
+			var ClearColor = Vec4{0.125, 0.125, 0.125, 1}
+			var DrawDebug = true
+		}
+		EditorCameraController 
+		{
+			var ControlMode = ControlMode.Orbit
+			var LookDistance = 50.0000038
+			var VerticalAngle = 0.50265485
+			var HorizontalAngle = 0.0104719708
+			var LookTarget = Vec3{-5.27501106e-06, 0, -5.12227416e-08}
+			var MoveSensitivity = 1
+		}
+	}
+	Cog 
+	{
+		var Name = "Camera"
+		var LinkId = 3
+		Transform 
+		{
+			var Translation = Vec3{0, 20, 40}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-0.173648179, 0, 0, 0.98480773}
+		}
+		CameraViewport 
+		{
+			var RenderInEditor = false
+			var RenderInGame = true
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
+			var RenderOrder = 0
+			var NormalizedSize = Vec2{1, 1}
+			var NormalizedOffset = Vec2{0, 0}
+			var Camera = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 3
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var Renderer = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 3
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var Resolution = Vec2{1920, 1080}
+			var ViewportScaling = ViewportScaling.Letterbox
+			var MarginColor = Vec4{0, 0, 0, 1}
+		}
+		Camera 
+		{
+			var NearPlane = 0.5
+			var FarPlane = 100
+			var PerspectiveMode = PerspectiveMode.Perspective
+			var FieldOfView = 45
+			var Size = 20
+		}
+		DefaultRenderer 
+		{
+			var ClearColor = Vec4{0, 0, 0, 1}
+			var DrawDebug = false
+		}
+	}
+	Cog [InheritId:"58d11a4606fd9231:Person"]
+	{
+		Transform 
+		{
+			var Translation = Vec3{-5.58169365, 1, -1.33460045}
+			var Rotation = Quat{0, 0, 0, 1}
+			var Scale = Vec3{1, 2, 1}
+		}
+	}
+	Cog [InheritId:"58d11a4606fd9231:Person"]
+	{
+		Transform 
+		{
+			var Translation = Vec3{9.43252659, 1, -6.26749611}
+			var Rotation = Quat{0, 0, 0, 1}
+			var Scale = Vec3{1, 2, 1}
+		}
+	}
+	Cog [InheritId:"58d11a4606fd9231:Person"]
+	{
+		Transform 
+		{
+			var Translation = Vec3{-6.77723217, 1, 5.86784363}
+			var Rotation = Quat{0, 0, 0, 1}
+			var Scale = Vec3{1, 2, 1}
+		}
+	}
+	Cog [InheritId:"58d11a4606fd9231:Person"]
+	{
+		Transform 
+		{
+			var Translation = Vec3{5.03505182, 1, 1.40596771}
+			var Rotation = Quat{0, 0, 0, 1}
+			var Scale = Vec3{1, 2, 1}
+		}
+	}
+	Cog 
+	{
+		var Name = "Grass"
+		var LinkId = 4
+		Transform 
+		{
+			var Translation = Vec3{-10, 0, 0}
+			var Scale = Vec3{20, 1, 20}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "58d17c0c484ef186:Grass"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Static
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wood"
+		var LinkId = 5
+		Transform 
+		{
+			var Translation = Vec3{10, 0, 0}
+			var Scale = Vec3{20, 1, 20}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "58d17c8d6dbfcadc:Wood"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Static
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 6
+		Transform 
+		{
+			var Translation = Vec3{10, 5, -10}
+			var Scale = Vec3{20, 10, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "58dc4da31f083238:Stone"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Static
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Vec3{20, 5, 0}
+			var Scale = Vec3{1, 10, 20}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "58dc4da31f083238:Stone"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Static
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "ReverbArea"
+		var LinkId = 8
+		Transform 
+		{
+			var Translation = Vec3{10, 5, 0}
+			var Scale = Vec3{20, 10, 20}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = false
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "58d17c8d6dbfcadc:Wood"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Static
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		ReverbZone 
+		{
+			var MaxWetPercent = 50
+		}
+	}
+	Cog 
+	{
+		var Name = "Listener"
+		var LinkId = 9
+		Transform 
+		{
+			var Translation = Vec3{-0.0204529762, 1, 0}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Kinematic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		SphereCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var Radius = 0.5
+		}
+		SoundListener 
+		{
+			var Active = true
+		}
+		Movement 
+		{
+			var MoveIncrement = 0.200000003
+		}
+	}
+}

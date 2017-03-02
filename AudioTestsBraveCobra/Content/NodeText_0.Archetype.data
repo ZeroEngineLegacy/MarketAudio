@@ -1,0 +1,53 @@
+[Version:1]
+Cog 
+{
+	var Name = "Text"
+	var LinkId = 1
+	Transform 
+	{
+		var Translation = Vec3{0, -5, 1.14440918e-05}
+		var Scale = Vec3{1, 1, 1}
+		var Rotation = Quat{0, 0, 0, 1}
+	}
+	Area 
+	{
+		var Size = Vec2{40, 30}
+		var Origin = Location.TopLeft
+	}
+	UiWidget 
+	{
+		var Active = true
+		var Visible = true
+		var Interactive = true
+		var InLayout = true
+		var ClipChildren = false
+		var CanTakeFocus = false
+		var LocalColor = Vec4{0.949999988, 0.949999988, 0.949999988, 1}
+		var HierarchyColor = Vec4{1, 1, 1, 1}
+		var SizePolicyX = UiSizePolicy.Fixed
+		var SizePolicyY = UiSizePolicy.Fixed
+		var FlexSize = Vec2{1, 2}
+		var AbsoluteMinSize = Vec2{1, 1}
+		var VerticalAlignment = UiVerticalAlignment.Top
+		var HorizontalAlignment = UiHorizontalAlignment.Left
+		var MarginLeft = 0
+		var MarginTop = 0
+		var MarginRight = 0
+		var MarginBottom = 0
+		var DockMode = UiDockMode.Left
+	}
+	SpriteText 
+	{
+		var Visible = true
+		var ViewCulling = true
+		var VisibilityEvents = true
+		var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+		var VertexColor = Vec4{0.949999988, 0.949999988, 0.949999988, 1}
+		var GeometryMode = SpriteGeometryMode.ZPlane
+		var Font = "57343753bb4eaaec:NotoSans-Regular"
+		var FontSize = 8
+		var Text = "Volume"
+		var Align = TextAlign.Center
+		var PixelsPerUnit = 1
+	}
+}

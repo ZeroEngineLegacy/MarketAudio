@@ -1,0 +1,24 @@
+class UiEqualizer : ZilchComponent
+{
+    [Property]
+    var VolumeSlider : CogPath;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.VolumeSlider.Cog, Events.UiSliderChanged, this.OnVolumeChanged);
+    
+    //this.Space.SoundSpace.PlayCue(SoundCue.Notify);
+  }
+    
+  function OnVolumeChanged(event : UiSliderEvent)
+  {
+      var decibels = (1.0 - event.SliderPercentage) * -48.0;
+      decibels += 12;
+      
+      var volume = Math.Pow(10.0, decibels / 20.0);
+      
+      Audio.SetSystemVolume(volume);
+      
+      //Console.WriteLine("`decibels`");
+  }
+}

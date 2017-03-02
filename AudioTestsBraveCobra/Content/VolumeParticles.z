@@ -1,0 +1,44 @@
+// This script controls a particle emitter based on the audio output volume.
+class VolumeParticles : ZilchComponent
+{
+  // The script requires a SphericalParticleEmitter component on the same object.
+  [Dependency]
+  var Emitter : SphericalParticleEmitter;
+  
+  // The maximum emit rate to use for the particle emitter.
+  [Property]
+  var MaxEmitRate : Real = 5000.0;
+  // The maximum size to use for the particle emitter.
+  [Property]
+  var MaxEmitterSize : Real = 100.0;
+  // The minimum radius limit value to use.
+  [Property]
+  var RadiusLimitMin : Real = 25.0;
+  // The maximum radius limit value to use.
+  [Property]
+  var RadiusLimitMax : Real = 35.0;
+  
+  // Used to get random values for the particles
+  var Random : Random = Random();
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Connect to the LogicUpdate event
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // Get the output volume level from the audio system
+    var volume = Audio.GetPeakOutputLevel();
+    
+    // Determine the emitter size
+    var size = (this.MaxEmitterSize * volume) + 2.0;
+ //   if (size > this.RadiusLimitMax + 10.0)
+ //     size = this.Random.Range(this.RadiusLimitMin, this.RadiusLimitMax);
+      
+    // Set the particle emitter size and rate based on the volume
+    this.Emitter.EmitterSize = Real3(size, size, 0.0);
+    this.Emitter.EmitRate = this.MaxEmitRate * volume;
+  }
+}

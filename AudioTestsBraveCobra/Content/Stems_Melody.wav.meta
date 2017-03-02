@@ -1,0 +1,12 @@
+[Version:1]
+AudioContent 
+{
+	SoundBuilder 
+	{
+		var Name = "Stems_Melody"
+		var ResourceId = 0x58c7e042e2990cae
+		var Compressed = false
+		var Streamed = false
+		var CompressionQuality = 3
+	}
+}

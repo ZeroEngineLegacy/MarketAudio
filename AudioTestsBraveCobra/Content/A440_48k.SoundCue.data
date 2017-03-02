@@ -1,0 +1,31 @@
+SoundCue = 
+{
+	SoundPlayMode PlayMode = Looping,
+	float Volume = 0.429999977,
+	bool UseDecibelVariation = false,
+	float VolumeVariation = 0,
+	float DecibelVariation = 0,
+	float Pitch = 0,
+	bool UseSemitoneVariation = false,
+	float PitchVariation = 0,
+	float SemitoneVariation = 0,
+	uint MaxPlaybacks = 10,
+	Array Sounds = 
+	[
+		{
+			string Sound = "57bf842d4ed54af0:A440_48k",
+			float Weight = 1,
+			float StartTime = 0,
+			float EndTime = 3,
+			float LoopEndTime = 3,
+			float LoopStartTime = 0,
+		},
+	],
+	Array SoundTags = 
+	[
+		{
+			string SoundTag = "551c2d5a29ce571d:DefaultSoundTag",
+		},
+	],
+	string Attenuator = "57ca8a6ad262efe5:DefaultSoundAttenuator",
+},

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SoundCueSwitch"
+		var ResourceId = 0x58c4b2a7824f78ba
+	}
+}

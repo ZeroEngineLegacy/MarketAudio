@@ -1,0 +1,11 @@
+AudioContent = 
+{
+	SoundBuilder = 
+	{
+		string Name = "A440_24bit",
+		uint64 ResourceId = 57bf842d4ed50562,
+		bool Compressed = false,
+		bool Streamed = false,
+		float CompressionQuality = 3,
+	},
+},

@@ -1,0 +1,63 @@
+Cog:586b0ddffc60cba4 = 
+{
+	LinkId = 
+	{
+		uint Id = 1,
+	},
+	Named = 
+	{
+		string Name = "Text",
+	},
+	Archetyped = 
+	{
+		string Name = "586b0f6a4ff1c331:NodeText",
+		bool ModifiedFromArchetype = false,
+	},
+	Transform = 
+	{
+		Vec3 Translation = [0, 0, 0],
+		Vec3 Scale = [1, 1, 1],
+		Quat Rotation = [0, 0, 0, 1],
+	},
+	Area = 
+	{
+		Vec2 Size = [40, 40],
+		Location Origin = TopLeft,
+	},
+	UiWidget = 
+	{
+		bool Active = true,
+		bool Visible = true,
+		bool Interactive = true,
+		bool InLayout = true,
+		bool ClipChildren = false,
+		bool CanTakeFocus = false,
+		Vec4 LocalColor = [0.949999988, 0.949999988, 0.949999988, 1],
+		Vec4 HierarchyColor = [1, 1, 1, 1],
+		UiSizePolicy SizePolicyX = Flex,
+		UiSizePolicy SizePolicyY = Flex,
+		Vec2 FlexSize = [1, 2],
+		Vec2 AbsoluteMinSize = [1, 1],
+		UiVerticalAlignment VerticalAlignment = Top,
+		UiHorizontalAlignment HorizontalAlignment = Left,
+		float MarginLeft = 0,
+		float MarginTop = 0,
+		float MarginRight = 0,
+		float MarginBottom = 0,
+		UiDockMode DockMode = Left,
+	},
+	SpriteText = 
+	{
+		bool Visible = true,
+		bool ViewCulling = true,
+		bool VisibilityEvents = true,
+		string Material = "56dcc7b15f51207d:DefaultSpriteMaterial",
+		Vec4 VertexColor = [0.949999988, 0.949999988, 0.949999988, 1],
+		SpriteGeometryMode GeometryMode = ZPlane,
+		string Font = "57343753bb4eaaec:NotoSans-Regular",
+		uint FontSize = 11,
+		string Text = "Node Name",
+		TextAlign Align = Center,
+		float PixelsPerUnit = 1,
+	},
+},

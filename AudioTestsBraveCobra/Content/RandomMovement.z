@@ -1,0 +1,51 @@
+// This script moves an object in random directions, at walking or running speed,
+// and tells the Footsteps script when to start and stop playing footsteps.
+class RandomMovement : ZilchComponent
+{
+  // The script requires a Transform component on the same object
+  [Dependency] var Transform : Transform;
+  // The script requires the Footsteps script component on the same object
+  [Dependency] var Footsteps : Footsteps;
+  // This script requires a RamdomContext component on the same object
+  [Dependency] var Random : RandomContext;
+  
+  function Initialize(init : CogInitializer)
+  {
+    
+    // Start moving
+    this.MoveToNewLocation();
+  }
+  
+  function MoveToNewLocation()
+  {
+    // Randomly pick one of the two speeds
+    var speed = this.Random.RangeInclusiveMax(1, 2);
+    // Pick a randomized location to move to
+    var location = Real3(this.Random.Range(-20.0, 20.0), 1.0, this.Random.Range(-10.0, 10.0));
+    // The time of the movement depends on the distance betweeen that location and the current position
+    // Dividing by the speed value makes it move twice as fast when running
+    var time = Math.Length(this.Transform.Translation - location) / speed / 2.0;
+    
+    // Start playing footsteps at the appropriate speed
+    if (speed == 1)
+      this.Footsteps.StartMoving(Speed.Walk);
+    else
+      this.Footsteps.StartMoving(Speed.Run);
+    
+    // Move linearly over the time, and then call the Stop function
+    var moveSequence = Action.Sequence(this.Owner.Actions);
+    Action.Property(moveSequence, @this.Transform.Translation, location, time, Ease.Linear);
+    Action.Call(moveSequence, this.Stop);
+  }
+  
+  function Stop()
+  {
+    // Stop playing the footsteps
+    this.Footsteps.StopMoving();
+    
+    // Call the move function after a one-second delay
+    var moveSequence = Action.Sequence(this.Owner.Actions);
+    Action.Delay(moveSequence, 1.0);
+    Action.Call(moveSequence, this.MoveToNewLocation);
+  }
+}

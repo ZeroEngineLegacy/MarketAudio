@@ -1,0 +1,17 @@
+class PlayDialog : ZilchComponent
+{
+  [Dependency] var Reactive : Reactive;
+  
+  [Property] var DialogCue : SoundCue;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnLeftClick);
+    
+  }
+
+  function OnLeftClick(event : MouseEvent)
+  {
+    this.LevelSettings.AudioManager.PlayDialogCue(this.DialogCue, this.Owner.SoundEmitter, 1.0);
+  }
+}
