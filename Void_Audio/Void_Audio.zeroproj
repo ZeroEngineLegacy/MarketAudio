@@ -10,7 +10,7 @@ Cog
 		var ProjectSpace = "Space"
 		var ProjectEngineRevision = 15560
 		var AutoTakeProjectScreenshot = true
-		var Guid = 0x5813312a0649d59f
+		var Guid = 0x57bf8b8126e7b7fc
 	}
 	EditorSettings 
 	{
@@ -19,6 +19,18 @@ Cog
 		var ScriptReloadEditor = ScriptReloadMethod.ReInitializeObjects
 		var ScriptReloadGame = ScriptReloadMethod.PatchObjects
 		var AutoUpdateContentChanges = true
+	}
+	ProjectDescription 
+	{
+		var ShortDescription = ""
+		var LongDescription = ""
+		var Tags = ""
+	}
+	SoundSettings 
+	{
+		var SystemVolume = 0.5
+		var MixType = AudioMixTypes.AutoDetect
+		var MinVolumeThreshold = 0.0150000006
 	}
 	ProjectSettings 
 	{

@@ -1,8 +1,7 @@
-[Version:1]
-ContentLibrary 
+ContentLibrary = 
 {
-	var Name = "Void_Audio"
-	var LibraryId = 0x58a6a7375ae82b23
-	var SourceControlType = ""
-	var ReadOnly = false
-}
+	string Name = "Void_Audio",
+	uint64 LibraryId = 57bf8b8126e2fdf6,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},
