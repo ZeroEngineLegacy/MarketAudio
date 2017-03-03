@@ -2,7 +2,7 @@
 SoundAttenuator 
 {
 	var StartDistance = 1
-	var StopDistance = 8
+	var StopDistance = 10
 	var MinAttenuatedVolume = 0
 	var UseLowPassFilter = true
 	var LowPassStartDistance = 2

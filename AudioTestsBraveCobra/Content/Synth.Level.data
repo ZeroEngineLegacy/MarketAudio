@@ -164,6 +164,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.100000001
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Orthographic
@@ -199,9 +200,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0.16729179, 5.32220745, 10.9040041}
+			var Translation = Vec3{0.416518807, 3.93029976, 7.06431007}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.127925619, 0.00778936874, 0.00100474386, 0.991752684}
+			var Rotation = Quat{-0.109191097, 0.0987199172, 0.010898714, 0.989046514}
 		}
 		CameraViewport 
 		{
@@ -248,6 +249,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.100000001
 			var FarPlane = 200
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -257,10 +259,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 11.0517139
-			var VerticalAngle = 0.256562233
-			var HorizontalAngle = -0.0157080069
-			var LookTarget = Vec3{-0.000619414554, 2.51775956, 0.2153534}
+			var LookDistance = 7.40818453
+			var VerticalAngle = 0.21991016
+			var HorizontalAngle = -0.198967457
+			var LookTarget = Vec3{-1.01249838, 2.31426382, -0.0228279997}
 			var MoveSensitivity = 1
 		}
 	}
@@ -319,6 +321,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.100000001
 			var FarPlane = 200
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -428,11 +431,40 @@ Level
 		{
 			var Speed = MusicSpeeds.Slow
 		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sprite"
+				var LinkId = 9
+				Transform 
+				{
+					var Translation = Vec3{0, 0, -0.00999999978}
+					var Scale = Vec3{1, 0.5, 1}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				Sprite 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{0, 0, 0, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var SpriteSource = "5586f579ca73ecc2:SquareBordered"
+					var FlipX = false
+					var FlipY = false
+					var AnimationActive = true
+					var AnimationSpeed = 1
+					var StartFrame = 0
+				}
+			}
+		}
 	}
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 9
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Vec3{-0.000619414554, 2.51775956, 0.2153534}
@@ -461,11 +493,40 @@ Level
 		{
 			var Speed = MusicSpeeds.Medium
 		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sprite"
+				var LinkId = 11
+				Transform 
+				{
+					var Translation = Vec3{0, 0, -0.00999999978}
+					var Scale = Vec3{1, 0.5, 1}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				Sprite 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{0, 0, 0, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var SpriteSource = "5586f579ca73ecc2:SquareBordered"
+					var FlipX = false
+					var FlipY = false
+					var AnimationActive = true
+					var AnimationSpeed = 1
+					var StartFrame = 0
+				}
+			}
+		}
 	}
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 10
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Vec3{3.10879517, 2.51775956, 0.2153534}
@@ -493,6 +554,35 @@ Level
 		SynthChangeSpeed 
 		{
 			var Speed = MusicSpeeds.Fast
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sprite"
+				var LinkId = 13
+				Transform 
+				{
+					var Translation = Vec3{0, 0, -0.00999999978}
+					var Scale = Vec3{1, 0.5, 1}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				Sprite 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{0, 0, 0, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var SpriteSource = "5586f579ca73ecc2:SquareBordered"
+					var FlipX = false
+					var FlipY = false
+					var AnimationActive = true
+					var AnimationSpeed = 1
+					var StartFrame = 0
+				}
+			}
 		}
 	}
 }

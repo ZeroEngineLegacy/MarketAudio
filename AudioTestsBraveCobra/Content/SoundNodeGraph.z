@@ -18,7 +18,7 @@ class SoundNodeGraph : ZilchComponent
     {
         var editorGameSession = this.GameSession;
         var space = editorGameSession.CreateNamedSpace("GraphDisplay", Archetype.Space);
-        space.LoadLevel(Level.GraphDisplay);
+        space.LoadLevel(Level.SoundNodeGraph);
         
         var camViewport = space.FindObjectByName("Camera").CameraViewport;
         

@@ -7,7 +7,7 @@ Cog
 	{
 		var Translation = Vec3{0, 1, -6}
 		var Scale = Vec3{1, 1, 0.5}
-		var Rotation = Quat{1, 0, -0, -4.37113883e-08}
+		var Rotation = Quat{-0, 1, -0, -4.37113883e-08}
 	}
 	Model 
 	{
@@ -44,5 +44,8 @@ Cog
 		var Directional = true
 		var EmitAngle = 58
 		var RearVolume = 0
+	}
+	Hierarchy 
+	{
 	}
 }

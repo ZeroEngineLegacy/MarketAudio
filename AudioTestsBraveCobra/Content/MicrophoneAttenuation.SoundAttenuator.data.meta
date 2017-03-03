@@ -1,11 +1,12 @@
-DataContent = 
+[Version:1]
+DataContent 
 {
-	DataBuilder = 
+	DataBuilder 
 	{
-		string Name = "MicrophoneAttenuation",
-		uint64 ResourceId = 58453dcbd00c8627,
-		string LoaderType = "SoundAttenuator",
-		uint Version = 0,
-		bool ShowInEditor = true,
-	},
-},
+		var Name = "MicrophoneAttenuation"
+		var ResourceId = 0x58453dcbd00c8627
+		var LoaderType = "SoundAttenuator"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

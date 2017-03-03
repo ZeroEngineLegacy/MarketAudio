@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-0.0537938401, 9.95385075, 49.0161972}
+			var Translation = Vec3{-2.57443857, 15.9212799, 80.5529022}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0871557519, -1.09695906e-08, -1.90484961e-09, 0.99619478}
+			var Rotation = Quat{-0.0740879327, -0.0234949533, -0.00174597686, 0.996973455}
 		}
 		CameraViewport 
 		{
@@ -103,10 +103,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 50
-			var VerticalAngle = 0.17453292
-			var HorizontalAngle = 0
-			var LookTarget = Vec3{-0.0537938401, 1.2714411, -0.224189371}
+			var LookDistance = 55.2585449
+			var VerticalAngle = 0.14835301
+			var HorizontalAngle = 0.0471238308
+			var LookTarget = Vec3{0, 7.75354576, 25.961998}
 			var MoveSensitivity = 1
 		}
 	}
@@ -116,7 +116,7 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 20, 50}
+			var Translation = Vec3{0, 7.75354576, 25.961998}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.1305262, 0, 0, 0.991444886}
 		}
@@ -179,7 +179,7 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{17, 0, 0}
+			var Translation = Vec3{12.6742725, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -225,7 +225,7 @@ Level
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{-20, 0, 0}
+			var Translation = Vec3{-16.4695644, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -271,14 +271,42 @@ Level
 			var Positional = true
 			var Cue = "58c7e4fb3d177964:Music_Bubbles"
 		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "SpriteText"
+				var LinkId = 7
+				Transform 
+				{
+					var Translation = Vec3{0, 1.2714411, 0}
+					var Scale = Vec3{2, 2, 2}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				SpriteText 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{1, 1, 1, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Font = "57343753bb4eaaec:NotoSans-Regular"
+					var FontSize = 32
+					var Text = "Source"
+					var Align = TextAlign.Center
+					var PixelsPerUnit = 128
+				}
+			}
+		}
 	}
 	Cog 
 	{
 		var Name = "Microphone"
-		var LinkId = 7
+		var LinkId = 8
 		Transform 
 		{
-			var Translation = Vec3{-18, 0, 0}
+			var Translation = Vec3{-13.0382242, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -325,20 +353,48 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 8
+				var ResolvedCog = 9
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
+			}
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "SpriteText"
+				var LinkId = 10
+				Transform 
+				{
+					var Translation = Vec3{0, 1.2714411, 0}
+					var Scale = Vec3{2, 2, 2}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				SpriteText 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{1, 1, 1, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Font = "57343753bb4eaaec:NotoSans-Regular"
+					var FontSize = 32
+					var Text = "Microphone"
+					var Align = TextAlign.Center
+					var PixelsPerUnit = 128
+				}
 			}
 		}
 	}
 	Cog 
 	{
 		var Name = "Speaker"
-		var LinkId = 8
+		var LinkId = 9
 		Transform 
 		{
-			var Translation = Vec3{20, 0, 0}
+			var Translation = Vec3{15.6742725, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -377,6 +433,34 @@ Level
 			var Directional = false
 			var EmitAngle = 90
 			var RearVolume = 0.200000003
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "SpriteText"
+				var LinkId = 11
+				Transform 
+				{
+					var Translation = Vec3{0, 1.2714411, 0}
+					var Scale = Vec3{2, 2, 2}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				SpriteText 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{1, 1, 1, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Font = "57343753bb4eaaec:NotoSans-Regular"
+					var FontSize = 32
+					var Text = "Speaker"
+					var Align = TextAlign.Center
+					var PixelsPerUnit = 128
+				}
+			}
 		}
 	}
 	Cog 

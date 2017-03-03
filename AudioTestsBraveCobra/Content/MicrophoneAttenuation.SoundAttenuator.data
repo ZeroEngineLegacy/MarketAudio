@@ -1,11 +1,12 @@
-SoundAttenuator = 
+[Version:1]
+SoundAttenuator 
 {
-	float StartDistance = 3,
-	float StopDistance = 20,
-	float MinAttenuatedVolume = 0,
-	bool UseLowPassFilter = false,
-	float LowPassStartDistance = 10,
-	float LowPassCutoffFreq = 200,
-	string CustomFalloffCurve = "",
-	FalloffCurveType FalloffCurveType = Log,
-},
+	var StartDistance = 3
+	var StopDistance = 15
+	var MinAttenuatedVolume = 0
+	var UseLowPassFilter = false
+	var LowPassStartDistance = 10
+	var LowPassCutoffFreq = 200
+	var CustomFalloffCurve = ""
+	var FalloffCurveType = FalloffCurveType.Log
+}

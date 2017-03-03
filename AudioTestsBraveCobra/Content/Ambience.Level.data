@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{0, 12.9409523, 48.2962914}
+			var Translation = Vec3{-1.51028025, 5.19477844, 41.0595093}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.130526185, -1.10221432e-08, -2.85274071e-09, 0.991444945}
+			var Rotation = Quat{-0.0575481318, -0.023520723, -0.00135619869, 0.998064697}
 		}
 		CameraViewport 
 		{
@@ -93,6 +93,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -107,10 +108,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 50
-			var VerticalAngle = 0.261799395
-			var HorizontalAngle = 0
-			var LookTarget = Vec3{0, 0, 0}
+			var LookDistance = 20.3285007
+			var VerticalAngle = 0.115191884
+			var HorizontalAngle = 0.0471239239
+			var LookTarget = Vec3{-0.559022307, 2.85827541, 20.8881474}
 			var MoveSensitivity = 1
 		}
 	}
@@ -169,6 +170,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -250,11 +252,40 @@ Level
 		{
 			var SetAmbienceToDay = true
 		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sprite"
+				var LinkId = 5
+				Transform 
+				{
+					var Translation = Vec3{0, 0, -0.0100002289}
+					var Scale = Vec3{3, 1.5, 9.99999975e-05}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				Sprite 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{1, 0.630000114, 0, 0.999899983}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var SpriteSource = "5586f579ca73ecc2:SquareBordered"
+					var FlipX = false
+					var FlipY = false
+					var AnimationActive = true
+					var AnimationSpeed = 1
+					var StartFrame = 0
+				}
+			}
+		}
 	}
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 5
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Vec3{5.29022789, 3.18194103, 21.1364975}
@@ -282,6 +313,35 @@ Level
 		AmbienceSetCycle 
 		{
 			var SetAmbienceToDay = false
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sprite"
+				var LinkId = 7
+				Transform 
+				{
+					var Translation = Vec3{0, 0, -0.00999999978}
+					var Scale = Vec3{3, 1.5, 9.99999975e-05}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				Sprite 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{0.0594999455, 0, 0.425000012, 0.999899983}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var SpriteSource = "5586f579ca73ecc2:SquareBordered"
+					var FlipX = false
+					var FlipY = false
+					var AnimationActive = true
+					var AnimationSpeed = 1
+					var StartFrame = 0
+				}
+			}
 		}
 	}
 }

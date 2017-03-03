@@ -34,7 +34,7 @@ Cog
 	}
 	ProjectSettings 
 	{
-		var EditorMode = EditorMode.Mode2D
+		var EditorMode = EditorMode.Mode3D
 	}
 	LauncherProjectInfo 
 	{

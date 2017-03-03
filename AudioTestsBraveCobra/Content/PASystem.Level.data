@@ -172,9 +172,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{-0.199743599, 8.45634937, 19.0734138}
+			var Translation = Vec3{-1.7918998, 4.04229975, 19.3971481}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.162462756, -0.00516640209, -0.000850661425, 0.986700833}
+			var Rotation = Quat{-0.0741061047, 0.00783330854, 0.000582113687, 0.997219443}
 		}
 		CameraViewport 
 		{
@@ -231,10 +231,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 20.1375141
-			var VerticalAngle = 0.326376617
-			var HorizontalAngle = 0.0104719754
-			var LookTarget = Vec3{0, 2, 0}
+			var LookDistance = 13.4985781
+			var VerticalAngle = 0.148352802
+			var HorizontalAngle = -0.0157100018
+			var LookTarget = Vec3{-2.00162458, 2.04708552, 6.04848671}
 			var MoveSensitivity = 1
 		}
 	}
@@ -427,13 +427,41 @@ Level
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "SpriteText"
+				var LinkId = 11
+				Transform 
+				{
+					var Translation = Vec3{0, 1, 0}
+					var Scale = Vec3{1, 1, 1}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				SpriteText 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Vec4{1, 1, 1, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Font = "57343753bb4eaaec:NotoSans-Regular"
+					var FontSize = 32
+					var Text = "[Left/Right Click] Play/Stop"
+					var Align = TextAlign.Center
+					var PixelsPerUnit = 128
+				}
+			}
+		}
 	}
 	Cog [InheritId:"58dd484ec2a82008:Speaker"]
 	{
 		Transform 
 		{
 			var Translation = Vec3{0, 1, -6}
-			var Rotation = Quat{1, 0, -0, -4.37113883e-08}
+			var Rotation = Quat{-0, 1, -0, -4.37113883e-08}
 			var Scale = Vec3{1, 1, 0.5}
 		}
 	}

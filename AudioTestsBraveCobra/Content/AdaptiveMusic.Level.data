@@ -136,6 +136,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.100000001
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Orthographic
@@ -173,7 +174,7 @@ Level
 		{
 			var Translation = Vec3{0.113323987, 4.24114799, 10.8214893}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.101923168, 0.0052085584, 0.000533657207, 0.994778514}
+			var Rotation = Quat{-0.101923175, 0.0052085584, 0.000533657207, 0.994778514}
 		}
 		CameraViewport 
 		{
@@ -220,6 +221,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.100000001
 			var FarPlane = 200
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -291,6 +293,7 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.100000001
 			var FarPlane = 200
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -347,16 +350,6 @@ Level
 			var VisibilityEvents = true
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
 		}
 		SphereCollider 
 		{
