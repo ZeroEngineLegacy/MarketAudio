@@ -1,5 +1,12 @@
-// This script moves an object in random directions, at walking or running speed,
-// and tells the Footsteps script when to start and stop playing footsteps.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: RandomMovement                                                                                    */
+/* Brief: This script moves an object in random directions, at walking or running speed, and tells the      */
+/*        Footsteps script when to start and stop playing footsteps.                                        */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class RandomMovement : ZilchComponent
 {
   // The script requires a Transform component on the same object
@@ -11,7 +18,6 @@ class RandomMovement : ZilchComponent
   
   function Initialize(init : CogInitializer)
   {
-    
     // Start moving
     this.MoveToNewLocation();
   }

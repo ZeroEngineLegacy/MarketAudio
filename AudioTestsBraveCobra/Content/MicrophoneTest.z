@@ -1,5 +1,12 @@
-// This script makes the object act like a microphone, using a SoundListener to hear 
-// nearby audio and outputing it to a SoundEmitter which acts as a speaker
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Microphone                                                                                        */
+/* Brief: This script makes the object act like a microphone, using a SoundListener to hear nearby audio    */
+/*        and outputing it to a SoundEmitter which acts as a speaker.                                       */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class Microphone : ZilchComponent
 {
   // The script requires a SoundListener component on this object

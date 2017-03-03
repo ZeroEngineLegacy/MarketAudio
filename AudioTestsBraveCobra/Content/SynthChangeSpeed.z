@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: SynthChangeSpeed                                                                                  */
+/* Brief: Script used for the procedural audio demo that changes the music manager's speed on click.        */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class SynthChangeSpeed : ZilchComponent
 {
   [Dependency] var Reactive : Reactive;

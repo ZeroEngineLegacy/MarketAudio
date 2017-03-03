@@ -1,10 +1,16 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Footsteps                                                                                         */
+/* Brief: This script will play footsteps at set intervals, with the interval changing depending on speed,  */
+/*        and the footsteps changing depending on the material being walked on. Grass will be used by       */
+/*        default, unless colliding with an object named "Wood".                                            */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
 
 enum Materials { Grass, Wood }
 enum Speed { Walk, Run }
 
-// This script will play footsteps at set intervals, with the interval changing depending
-// on speed, and the footsteps changing depending on the material being walked on.
-// Grass will be used by default, unless colliding with an object named "Wood".
 class Footsteps : ZilchComponent
 {
   // This script requires a SoundEmitter component on the same object

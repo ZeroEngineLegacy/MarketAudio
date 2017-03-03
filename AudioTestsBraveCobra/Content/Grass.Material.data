@@ -28,7 +28,7 @@ Material
 	}
 	SpecularValue 
 	{
-		var SpecularValue = 0.200000003
+		var SpecularValue = 0
 	}
 	SolidColor 
 	{

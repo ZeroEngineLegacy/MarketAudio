@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: MachineRythmic                                                                                    */
+/* Brief: TODO.                                                                                             */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class MachineRythmic : ZilchComponent
 {
   var Noise : GeneratedWaveNode = Audio.GeneratedWaveNode();

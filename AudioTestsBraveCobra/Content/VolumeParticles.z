@@ -1,4 +1,11 @@
-// This script controls a particle emitter based on the audio output volume.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: VolumeParticles                                                                                   */
+/* Brief: This script controls a particle emitter based on the audio output volume.                         */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class VolumeParticles : ZilchComponent
 {
   // The script requires a SphericalParticleEmitter component on the same object.

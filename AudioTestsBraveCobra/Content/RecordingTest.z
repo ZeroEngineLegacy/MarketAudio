@@ -1,41 +1,44 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: RecordingTest                                                                                     */
+/* Brief: An example usage of a RecordingNode.                                                              */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class RecordingTest : ZilchComponent
 {
-    var Recorder : RecordingNode = Audio.RecordingNode();
-    
-    function Initialize(init : CogInitializer)
-    {
-        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        Zero.Connect(this.Owner.Reactive, Events.LeftMouseDown, this.OnLeftMouseDown);
-        Zero.Connect(this.Space.FindObjectByName("Camera"), Events.RightMouseDown, this.OnRightMouseDown);
-        
-        this.Recorder.FileName = FilePath.CombineDirectoriesAndFile(Zero.Editor.ProjectCog.Project.ProjectFolder, "RecordingTest");
-        this.Recorder.StreamToDisk = true;
-        
-        this.Space.SoundSpace.SoundNode.InsertNodeAfter(this.Recorder);
-    }
+  var Recorder : RecordingNode = Audio.RecordingNode();
 
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-    }
+  function Initialize(init : CogInitializer)
+  {
+    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Owner.Reactive, Events.LeftMouseDown, this.OnLeftMouseDown);
+    Zero.Connect(this.Space.FindObjectByName("Camera"), Events.RightMouseDown, this.OnRightMouseDown);
     
-    function OnLeftMouseDown(event : ViewportMouseEvent)
-    {
-        //Console.WriteLine("Mouse function");
-        
-        if (event.HitObject == this.Owner)
-        {
-            this.Recorder.StartRecording();
-            Console.WriteLine("Started recording");
-        }
-    }
+    this.Recorder.FileName = FilePath.CombineDirectoriesAndFile(Zero.Editor.ProjectCog.Project.ProjectFolder, "RecordingTest");
+    this.Recorder.StreamToDisk = true;
     
-    function OnRightMouseDown(event : ViewportMouseEvent)
+    this.Space.SoundSpace.SoundNode.InsertNodeAfter(this.Recorder);
+  }
+
+  function OnLeftMouseDown(event : ViewportMouseEvent)
+  {
+    //Console.WriteLine("Mouse function");
+    
+    if (event.HitObject == this.Owner)
     {
-        if (event.HitObject == this.Owner)
-        {
-            this.Recorder.StopRecording();
-            Console.WriteLine("Stopped recording");
-        }
+      this.Recorder.StartRecording();
+      Console.WriteLine("Started recording");
     }
+  }
+
+  function OnRightMouseDown(event : ViewportMouseEvent)
+  {
+    if (event.HitObject == this.Owner)
+    {
+      this.Recorder.StopRecording();
+      Console.WriteLine("Stopped recording");
+    }
+  }
 }
- 

@@ -1,22 +1,24 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: MultiSpace                                                                                        */
+/* Brief: Creates another space.                                                                            */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class MultiSpace : ZilchComponent
 {
-    var OtherSpace : Space;
-    
-    function Initialize(init : CogInitializer)
-    {
-        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        
-        this.OtherSpace = this.GameSession.CreateNamedSpace("Other", Archetype.Space);
-        this.OtherSpace.LoadLevel(Level.DuckingBusses);
-    }
-    
-    function Destroyed()
-    {
-        if (this.OtherSpace != null)
-            this.OtherSpace.Destroy();
-    }
+  var OtherSpace : Space;
 
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-    }
+  function Initialize(init : CogInitializer)
+  {
+    this.OtherSpace = this.GameSession.CreateNamedSpace("Other", Archetype.Space);
+    this.OtherSpace.LoadLevel(Level.DuckingBusses);
+  }
+
+  function Destroyed()
+  {
+    if (this.OtherSpace != null)
+      this.OtherSpace.Destroy();
+  }
 }

@@ -1,23 +1,31 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Rotation                                                                                          */
+/* Brief: Simple script that rotates an object.                                                             */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class Rotation : ZilchComponent
 {
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        
-        Console.WriteLine("`this.Owner.Transform.EulerAngles`");
-    }
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    
+    Console.WriteLine("`this.Owner.Transform.EulerAngles`");
+  }
 
-    function OnLogicUpdate(event : UpdateEvent)
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    if (Zero.Keyboard.KeyIsDown(Keys.NumPad4))
     {
-        if (Zero.Keyboard.KeyIsDown(Keys.NumPad4))
-        {
-            var rotation = Real3(0, -0.01, 0);
-            this.Owner.Transform.RotateAnglesLocal(rotation);
-        }
-        if (Zero.Keyboard.KeyIsDown(Keys.NumPad6))
-        {
-            var rotation = Real3(0, 0.01, 0);
-            this.Owner.Transform.RotateAnglesLocal(rotation);
-        }
+      var rotation = Real3(0, -0.01, 0);
+      this.Owner.Transform.RotateAnglesLocal(rotation);
     }
+    if (Zero.Keyboard.KeyIsDown(Keys.NumPad6))
+    {
+      var rotation = Real3(0, 0.01, 0);
+      this.Owner.Transform.RotateAnglesLocal(rotation);
+    }
+  }
 }

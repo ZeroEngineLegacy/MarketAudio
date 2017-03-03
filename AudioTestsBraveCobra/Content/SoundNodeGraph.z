@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: SoundNodeGraph                                                                                    */
+/* Brief: The command for opening the SoundNodeGraph tool.                                                  */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 [Command(autoRegister:true)]
 class SoundNodeGraph : ZilchComponent
 {

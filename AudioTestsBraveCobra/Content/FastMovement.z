@@ -1,31 +1,37 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: FastMovement                                                                                      */
+/* Brief: Simple movement script.                                                                           */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class FastMovement : ZilchComponent
 {
-    var MoveIncrement : Real = 0.8;
-    
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        
-    }
+  var MoveIncrement : Real = 0.8;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
 
-    function OnLogicUpdate(event : UpdateEvent)
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    if (Zero.Keyboard.KeyIsDown(Keys.Up))
     {
-        if (Zero.Keyboard.KeyIsDown(Keys.Up))
-        {
-            this.Owner.Transform.Translation += local Real3(0.0, 0.0, -this.MoveIncrement);
-        }
-        if (Zero.Keyboard.KeyIsDown(Keys.Down))
-        {
-            this.Owner.Transform.Translation += local Real3(0.0, 0.0, this.MoveIncrement);
-        }
-        if (Zero.Keyboard.KeyIsDown(Keys.Right))
-        {
-            this.Owner.Transform.Translation += local Real3(this.MoveIncrement, 0.0, 0.0);
-        }
-        if (Zero.Keyboard.KeyIsDown(Keys.Left))
-        {
-            this.Owner.Transform.Translation += local Real3(-this.MoveIncrement, 0.0, 0.0);
-        }
-    
+      this.Owner.Transform.Translation += local Real3(0.0, 0.0, -this.MoveIncrement);
     }
+    if (Zero.Keyboard.KeyIsDown(Keys.Down))
+    {
+      this.Owner.Transform.Translation += local Real3(0.0, 0.0, this.MoveIncrement);
+    }
+    if (Zero.Keyboard.KeyIsDown(Keys.Right))
+    {
+      this.Owner.Transform.Translation += local Real3(this.MoveIncrement, 0.0, 0.0);
+    }
+    if (Zero.Keyboard.KeyIsDown(Keys.Left))
+    {
+      this.Owner.Transform.Translation += local Real3(-this.MoveIncrement, 0.0, 0.0);
+    }
+  }
 }

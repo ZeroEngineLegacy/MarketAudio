@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{0.500002086, 12.9409523, 48.2962914}
+			var Translation = Vec3{7.72526646, 6.92146492, 29.5417461}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.130526185, -1.10221432e-08, -2.85274071e-09, 0.991444945}
+			var Rotation = Quat{-0.130526185, -1.10221432e-08, -2.85274093e-09, 0.991444945}
 		}
 		CameraViewport 
 		{
@@ -74,7 +74,7 @@ Level
 			}
 			var Renderer = CogPath
 			{
-				var Path = "."
+				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -82,7 +82,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -93,31 +93,27 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Perspective
 			var FieldOfView = 45
 			var Size = 20
 		}
-		DefaultRenderer 
-		{
-			var ClearColor = Vec4{0.125, 0.125, 0.125, 1}
-			var DrawDebug = true
-		}
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 50
+			var LookDistance = 30.3265419
 			var VerticalAngle = 0.261799395
 			var HorizontalAngle = 0
-			var LookTarget = Vec3{0.500002086, 0, 2.18558061e-08}
+			var LookTarget = Vec3{7.72526646, -0.92762202, 0.248555899}
 			var MoveSensitivity = 1
 		}
 	}
 	Cog 
 	{
 		var Name = "Camera"
-		var LinkId = 3
+		var LinkId = 4
 		Transform 
 		{
 			var Translation = Vec3{0, 0, 50}
@@ -143,14 +139,14 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var ResolvedCog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 			var Renderer = CogPath
 			{
-				var Path = "."
+				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -169,22 +165,18 @@ Level
 		}
 		Camera 
 		{
+			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Perspective
 			var FieldOfView = 45
 			var Size = 20
 		}
-		DefaultRenderer 
-		{
-			var ClearColor = Vec4{0, 0, 0, 1}
-			var DrawDebug = false
-		}
 	}
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 4
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Vec3{0, 0, 5}
@@ -229,7 +221,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 5
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Vec3{0, 0, 0}
@@ -291,11 +283,29 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4
+				var ResolvedCog = 5
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Renderer"
+		var LinkId = 3
+		DeferredRenderer 
+		{
+			var DrawDebug = true
+			var GeometryDebug = GeometryValue.None
+			var ShowDiffuse = true
+			var ShowSpecular = true
+			var Skybox = "5822dec85e380cf1:SimpleSkybox"
+			var DrawSkybox = true
+			var DirectLighting = true
+			var IndirectLighting = true
+			var IndirectIntensity = 1
+			var ToneMap = true
 		}
 	}
 }

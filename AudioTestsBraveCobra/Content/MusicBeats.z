@@ -1,52 +1,54 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: MusicBeats                                                                                        */
+/* Brief: An example script that listens to the SoundInstance's music events.                               */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class MusicBeats : ZilchComponent
 {
-    var MoveAmount : Real = 1;
-    var Instance : SoundInstance;
-    
-    function Initialize(init : CogInitializer)
-    {
-        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        
-        this.Instance = this.Owner.SimpleSound.Play();
-        Zero.Connect(this.Instance, Events.MusicBeat, this.OnMusicBeat);
-        Zero.Connect(this.Instance, Events.MusicBar, this.OnMusicBar);
-        Zero.Connect(this.Instance, Events.MusicEighthNote, this.OnMusicEighthNote);
-        Zero.Connect(this.Instance, Events.MusicQuarterNote, this.OnMusicQuarterNote);
-        Zero.Connect(this.Instance, Events.MusicHalfNote, this.OnMusicHalfNote);
-        Zero.Connect(this.Instance, Events.MusicWholeNote, this.OnMusicWholeNote);
-    }
+  var MoveAmount : Real = 1;
+  var Instance : SoundInstance;
 
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-    }
-    
-    function OnMusicBeat(event : SoundEvent)
-    {
-        //Console.WriteLine("Music beat");
-    }
-    
-    function OnMusicBar(event : SoundEvent)
-    {
-        Console.WriteLine("Music bar");
-    }
-    
-    function OnMusicEighthNote(event : SoundEvent)
-    {
-        Console.WriteLine("Eighth note");
-    }
-    
-    function OnMusicQuarterNote(event : SoundEvent)
-    {
-        Console.WriteLine("Quarter note");
-    }
-    
-    function OnMusicHalfNote(event : SoundEvent)
-    {
-        Console.WriteLine("Half note");
-    }
-    
-    function OnMusicWholeNote(event : SoundEvent)
-    {
-        Console.WriteLine("Whole note");
-    }
+  function Initialize(init : CogInitializer)
+  {
+    this.Instance = this.Owner.SimpleSound.Play();
+    Zero.Connect(this.Instance, Events.MusicBeat, this.OnMusicBeat);
+    Zero.Connect(this.Instance, Events.MusicBar, this.OnMusicBar);
+    Zero.Connect(this.Instance, Events.MusicEighthNote, this.OnMusicEighthNote);
+    Zero.Connect(this.Instance, Events.MusicQuarterNote, this.OnMusicQuarterNote);
+    Zero.Connect(this.Instance, Events.MusicHalfNote, this.OnMusicHalfNote);
+    Zero.Connect(this.Instance, Events.MusicWholeNote, this.OnMusicWholeNote);
+  }
+
+  function OnMusicBeat(event : SoundEvent)
+  {
+    Console.WriteLine("Music beat");
+  }
+
+  function OnMusicBar(event : SoundEvent)
+  {
+    Console.WriteLine("Music bar");
+  }
+
+  function OnMusicEighthNote(event : SoundEvent)
+  {
+    Console.WriteLine("Eighth note");
+  }
+
+  function OnMusicQuarterNote(event : SoundEvent)
+  {
+    Console.WriteLine("Quarter note");
+  }
+
+  function OnMusicHalfNote(event : SoundEvent)
+  {
+    Console.WriteLine("Half note");
+  }
+
+  function OnMusicWholeNote(event : SoundEvent)
+  {
+    Console.WriteLine("Whole note");
+  }
 }

@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: UnderwaterZone                                                                                    */
+/* Brief: Simulates audio being heard underwater.                                                           */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class UnderwaterZone : ZilchComponent
 {
   [Dependency] var Random : RandomContext;
@@ -54,8 +62,8 @@ class UnderwaterZone : ZilchComponent
     {
       if (this.AddedToListener == false)
       {
-        //event.OtherObject.SoundListener.SoundNode.InsertNodeAfter(this.LowPass);
-        //event.OtherObject.SoundListener.SoundNode.InsertNodeAfter(this.Reverb);
+        event.OtherObject.SoundListener.SoundNode.InsertNodeAfter(this.LowPass);
+        event.OtherObject.SoundListener.SoundNode.InsertNodeAfter(this.Reverb);
         event.OtherObject.SoundListener.SoundNode.InsertNodeAfter(this.Chorus);
         this.Chorus.InsertNodeAfter(this.EQ);
         this.EQ.InsertNodeAfter(this.Compressor);

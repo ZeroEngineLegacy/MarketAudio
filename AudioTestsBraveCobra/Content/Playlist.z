@@ -1,7 +1,13 @@
-// This script will play a list of SoundCues either sequentially or randomly.
-// To stop playing, call Stop on the CurrentInstance. To resume, call PlayNextCue.
-// It uses the AudioManager script to play the music (could be modified to 
-// play through a SoundEmitter or on the SoundSpace). 
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Playlist                                                                                          */
+/* Brief: This script will play a list of SoundCues either sequentially or randomly. To stop playing, call  */
+/*        Stop on the CurrentInstance. To resume, call PlayNextCue. It uses the AudioManager script to play */
+/*        the music (could be modified to play through a SoundEmitter or on the SoundSpace).                */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class Playlist : ZilchComponent
 {
   [Dependency] var Manager : AudioManager;

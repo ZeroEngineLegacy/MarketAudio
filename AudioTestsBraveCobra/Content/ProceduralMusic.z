@@ -1,19 +1,52 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: ProceduralMusic                                                                                   */
+/* Brief: Various different class definitions that are used to create procedural audio.                     */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
 
 enum MusicSpeeds { Slow, Medium, Fast }
 
+enum MidiNotes { C3 = 60, Cs3, D3, Ds3, E3, F3, Fs3, G3, Gs3, A3, As3, B3 }
+
+enum NoteTypes { EighthNote, QuarterNote, HalfNote, WholeNote, Bar, Beat }
+
 enum ChordNames 
 {
-    One_Major,
-    Two_Minor,
-    Four_Major,
-    Five_Major,
-    Five_Major_7,
-    Six_Minor
+  One_Major,
+  Two_Minor,
+  Four_Major,
+  Five_Major,
+  Five_Major_7,
+  Six_Minor
 }
 
 class ChordSequence
 {
   var ChordList : Array[ChordNames] = Array[ChordNames](4);
+}
+
+class NoteList
+{
+  var Notes : Array[Integer];
+  var RandomValues : Random = Random();
+  
+  constructor()
+  {
+    this.Notes = Array[Integer]();
+  }
+  
+  function AddNote(note : Integer)
+  {
+    this.Notes.Push(note);
+  }
+  
+  function GetNote() : Integer
+  {
+    var index = this.RandomValues.RangeInclusiveMax(0, this.Notes.Count - 1);
+    return this.Notes[index];
+  }
 }
 
 class MusicManager : ZilchComponent
@@ -270,34 +303,6 @@ class MusicManager : ZilchComponent
   }
 }
 
-
-
-class NoteList
-{
-  var Notes : Array[Integer];
-  var RandomValues : Random = Random();
-  
-  constructor()
-  {
-    this.Notes = Array[Integer]();
-  }
-  
-  function AddNote(note : Integer)
-  {
-    this.Notes.Push(note);
-  }
-  
-  function GetNote() : Integer
-  {
-    var index = this.RandomValues.RangeInclusiveMax(0, this.Notes.Count - 1);
-    return this.Notes[index];
-  }
-}
-
-enum MidiNotes { C3 = 60, Cs3, D3, Ds3, E3, F3, Fs3, G3, Gs3, A3, As3, B3 }
-
-enum NoteTypes { EighthNote, QuarterNote, HalfNote, WholeNote, Bar, Beat }
-
 class MelodyInstrument : ZilchComponent
 {
   [Dependency]
@@ -483,7 +488,6 @@ class MelodyInstrument : ZilchComponent
   }
 }
 
-
 class BassInstrument : ZilchComponent
 {
   [Dependency]
@@ -611,7 +615,6 @@ class BassInstrument : ZilchComponent
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - 24);
   }
 }
-
 
 class BellInstrument : ZilchComponent
 {

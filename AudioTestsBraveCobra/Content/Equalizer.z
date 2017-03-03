@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Equalizer                                                                                         */
+/* Brief: Command for opening the Equalizer tool.                                                           */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 [Command(autoRegister:true)]
 class Equalizer : ZilchComponent
 {

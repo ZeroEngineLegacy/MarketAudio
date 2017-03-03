@@ -33,8 +33,8 @@ Level
 			var AlwaysDrawInEditor = true
 			var DrawInGame = false
 			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
-			var HilightInterval = 10
+			var GridHighlight = Vec4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
 	}
@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{0, 10.5951576, 39.5416679}
+			var Translation = Vec3{-0.0537938401, 9.95385075, 49.0161972}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.130526185, -1.10221432e-08, -2.85274071e-09, 0.991444945}
+			var Rotation = Quat{-0.0871557519, -1.09695906e-08, -1.90484961e-09, 0.99619478}
 		}
 		CameraViewport 
 		{
@@ -74,7 +74,7 @@ Level
 			}
 			var Renderer = CogPath
 			{
-				var Path = "."
+				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -82,7 +82,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -100,25 +100,20 @@ Level
 			var FieldOfView = 45
 			var Size = 20
 		}
-		DefaultRenderer 
-		{
-			var ClearColor = Vec4{0.125, 0.125, 0.125, 1}
-			var DrawDebug = true
-		}
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 40.9365463
-			var VerticalAngle = 0.261799395
+			var LookDistance = 50
+			var VerticalAngle = 0.17453292
 			var HorizontalAngle = 0
-			var LookTarget = Vec3{0, 0, 0}
+			var LookTarget = Vec3{-0.0537938401, 1.2714411, -0.224189371}
 			var MoveSensitivity = 1
 		}
 	}
 	Cog 
 	{
 		var Name = "Camera"
-		var LinkId = 3
+		var LinkId = 4
 		Transform 
 		{
 			var Translation = Vec3{0, 20, 50}
@@ -144,14 +139,14 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var ResolvedCog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 			var Renderer = CogPath
 			{
-				var Path = "."
+				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -177,16 +172,11 @@ Level
 			var FieldOfView = 45
 			var Size = 20
 		}
-		DefaultRenderer 
-		{
-			var ClearColor = Vec4{0, 0, 0, 1}
-			var DrawDebug = false
-		}
 	}
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 4
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Vec3{17, 0, 0}
@@ -222,6 +212,7 @@ Level
 		}
 		Movement 
 		{
+			var MoveIncrement = 0.200000003
 		}
 		SoundListener 
 		{
@@ -231,7 +222,7 @@ Level
 	Cog 
 	{
 		var Name = "SoundSource"
-		var LinkId = 5
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Vec3{-20, 0, 0}
@@ -278,13 +269,13 @@ Level
 		{
 			var StartPlaying = true
 			var Positional = true
-			var Cue = "58c7e4fb3d177964:Bubbles"
+			var Cue = "58c7e4fb3d177964:Music_Bubbles"
 		}
 	}
 	Cog 
 	{
 		var Name = "Microphone"
-		var LinkId = 6
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Vec3{-18, 0, 0}
@@ -334,7 +325,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 8
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -344,7 +335,7 @@ Level
 	Cog 
 	{
 		var Name = "Speaker"
-		var LinkId = 7
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Vec3{20, 0, 0}
@@ -386,6 +377,24 @@ Level
 			var Directional = false
 			var EmitAngle = 90
 			var RearVolume = 0.200000003
+		}
+	}
+	Cog 
+	{
+		var Name = "Renderer"
+		var LinkId = 3
+		DeferredRenderer 
+		{
+			var DrawDebug = true
+			var GeometryDebug = GeometryValue.None
+			var ShowDiffuse = true
+			var ShowSpecular = true
+			var Skybox = "5822dec85e380cf1:SimpleSkybox"
+			var DrawSkybox = true
+			var DirectLighting = true
+			var IndirectLighting = true
+			var IndirectIntensity = 1
+			var ToneMap = true
 		}
 	}
 }

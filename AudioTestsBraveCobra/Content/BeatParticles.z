@@ -1,5 +1,12 @@
-// This script adds particle emitters for each bar and beat of a music cue.
-// The beats per minute and time signature must be set on the SoundCue.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: BeatParticles                                                                                     */
+/* Brief: This script adds particle emitters for each bar and beat of a music cue.                          */
+/*        The beats per minute and time signature must be set on the SoundCue.                              */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class BeatParticles : ZilchComponent
 {
   // This script requires a SimpleSound component on the same object, with a valid SoundCue

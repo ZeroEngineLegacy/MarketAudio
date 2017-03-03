@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: VolumeBarSegments                                                                                 */
+/* Brief: UI element for the equalizer tool.                                                                */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class VolumeBarSegments : ZilchComponent
 {
     [Property]

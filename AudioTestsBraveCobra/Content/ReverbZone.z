@@ -1,6 +1,13 @@
-// This script does a simple reverb interpolation based on how close the SoundListener is
-// to the center of the object the script is attached to, on the X axis only.
-// It does not handle multiple SoundListeners.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: ReverbZone                                                                                        */
+/* Brief: This script does a simple reverb interpolation based on how close the SoundListener is to the     */
+/*        center of the object the script is attached to, on the X axis only. It does not handle multiple   */
+/*        SoundListeners.                                                                                   */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class ReverbZone : ZilchComponent
 {
   // The object this script is attached to must have a Transform component

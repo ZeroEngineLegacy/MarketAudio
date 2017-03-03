@@ -1,11 +1,19 @@
-DataContent = 
+[Version:1]
+DataContent 
 {
-	DataBuilder = 
+	DataBuilder 
 	{
-		string Name = "Doppler",
-		uint64 ResourceId = 585081a8cfa5336a,
-		string LoaderType = "Level",
-		uint Version = 0,
-		bool ShowInEditor = true,
-	},
-},
+		var Name = "Doppler"
+		var ResourceId = 0x585081a8cfa5336a
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Demo"
+		}
+	}
+}

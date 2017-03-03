@@ -1,6 +1,13 @@
-// This script adjusts the pitch of a SoundEmitter to mimic a Doppler effect
-// as it moves relative to a SoundListener.
-// IMPORTANT - this script only handles one SoundListener in the SoundSpace
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Doppler                                                                                           */
+/* Brief: This script adjusts the pitch of a SoundEmitter to mimic a Doppler effect as it moves relative to */
+/*        a SoundListener.                                                                                  */
+/*        IMPORTANT - this script only handles one SoundListener in the SoundSpace.                         */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class Doppler : ZilchComponent
 {
   // There must be a SoundEmitter on this object

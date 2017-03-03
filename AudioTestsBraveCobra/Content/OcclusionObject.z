@@ -1,17 +1,15 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: OcclusionObject                                                                                   */
+/* Brief: Represents an object that occludes sound.                                                         */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class OcclusionObject : ZilchComponent
 {
-  
   [Property]
   var OccludedVolume : Real = 0.5;
   [Property]
   var LowPassCutoff : Real = 500.0;
-  
-  function Initialize(init : CogInitializer)
-  {
-    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-  }
-
-  function OnLogicUpdate(event : UpdateEvent)
-  {
-  }
 }

@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: MusicStems                                                                                        */
+/* Brief: TODO.                                                                                             */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class MusicStems : ZilchComponent
 {
   var SoundCueList : Array[SoundCue] = Array[SoundCue]();

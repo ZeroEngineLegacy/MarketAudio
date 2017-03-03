@@ -8,7 +8,7 @@ Cog
 		var ProjectOwner = ""
 		var DefaultLevel = "Level"
 		var ProjectSpace = "Space"
-		var ProjectEngineRevision = 15572
+		var ProjectEngineRevision = 15560
 		var AutoTakeProjectScreenshot = true
 		var Guid = 0x57bf8b8126e7b7fc
 	}
@@ -34,6 +34,15 @@ Cog
 	}
 	ProjectSettings 
 	{
-		var EditorMode = EditorMode.Mode3D
+		var EditorMode = EditorMode.Mode2D
+	}
+	LauncherProjectInfo 
+	{
+		var Tags = ""
+		var ExperimentalBranchName = "BraveCobra"
+		var MajorVersion = 0
+		var MinorVersion = 0
+		var PatchVersion = 0
+		var RevisionId = 15560
 	}
 }

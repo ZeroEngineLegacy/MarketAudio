@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: AudioManager                                                                                      */
+/* Brief: TODO.                                                                                             */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class AudioManager : ZilchComponent
 {
   // The SoundTag to use for music

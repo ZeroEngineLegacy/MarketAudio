@@ -1,10 +1,17 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: AmbienceSetCycle                                                                                  */
+/* Brief: Responds to a mouse click to set day or night.                                                    */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 // Event to notify other objects to switch between day and night
 class DayCycleEvent : ZilchEvent
 {
   var Day : Boolean;
 }
 
-// Responds to a mouse click to set day or night
 class AmbienceSetCycle : ZilchComponent
 {
   sends DayCycleEvent : DayCycleEvent;

@@ -1,6 +1,13 @@
-// This script will play random ambience using a looping background cue and three
-// ambience cues which will be placed at random positions within a specified radius.
-// Wind is created with generated white noise, a low pass filter, and panning.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Ambience                                                                                          */
+/* Brief: This script will play random ambience using a looping background cue and three ambience cues      */
+/*        which will be placed at random positions within a specified radius. Wind is created with          */
+/*        generated white noise, a low pass filter, and panning.                                            */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class Ambience : ZilchComponent
 {
   // The position of ambience cues is based on this object's position

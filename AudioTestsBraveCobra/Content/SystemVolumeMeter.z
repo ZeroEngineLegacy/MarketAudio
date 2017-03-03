@@ -1,7 +1,15 @@
-class UiEqualizer : ZilchComponent
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: SystemVolumeMeter                                                                                 */
+/* Brief: Listens to the volume slider object, and changes the system volume.                               */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
+class SystemVolumeMeter : ZilchComponent
 {
-    [Property]
-    var VolumeSlider : CogPath;
+  [Property]
+  var VolumeSlider : CogPath;
   
   function Initialize(init : CogInitializer)
   {

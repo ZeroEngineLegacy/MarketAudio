@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: PanningTest                                                                                       */
+/* Brief: An example script that pan's audio from left to right using the PanningNode.                      */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class PanningTest : ZilchComponent
 {
   [Property]
@@ -9,7 +17,7 @@ class PanningTest : ZilchComponent
   
   function Initialize(init : CogInitializer)
   {
-    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
     Zero.Connect(this.PanNode, Events.InterpolationFinished, this.OnFinished);
     
     var instance  = this.Space.SoundSpace.PlayCue(this.Cue);

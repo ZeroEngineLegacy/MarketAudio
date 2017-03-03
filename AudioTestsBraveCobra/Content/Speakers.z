@@ -1,3 +1,11 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Class: Speakers                                                                                          */
+/* Brief: This script plays the provide SoundCue through the three speakers referenced.                     */
+/*                                                                                                          */
+/* Author: Andrea Ellinger                                                                                  */
+/************************************************************************************************************/
+
 class Speakers : ZilchComponent
 {
   [Dependency]
@@ -36,6 +44,7 @@ class Speakers : ZilchComponent
     if (this.Instance != null)
     {
       this.Instance.Stop();
+      this.Instance.SoundNode.RemoveAllOutputs();
       this.Instance = null;
     }
   }

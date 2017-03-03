@@ -1,11 +1,19 @@
-DataContent = 
+[Version:1]
+DataContent 
 {
-	DataBuilder = 
+	DataBuilder 
 	{
-		string Name = "Microphone",
-		uint64 ResourceId = 585096a7f3c1b01c,
-		string LoaderType = "Level",
-		uint Version = 0,
-		bool ShowInEditor = true,
-	},
-},
+		var Name = "Microphone"
+		var ResourceId = 0x585096a7f3c1b01c
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Demo"
+		}
+	}
+}
