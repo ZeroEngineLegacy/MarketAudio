@@ -333,7 +333,7 @@ Level
 		SoundNodeTesting 
 		{
 			var Sound = "58b4d39b1e360cd4:BPM120"
-			var TestNodeType = NodeType.DynamicsCompression
+			var TestNodeType = NodeType.GeneratedWave
 		}
 	}
 }

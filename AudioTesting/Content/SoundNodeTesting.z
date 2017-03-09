@@ -137,8 +137,8 @@ class SoundNodeTesting : ZilchComponent
     {
       var compressor = Audio.DynamicsCompressionNode();
       
-      compressor.InputGainDecibels = 6.0;
-      compressor.ThresholdDecibels = 0.0;
+      compressor.InputGainDecibels = 100.0;
+      compressor.ThresholdDecibels = -30.0;
       compressor.AttackMillisec = 20.0;
       compressor.ReleaseMillisec = 1000.0;
       compressor.Ratio = 1.0;
@@ -159,7 +159,13 @@ class SoundNodeTesting : ZilchComponent
     }
     else if (this.TestNodeType == NodeType.Flanger)
     {
-      node = Audio.FlangerNode();
+      var flang = Audio.FlangerNode();
+      
+      flang.ModulationDepthPercent = 50.0;
+      flang.ModulationFrequency = 0.18;
+      flang.FeedbackPercent = 50.0; // 0.0;
+      
+      node = flang;
     }
     else if (this.TestNodeType == NodeType.GeneratedWave)
     {
