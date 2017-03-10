@@ -1,7 +1,7 @@
 /************************************************************************************************************/
 /* Copyright 2016 DigiPen, All Rights Reserved                                                              */
 /* Class: MusicStems                                                                                        */
-/* Brief: TODO.                                                                                             */
+/* Brief: Creates dynamically changing music from multiple different sound cues.                            */
 /*                                                                                                          */
 /* Author: Andrea Ellinger                                                                                  */
 /************************************************************************************************************/
@@ -51,7 +51,6 @@ class MusicStems : ZilchComponent
       this.SetVersion(3);
     else if (xPos > 4.0)
       this.SetVersion(4);
-    
   }
   
   function SetVersion(version : Integer)

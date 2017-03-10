@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "Stems"
-		var ResourceId = 0x58d780817151c10f
-	}
-}

@@ -335,7 +335,7 @@ Level
 		AudioTesting 
 		{
 			var SoundCue = "58a7a2e267ffcf07:Button"
-			var SoundCue2 = "58a759349d6258ac:electronic_action_angry_1"
+			var SoundCue2 = "58a759349d6258ac:ElectronicActionAngry"
 		}
 	}
 }

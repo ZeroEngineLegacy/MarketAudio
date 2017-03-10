@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-4.50457287, 14.4515915, 47.6535454}
+			var Translation = Vec3{-45.2209969, 19.6168728, -8.38120365}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.145920873, -0.0466009714, -0.00688143261, 0.98817414}
+			var Rotation = Quat{-0.128030404, -0.75327301, -0.153939798, 0.626490653}
 		}
 		CameraViewport 
 		{
@@ -103,9 +103,9 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 50
-			var VerticalAngle = 0.293215364
-			var HorizontalAngle = 0.0942475051
+			var LookDistance = 50.0000496
+			var VerticalAngle = 0.403171033
+			var HorizontalAngle = 1.75405562
 			var LookTarget = Vec3{0, 0, 0}
 			var MoveSensitivity = 1
 		}
@@ -116,7 +116,7 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 0, 50}
+			var Translation = Vec3{0, 0, 11.7195129}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -226,8 +226,8 @@ Level
 		SimpleSound 
 		{
 			var StartPlaying = true
-			var Positional = false
-			var Cue = "4e1bd44008b4dc2a:DefaultCue"
+			var Positional = true
+			var Cue = "58c7e93d959ace51:Drums_3"
 		}
 		Reactive 
 		{
@@ -272,6 +272,31 @@ Level
 			var Intensity = 2.20000005
 			var BlurDepthThreshold = 0.0500000007
 			var DebugBuffer = false
+		}
+	}
+	Cog 
+	{
+		var Name = "SpriteText"
+		var LinkId = 6
+		Transform 
+		{
+			var Translation = Vec3{-0.0331288427, 0.966993153, -0.067182079}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		SpriteText 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Vec4{1, 1, 1, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Font = "57343753bb4eaaec:NotoSans-Regular"
+			var FontSize = 32
+			var Text = "[Left / Right Click] Start / Stop Recording"
+			var Align = TextAlign.Center
+			var PixelsPerUnit = 128
 		}
 	}
 }

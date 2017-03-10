@@ -1,7 +1,7 @@
 /************************************************************************************************************/
 /* Copyright 2016 DigiPen, All Rights Reserved                                                              */
 /* Class: AudioManager                                                                                      */
-/* Brief: TODO.                                                                                             */
+/* Brief: The AudioManager fades in and out multiple audio tags (busses) based on dialogue being played.    */
 /*                                                                                                          */
 /* Author: Andrea Ellinger                                                                                  */
 /************************************************************************************************************/

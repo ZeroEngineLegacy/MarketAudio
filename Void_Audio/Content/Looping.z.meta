@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "Looping",
-		uint64 ResourceId = 585fd4902c76debb,
-	},
-},
