@@ -1,0 +1,270 @@
+class Background : ZilchComponent
+{
+  [Dependency] var RandomValues : RandomContext;
+  
+  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var LowPass : LowPassNode = Audio.LowPassNode();
+  var HighPass : HighPassNode = Audio.HighPassNode();
+  var Flanger : FlangerNode = Audio.FlangerNode();
+  var Reverb : ReverbNode = Audio.ReverbNode();
+  
+  var Notes : Array[Integer] = Array[Integer]();
+  var PreviousIndex : Integer = -1;
+  
+  function Initialize(init : CogInitializer)
+  {
+    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    
+    this.Reverb.AddInputNode(this.Synth);
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = 2.0;
+    envelope.DecayTime = 4.0;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 6.0;
+    this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.TriangleWave);
+    envelope.AttackTime = 0.5;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 8.0;
+    this.Synth.AddHarmonic(2.0, 0.25, envelope, SynthWaveType.TriangleWave);
+    envelope.AttackTime = 1.0;
+    envelope.DecayTime = 0.5;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 0.8;
+    envelope.ReleaseTime = 8.0;
+    this.Synth.AddHarmonic(3.0, 0.2, envelope, SynthWaveType.TriangleWave);
+    envelope.AttackTime = 2.5;
+    envelope.DecayTime = 2.0;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 6.0;
+    //this.Synth.AddHarmonic(4.0, 0.2, envelope, SynthWaveType.TriangleWave);
+    
+    this.LowPass.CutoffFrequency = 3000.0;
+    this.Synth.InsertNodeAfter(this.LowPass);
+    this.HighPass.CutoffFrequency = 100.0;
+    this.Synth.InsertNodeAfter(this.HighPass);
+    
+    this.Synth.InsertNodeAfter(this.Flanger);
+    
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Reverb);
+    
+    this.Synth.NoteOn(48, 0.25);
+    
+    this.Notes.Push(MidiNotes.C3 - 12);
+    this.Notes.Push(MidiNotes.E3 - 12);
+    this.Notes.Push(MidiNotes.F3 - 12);
+    this.Notes.Push(MidiNotes.G3 - 12);
+    this.Notes.Push(MidiNotes.A3 - 12);
+    this.Notes.Push(MidiNotes.A3 - 24);
+    this.Notes.Push(MidiNotes.G3 - 24);
+    
+    var sequence = Actions.Sequence(this.Owner.Actions);
+    Action.Delay(sequence, 5.0);
+    Action.Call(sequence, this.Play);
+  }
+  
+  function Play()
+  {
+    var index = this.RandomValues.RangeExclusiveMax(0, this.Notes.Count);
+    while (index == this.PreviousIndex)
+      index = this.RandomValues.RangeExclusiveMax(0, this.Notes.Count);
+    this.PreviousIndex = index;
+    
+    this.Synth.NoteOn(this.Notes[index], 0.25);
+    
+    var sequence = Actions.Sequence(this.Owner.Actions);
+    Action.Delay(sequence, this.RandomValues.Range(4.5, 5.5));
+    Action.Call(sequence, this.Play);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    
+  }
+}
+
+class Melody : ZilchComponent
+{
+  [Dependency] var RandomValues : RandomContext;
+  
+  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var Notes : Array[Integer] = Array[Integer]();
+  var LastIndex : Integer = 4;
+  var TimeToWait : Real = 0;
+  var LastTime : Real = 0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = 0.09;
+    envelope.DecayTime = 0.5;
+    envelope.SustainTime = 0.07;
+    envelope.SustainLevel = 0.5;
+    envelope.ReleaseTime = 1.0;
+    this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.TriangleWave);
+    envelope.AttackTime = 0.02;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.02;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 0.5;
+    this.Synth.AddHarmonic(3.0, 0.25, envelope, SynthWaveType.TriangleWave);
+    
+    this.Notes.Push(MidiNotes.C3);
+    this.Notes.Push(MidiNotes.D3);
+    this.Notes.Push(MidiNotes.E3);
+    this.Notes.Push(MidiNotes.F3);
+    this.Notes.Push(MidiNotes.G3);
+    this.Notes.Push(MidiNotes.A3);
+    this.Notes.Push(MidiNotes.C3 + 12);
+    this.Notes.Push(MidiNotes.D3 + 12);
+    this.Notes.Push(MidiNotes.E3 + 12);
+    this.Notes.Push(MidiNotes.F3 + 12);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    if (event.TimePassed - this.LastTime > this.TimeToWait)
+    {
+      this.LastTime = event.TimePassed;
+      this.TimeToWait = this.RandomValues.Range(0.1, 2.0);
+      
+      var index = this.RandomValues.RangeExclusiveMax(0, this.Notes.Count);
+      
+      var count = 0;
+      while ((index == this.LastIndex || Math.Abs(index - this.LastIndex) > 4) && count < 10)
+        index = this.RandomValues.RangeExclusiveMax(0, this.Notes.Count);
+      this.LastIndex = index;
+      
+      this.Synth.NoteOn(this.Notes[index], this.RandomValues.Range(0.01, 0.1));
+    }
+  }
+}
+
+
+enum MidiNotes { C3 = 60, Cs3, D3, Ds3, E3, F3, Fs3, G3, Gs3, A3, As3, B3 }
+
+class NoteEffects : ZilchComponent
+{
+  [Dependency] var RandomValues : RandomContext;
+  
+  var HalfBoxSize : Real = 5.0;
+  var Synth1 : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var Delay : DelayNode = Audio.DelayNode();
+  var Notes1 : Array[Integer] = Array[Integer]();
+  var PreviousIndex1 : Integer = -1;
+  var LastPlayTime1 : Integer = 0;
+  var Synth2 : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  var Reverb : ReverbNode = Audio.ReverbNode();
+  var Notes2 : Array[Integer] = Array[Integer]();
+  var PreviousIndex2 : Integer = -1;
+  var StoppedCount : Integer = 0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth1);
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = 0.09;
+    envelope.DecayTime = 0.05;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 0.3;
+    envelope.ReleaseTime = 1.5;
+    this.Synth1.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.SineWave);
+    envelope.AttackTime = 0.02;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 1.0;
+    this.Synth1.AddHarmonic(3.0, 0.25, envelope, SynthWaveType.SineWave);
+    
+    this.Delay.FeedbackPercent = 30;
+    this.Delay.Delay = 0.3;
+    this.Synth1.InsertNodeAfter(this.Delay);
+    
+    this.Notes1.Push(MidiNotes.C3);
+    this.Notes1.Push(MidiNotes.E3);
+    this.Notes1.Push(MidiNotes.A3 - 12);
+    this.Notes1.Push(MidiNotes.G3 - 12);
+    this.Notes1.Push(MidiNotes.E3 - 12);
+    
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth2);
+    envelope.AttackTime = 0.09;
+    envelope.DecayTime = 0.05;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 0.3;
+    envelope.ReleaseTime = 1.0;
+    this.Synth2.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.SineWave);
+    envelope.AttackTime = 0.02;
+    envelope.DecayTime = 0;
+    envelope.SustainTime = 0.01;
+    envelope.SustainLevel = 1.0;
+    envelope.ReleaseTime = 0.5;
+    this.Synth2.AddHarmonic(3.0, 0.25, envelope, SynthWaveType.SineWave);
+    
+    this.Notes2.Push(MidiNotes.C3 + 12);
+    this.Notes2.Push(MidiNotes.D3 + 12);
+    this.Notes2.Push(MidiNotes.E3 + 12);
+    this.Notes2.Push(MidiNotes.G3 + 12);
+    this.Notes2.Push(MidiNotes.F3 + 12);
+    this.Notes2.Push(MidiNotes.A3 + 12);
+    
+    this.Synth2.InsertNodeAfter(this.Reverb);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    if (Zero.Keyboard.KeyIsPressed(Keys.A))
+    {
+      
+      var time = this.RandomValues.Range(0.07, 0.17);
+      var limit = this.RandomValues.RangeInclusiveMax(1,3);
+      
+      this.PlayNote2();
+      var sequence2 = Action.Sequence(this.Space.Actions);
+      for (var i = 0; i < limit; ++i)
+      {
+        Action.Delay(sequence2, time);
+        Action.Call(sequence2, this.PlayNote2);
+      }
+    }
+    else if (Zero.Keyboard.KeyIsPressed(Keys.B))
+      this.PlayNote1();
+  }
+  
+  function PlayNote1()
+  {
+    if (this.Space.TimeSpace.Frame - this.LastPlayTime1 < 3)
+      return;
+    
+    var index = this.RandomValues.RangeExclusiveMax(0, this.Notes1.Count);
+    while (index == this.PreviousIndex1)
+      index = this.RandomValues.RangeExclusiveMax(0, this.Notes1.Count);
+    this.PreviousIndex1 = index;
+    
+    this.Synth1.NoteOn(this.Notes1[index], 0.75);
+    
+    this.LastPlayTime1 = this.Space.TimeSpace.Frame;
+  }
+  
+  function PlayNote(note : Real)
+  {
+    this.Synth1.NoteOn(note, 0.5);
+  }
+  
+  function PlayNote2()
+  {
+    var index = this.RandomValues.RangeExclusiveMax(0, this.Notes2.Count);
+    while (index == this.PreviousIndex2)
+      index = this.RandomValues.RangeExclusiveMax(0, this.Notes2.Count);
+    this.PreviousIndex2 = index;
+    
+    this.Synth2.NoteOn(this.Notes2[index], 0.25);
+  }
+}

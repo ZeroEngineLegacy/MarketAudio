@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "UiSizeToParent",
-		uint64 ResourceId = 586a058e6df35283,
-	},
-},

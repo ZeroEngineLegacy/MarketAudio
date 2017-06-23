@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "PanningTest"
-		var ResourceId = 0x581701564b59f916
-	}
-}

@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "Rotation",
-		uint64 ResourceId = 584e0fb84f89b0bf,
-	},
-},

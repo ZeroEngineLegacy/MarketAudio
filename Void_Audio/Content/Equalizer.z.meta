@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "Equalizer",
-		uint64 ResourceId = 586a058e6df9808d,
-	},
-},

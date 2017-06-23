@@ -1,0 +1,38 @@
+class RecordSoundSpace : ZilchComponent
+{
+  [Dependency] var Reactive : Reactive;
+  
+  [Property] var StartColor : Real4;
+  [Property] var StopColor : Real4;
+  
+  var Recording : Boolean = false;
+  var Recorder : RecordingNode = Audio.RecordingNode();
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
+    
+    this.Space.SoundSpace.OutputNode.InsertNodeAfter(this.Recorder);
+    this.Recorder.FileName = FilePath.CombineDirectoriesAndFile(FilePath.UserDocumentsDirectory, "Zero\\", "RecordedAudio");
+  }
+
+  function OnMouseDown(event : ViewportMouseEvent)
+  {
+    if (this.Recording == false)
+    {
+      this.Owner.FindChildByName("SpriteText").SpriteText.Text = "Stop Recording";
+      this.Owner.Sprite.VertexColor = this.StopColor;
+      this.Recording = true;
+      
+      this.Recorder.StartRecording();
+    }
+    else
+    {
+      this.Owner.FindChildByName("SpriteText").SpriteText.Text = "Start Recording";
+      this.Owner.Sprite.VertexColor = this.StartColor;
+      this.Recording = false;
+      
+      this.Recorder.StopRecording();
+    }
+  }
+}

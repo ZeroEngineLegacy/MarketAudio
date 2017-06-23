@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "OcclusionObject"
+		var ResourceId = 0x594ceec97dbdf8d5
+	}
+}

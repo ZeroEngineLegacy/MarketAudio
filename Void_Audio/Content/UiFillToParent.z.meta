@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "UiFillToParent",
-		uint64 ResourceId = 586a058e6df252fd,
-	},
-},

@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "UiToggleTextOnButton"
-		var ResourceId = 0x58b8f2f3e11dcdbf
-	}
-}

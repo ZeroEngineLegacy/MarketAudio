@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "SoundNodeGraph",
-		uint64 ResourceId = 586b042c586aba75,
-	},
-},

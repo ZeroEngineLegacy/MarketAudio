@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "PeakVolumeBar"
-		var ResourceId = 0x58f4e92fd22c0113
-	}
-}

@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "FastMovement",
-		uint64 ResourceId = 5850827cda0d0943,
-	},
-},

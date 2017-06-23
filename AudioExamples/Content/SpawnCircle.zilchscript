@@ -1,0 +1,23 @@
+class SpawnCircle : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    
+    Zero.Connect(this.Space, Events.LeftMouseDown, this.OnClick);
+  }
+  
+  function OnClick(event : ViewportMouseEvent)
+  {
+    if (event.HitObject != null)
+      return;
+    
+    this.Space.CreateAtPosition(Archetype.Circle, event.ToWorldZPlane(0));
+    
+    this.Space.FindObjectByName("MusicObject").NoteEffects.PlayNote1();
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+  }
+}

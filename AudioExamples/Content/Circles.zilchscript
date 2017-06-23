@@ -1,0 +1,47 @@
+class Circles : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollide);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    var scale = this.Owner.Transform.Scale;
+    scale.X += 0.02;
+    scale.Y += 0.02;
+    this.Owner.Transform.Scale = scale;
+    
+    var color = this.Owner.Sprite.VertexColor;
+    color.W -= 0.002;
+    this.Owner.Sprite.VertexColor = color;
+    
+    if (color.W <= 0.05)
+      this.Owner.Destroy();
+  }
+  
+  function OnCollide(event : CollisionEvent)
+  {
+    if (event.OtherObject.MarkedForDestruction)
+    {
+      this.Owner.Destroy();
+      return;
+    }
+    
+    var notes = this.Space.FindObjectByName("MusicObject").NoteEffects;
+    
+    var time = this.Owner.RandomContext.Range(0.07, 0.17);
+    var limit = this.Owner.RandomContext.RangeInclusiveMax(1,3);
+      
+    notes.PlayNote2();
+    var sequence2 = Action.Sequence(this.Space.Actions);
+    for (var i = 0; i < limit; ++i)
+    {
+      Action.Delay(sequence2, time);
+      Action.Call(sequence2, notes.PlayNote2);
+    }
+    
+    this.Owner.Destroy();
+  }
+}
