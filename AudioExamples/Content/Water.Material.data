@@ -9,7 +9,7 @@ Material
 	}
 	AlbedoValue 
 	{
-		var AlbedoValue = Real4{0.314999998, 0.172997966, 0.0252000093, 1}
+		var AlbedoValue = Real4{0.631349981, 0.668885946, 0.689999998, 1}
 		var GammaCorrect = true
 	}
 	MetallicValue 
