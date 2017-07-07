@@ -22,7 +22,7 @@ class UnderWaterZone : ZilchComponent
   // The EqualizerNode to use for the under water effect
   var EQ : EqualizerNode = Audio.EqualizerNode();
   // The DynamicsCompressionNode to use for the under water effect
-  var Compressor : DynamicsCompressionNode = Audio.DynamicsCompressionNode();
+  var Compressor : CompressorNode = Audio.CompressorNode();
   
   function Initialize(init : CogInitializer)
   {

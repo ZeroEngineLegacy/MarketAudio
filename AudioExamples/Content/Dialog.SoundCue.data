@@ -25,6 +25,7 @@ SoundCue
 			var LoopEndTime = 1.53335595
 			var LoopStartTime = 0
 			var LoopTailLength = 0
+			var CrossFadeLoopTail = false
 		}
 		Object
 		{
@@ -35,6 +36,7 @@ SoundCue
 			var LoopEndTime = 1.39276648
 			var LoopStartTime = 0
 			var LoopTailLength = 0
+			var CrossFadeLoopTail = false
 		}
 		Object
 		{
@@ -45,6 +47,7 @@ SoundCue
 			var LoopEndTime = 1.54453516
 			var LoopStartTime = 0
 			var LoopTailLength = 0
+			var CrossFadeLoopTail = false
 		}
 		Object
 		{
@@ -55,10 +58,15 @@ SoundCue
 			var LoopEndTime = 1.27668929
 			var LoopStartTime = 0
 			var LoopTailLength = 0
+			var CrossFadeLoopTail = false
 		}
 	}
 	var SoundTags = Array
 	{
+		Object
+		{
+			var SoundTag = "591a8fb56a490d3a:DialogTag"
+		}
 	}
 	var Attenuator = "57ca8a6ad262efe5:DefaultNoAttenuation"
 }

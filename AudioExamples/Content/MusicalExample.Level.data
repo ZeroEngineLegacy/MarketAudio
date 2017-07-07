@@ -39,9 +39,6 @@ Level
 			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
-		SpawnCircle 
-		{
-		}
 	}
 	Cog 
 	{
@@ -194,7 +191,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 1551294070
+			var Seed = 3365747912
 		}
 		Background 
 		{
@@ -203,6 +200,9 @@ Level
 		{
 		}
 		NoteEffects 
+		{
+		}
+		SpawnCircle 
 		{
 		}
 	}

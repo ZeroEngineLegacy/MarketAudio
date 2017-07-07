@@ -1,0 +1,17 @@
+class ChangeTagVolume : ZilchComponent
+{
+  [Dependency] var Reactive : Reactive;
+  
+  [Property] var Tag : SoundTag;
+  [Property] var VolumeIncrement : Real;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
+  }
+
+  function OnMouseDown(event : ViewportMouseEvent)
+  {
+    this.Tag.Volume = this.Tag.Volume + this.VolumeIncrement;
+  }
+}

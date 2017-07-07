@@ -44,7 +44,7 @@ Level
 		}
 		KeyboardMIDI 
 		{
-			var Volume = 0.5
+			var Volume = 0.300000012
 		}
 	}
 	Cog 
@@ -222,11 +222,6 @@ Level
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
 			var Size = 15
-		}
-		DefaultRenderer 
-		{
-			var ClearColor = Real4{0, 0, 0, 1}
-			var DrawDebug = false
 		}
 		SoundListener 
 		{
@@ -1375,6 +1370,7 @@ Level
 		}
 		RecordSoundSpace 
 		{
+			var FileName = "RecordedAudio"
 			var StartColor = Real4{0.730000019, 0, 0, 1}
 			var StopColor = Real4{0.174999997, 0.25, 0.191500008, 1}
 		}

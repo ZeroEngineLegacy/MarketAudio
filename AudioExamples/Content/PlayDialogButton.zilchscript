@@ -7,40 +7,27 @@ class PlayDialogButton : ZilchComponent
 {
   // Requires a Reactive component
   [Dependency] var Reactive : Reactive;
+  // Requires the AudioManager component
+  [Dependency] var Manager : AudioManager;
   
   // The dialog SoundCue to play
   [Property] var DialogCue : SoundCue;
-  // The SoundTag that will reduce volume when dialog plays
-  [Property] var DuckedTag : SoundTag;
-  // The SoundTag attached to the dialog SoundCue
-  [Property] var DialogTag : SoundTag;
-  // The volume to reduce the DuckedTag to, in decibels
-  [Property] var DuckedVolumeDB : Integer = -40;
-  // The time, in milliseconds, to ramp on the volume reduction
-  [Property] var AttackTimeMS : Integer = 50;
-  // The time, in milliseconds, to ramp off the volume reduction
-  [Property] var ReleaseTimeMS : Integer = 500;
   
   function Initialize(init : CogInitializer)
   {
     // Connect to mouse click events
     Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
     
-    // Set the ducking relationship between the SoundTags
-    this.DuckedTag.TagForDucking = this.DialogTag;
-    // Tell the ducked tag to use the compressor settings
-    this.DuckedTag.UseCompressor = true;
-    // Set the reduced volume
-    this.DuckedTag.CompressorThreshold = this.DuckedVolumeDB;
-    // Set the ramp off time
-    this.DuckedTag.CompressorRelease = this.ReleaseTimeMS;
-    // Set the ramp on time
-    this.DuckedTag.CompressorAttack = this.AttackTimeMS;
+    this.Manager.PlayMusic(SoundCue.Music_Run, false);
+    
+    var instance = this.Manager.PlayEffect(SoundCue.FootstepWoodWalk, null, false);
+    instance.Looping = true;
+    
   }
   
   function OnMouseDown(event : ViewportMouseEvent)
   {
     // Play the dialog SoundCue when clicked on
-    this.Space.SoundSpace.PlayCue(this.DialogCue);
+    this.Manager.PlayDialog(this.DialogCue, null, false);
   }
 }

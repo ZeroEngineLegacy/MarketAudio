@@ -42,7 +42,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 1821509074
+			var Seed = 1094138328
 		}
 		MusicManager 
 		{
@@ -52,15 +52,15 @@ Level
 		{
 			var PlayOnNoteType = NoteTypes.EighthNote
 			var MaxBeatsToWait = 3
-			var MinVolume = 0.150000006
-			var MaxVolume = 0.25
+			var MinVolume = 0.100000001
+			var MaxVolume = 0.150000006
 		}
 		Instrument4 
 		{
 			var PlayOnNoteType = NoteTypes.QuarterNote
 			var MaxBeatsToWait = 1
-			var MinVolume = 0.150000006
-			var MaxVolume = 0.25
+			var MinVolume = 0.100000001
+			var MaxVolume = 0.200000003
 		}
 		Instrument3 
 		{
@@ -145,15 +145,13 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = ""
-			var Mesh = ""
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
 		}
 		DirectionalLight 
 		{
 			var LightColorValue = Real3{1, 1, 1}
 			var LightIntensityValue = 2
-			var CastShadowsValue = true
-			var NormalOffsetBias = 0.100000001
 		}
 		CameraViewport 
 		{
@@ -209,6 +207,7 @@ Level
 		ShadowRenderer 
 		{
 			var ResolutionValue = ShadowResolution.High
+			var NormalOffsetBias = 0.100000001
 		}
 	}
 	Cog 

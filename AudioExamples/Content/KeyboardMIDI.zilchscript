@@ -67,6 +67,8 @@ class MIDIKey : ZilchComponent
   var OriginalColor : Real4;
   // The sprite color while playing
   var PressedColor : Real4;
+  // Keeps track of whether the key is pressed
+  var Pressed : Boolean = false;
   
   function Initialize(init : CogInitializer)
   {
@@ -76,7 +78,7 @@ class MIDIKey : ZilchComponent
     
     // Connect to the mouse up and down events
     Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
-    Zero.Connect(this.Reactive, Events.LeftMouseUp, this.OnMouseUp);
+    Zero.Connect(this.Space, Events.LeftMouseUp, this.OnMouseUp);
     
     // Conenct to the MIDI note on and note off events
     Zero.Connect(this.Space.SoundSpace, Events.MIDINoteOn, this.OnNoteOn);
@@ -116,12 +118,19 @@ class MIDIKey : ZilchComponent
   {
     // Play this note
     this.PlayNote();
+    
+    this.Pressed = true;
   }
   
   function OnMouseUp(event : ViewportMouseEvent)
   {
-    // Stop this note
-    this.StopNote();
+    if (this.Pressed)
+    {
+      // Stop this note
+      this.StopNote();
+      
+      this.Pressed = false;
+    }
   }
   
   function PlayNote()

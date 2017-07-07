@@ -216,11 +216,6 @@ Level
 			var FieldOfView = 45
 			var Size = 20
 		}
-		DefaultRenderer 
-		{
-			var ClearColor = Real4{0, 0, 0, 1}
-			var DrawDebug = false
-		}
 		SoundListener 
 		{
 			var Active = true
@@ -293,11 +288,9 @@ Level
 		}
 		ParticleColorAnimator 
 		{
-			var Color0 = Real4{1, 1, 1, 0}
-			var Color1 = Real4{1, 1, 1, 1}
-			var Color2 = Real4{1, 1, 1, 1}
-			var Color3 = Real4{1, 1, 1, 1}
-			var Color4 = Real4{1, 1, 1, 0}
+			var TimeGradient = "591abd225f232eaa:FadeInOut"
+			var VelocityGradient = ""
+			var MaxParticleSpeed = 5
 		}
 		SelectionIcon 
 		{
@@ -326,7 +319,7 @@ Level
 		{
 			var StartPlaying = false
 			var Positional = false
-			var Cue = "5940db0f89378d38:Reflection"
+			var Cue = "5940db0f89378d38:Music_Reflection"
 		}
 		RelayMusicEvents 
 		{
@@ -373,7 +366,7 @@ Level
 			var EmitRate = 600
 			var EmitVariance = 0
 			var EmitRateSoftStartTime = 0
-			var Size = 0.5
+			var Size = 0.400000006
 			var SizeVariance = 0.100000001
 			var Lifetime = 0.699999988
 			var LifetimeVariance = 0.100000001
@@ -399,11 +392,9 @@ Level
 		}
 		ParticleColorAnimator 
 		{
-			var Color0 = Real4{1, 1, 1, 0}
-			var Color1 = Real4{1, 1, 1, 1}
-			var Color2 = Real4{1, 1, 1, 1}
-			var Color3 = Real4{1, 1, 1, 1}
-			var Color4 = Real4{1, 1, 1, 0}
+			var TimeGradient = "591abd225f232eaa:FadeInOut"
+			var VelocityGradient = ""
+			var MaxParticleSpeed = 5
 		}
 		SelectionIcon 
 		{
@@ -444,7 +435,7 @@ Level
 			var SystemSpace = SystemSpace.WorldSpace
 			var WarmUpTime = 0
 			var PreviewInEditor = false
-			var VertexColor = Real4{0.375, 0.850000143, 1, 1}
+			var VertexColor = Real4{0.375, 0.850000143, 1, 0.769999981}
 			var GeometryMode = SpriteParticleGeometryMode.Billboarded
 			var SpriteSource = "5274db4c2e7c11f9:Circle"
 			var ParticleAnimation = SpriteParticleAnimationMode.Single
@@ -460,9 +451,9 @@ Level
 			var EmitRate = 600
 			var EmitVariance = 0
 			var EmitRateSoftStartTime = 0
-			var Size = 0.5
+			var Size = 0.800000012
 			var SizeVariance = 0.100000001
-			var Lifetime = 1.5
+			var Lifetime = 1.20000005
 			var LifetimeVariance = 0.200000003
 			var Spin = 0
 			var SpinVariance = 50
@@ -486,11 +477,9 @@ Level
 		}
 		ParticleColorAnimator 
 		{
-			var Color0 = Real4{1, 1, 1, 0}
-			var Color1 = Real4{1, 1, 1, 1}
-			var Color2 = Real4{1, 1, 1, 1}
-			var Color3 = Real4{1, 1, 1, 1}
-			var Color4 = Real4{1, 1, 1, 0}
+			var TimeGradient = "591abd225f232eaa:FadeInOut"
+			var VelocityGradient = ""
+			var MaxParticleSpeed = 5
 		}
 		SelectionIcon 
 		{

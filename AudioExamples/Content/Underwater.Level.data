@@ -181,7 +181,7 @@ Level
 		{
 			var Translation = Real3{1.11137742e-05, 6.90580463, 19.5308094}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.12273556, 2.78160343e-07, 3.38955815e-08, 0.992439449}
+			var Rotation = Quaternion{-0.122735567, 2.78160343e-07, 3.38955815e-08, 0.992439449}
 		}
 		CameraViewport 
 		{
@@ -445,7 +445,7 @@ Level
 		RigidBody 
 		{
 			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, -62.4999962, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Kinematic
 			var AllowSleep = true
 			var Asleep = false
@@ -516,7 +516,7 @@ Level
 				}
 				RigidBody 
 				{
-					var Velocity = Real3{499.999969, 156.249985, 0}
+					var Velocity = Real3{0, 0, 0}
 					var AngularVelocity = Real3{0, 0, 0}
 					var DynamicState = RigidBodyDynamicState.Kinematic
 					var AllowSleep = true
@@ -546,7 +546,7 @@ Level
 		var LinkId = 12
 		Transform 
 		{
-			var Translation = Real3{0, 8, 0}
+			var Translation = Real3{0, 8, -5}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}

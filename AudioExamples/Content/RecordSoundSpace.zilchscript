@@ -1,9 +1,17 @@
+//**********************************************************************************
+//
+// Records all audio from the object's SoundSpace to a WAV file.
+//
+//**********************************************************************************
 class RecordSoundSpace : ZilchComponent
 {
+  // Requires a Reactive component
   [Dependency] var Reactive : Reactive;
   
   [Property] var StartColor : Real4;
   [Property] var StopColor : Real4;
+  
+  var FileName : String = "RecordedAudio";
   
   var Recording : Boolean = false;
   var Recorder : RecordingNode = Audio.RecordingNode();
@@ -13,7 +21,7 @@ class RecordSoundSpace : ZilchComponent
     Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
     
     this.Space.SoundSpace.OutputNode.InsertNodeAfter(this.Recorder);
-    this.Recorder.FileName = FilePath.CombineDirectoriesAndFile(FilePath.UserDocumentsDirectory, "Zero\\", "RecordedAudio");
+    this.Recorder.FileName = FilePath.CombineDirectoriesAndFile(FilePath.UserDocumentsDirectory, "Zero\\", this.FileName);
   }
 
   function OnMouseDown(event : ViewportMouseEvent)

@@ -108,15 +108,13 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = ""
-			var Mesh = ""
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
 		}
 		DirectionalLight 
 		{
 			var LightColorValue = Real3{1, 1, 1}
 			var LightIntensityValue = 2
-			var CastShadowsValue = true
-			var NormalOffsetBias = 0.100000001
 		}
 		CameraViewport 
 		{
@@ -172,6 +170,7 @@ Level
 		ShadowRenderer 
 		{
 			var ResolutionValue = ShadowResolution.High
+			var NormalOffsetBias = 0.100000001
 		}
 	}
 	Cog 
@@ -336,7 +335,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Material = "591e8a66e2d519f1:Gray"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		SphereCollider 
@@ -345,7 +344,7 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var TranslationOffset = Real3{0, 0, 0}
+			var Offset = Real3{0, 0, 0}
 			var Radius = 0.5
 		}
 		SoundListener 
@@ -372,7 +371,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Material = "591e89f0d5928e22:Orange"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		SoundEmitter 
@@ -388,7 +387,7 @@ Level
 		{
 			var StartPlaying = true
 			var Positional = true
-			var Cue = "58b3f86f65a49901:Bubbles"
+			var Cue = "58b3f86f65a49901:Music_Bubbles"
 		}
 		DopplerForEmitter 
 		{
