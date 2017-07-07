@@ -36,7 +36,7 @@ enum NoteTypes { EighthNote, QuarterNote, HalfNote, WholeNote, Bar, Beat }
 // (commented out because already included elswhere in this project)
 //
 //**********************************************************************************
-//enum MidiNotes { C3 = 60, Cs3, D3, Ds3, E3, F3, Fs3, G3, Gs3, A3, As3, B3 }
+// enum MidiNotes { C3 = 60, Cs3, D3, Ds3, E3, F3, Fs3, G3, Gs3, A3, As3, B3 }
 
 //**********************************************************************************
 //
@@ -58,7 +58,7 @@ class MusicManager : ZilchComponent
   // The SoundInstance created by playing the BackgroundCue
   var BackgroundInstance : SoundInstance;
   // List of possible chord sequences
-  var Sequences : Array[ChordSequence];
+  var Sequences : Array[ChordSequence] = Array[ChordSequence](21);
   // Number of measures in each sequence
   var MeasuresPerSequence : Integer = 4;
   // Number of sequences to play in each group
@@ -96,8 +96,12 @@ class MusicManager : ZilchComponent
   
   function OnLogicUpdate(event : UpdateEvent)
   {
+    // If the Up arrow key is pressed, raise the pitch of the BackgroundInstance,
+    // up to a maximum of half an octave
     if (Zero.Keyboard.KeyIsDown(Keys.Up) && this.BackgroundInstance.Semitones < 6)
       this.BackgroundInstance.Semitones = this.BackgroundInstance.Semitones + 0.1;
+    // If the Down arrow key is pressed, lower the pitch of the BackgroundInstance,
+    // up to a maximum of half an octave
     else if (Zero.Keyboard.KeyIsDown(Keys.Down) && this.BackgroundInstance.Semitones > -6)
       this.BackgroundInstance.Semitones = this.BackgroundInstance.Semitones - 0.1;
   }
@@ -163,128 +167,127 @@ class MusicManager : ZilchComponent
 
   function SetSequences()
   {
-    this.Sequences = new Array[ChordSequence](21);
-    this.Sequences[0] = new ChordSequence();
+    this.Sequences[0] = ChordSequence();
     this.Sequences[0].ChordList[0] = ChordNames.One_Major;
     this.Sequences[0].ChordList[1] = ChordNames.Five_Major;
     this.Sequences[0].ChordList[2] = ChordNames.Four_Major;
     this.Sequences[0].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[1] = new ChordSequence();
+    this.Sequences[1] = ChordSequence();
     this.Sequences[1].ChordList[0] = ChordNames.Five_Major;
     this.Sequences[1].ChordList[1] = ChordNames.One_Major;
     this.Sequences[1].ChordList[2] = ChordNames.Four_Major;
     this.Sequences[1].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[2] = new ChordSequence();
+    this.Sequences[2] = ChordSequence();
     this.Sequences[2].ChordList[0] = ChordNames.Four_Major;
     this.Sequences[2].ChordList[1] = ChordNames.One_Major;
     this.Sequences[2].ChordList[2] = ChordNames.Five_Major;
     this.Sequences[2].ChordList[3] = ChordNames.One_Major;
     
-    this.Sequences[3] = new ChordSequence();
+    this.Sequences[3] = ChordSequence();
     this.Sequences[3].ChordList[0] = ChordNames.One_Major;
     this.Sequences[3].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[3].ChordList[2] = ChordNames.Five_Major;
     this.Sequences[3].ChordList[3] = ChordNames.One_Major;
     
-    this.Sequences[4] = new ChordSequence();
+    this.Sequences[4] = ChordSequence();
     this.Sequences[4].ChordList[0] = ChordNames.One_Major;
     this.Sequences[4].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[4].ChordList[2] = ChordNames.Five_Major_7;
     this.Sequences[4].ChordList[3] = ChordNames.One_Major;
     
-    this.Sequences[5] = new ChordSequence();
+    this.Sequences[5] = ChordSequence();
     this.Sequences[5].ChordList[0] = ChordNames.One_Major;
     this.Sequences[5].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[5].ChordList[2] = ChordNames.One_Major;
     this.Sequences[5].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[6] = new ChordSequence();
+    this.Sequences[6] = ChordSequence();
     this.Sequences[6].ChordList[0] = ChordNames.One_Major;
     this.Sequences[6].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[6].ChordList[2] = ChordNames.One_Major;
     this.Sequences[6].ChordList[3] = ChordNames.Five_Major_7;
     
-    this.Sequences[7] = new ChordSequence();
+    this.Sequences[7] = ChordSequence();
     this.Sequences[7].ChordList[0] = ChordNames.Five_Major;
     this.Sequences[7].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[7].ChordList[2] = ChordNames.One_Major;
     this.Sequences[7].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[8] = new ChordSequence();
+    this.Sequences[8] = ChordSequence();
     this.Sequences[8].ChordList[0] = ChordNames.Four_Major;
     this.Sequences[8].ChordList[1] = ChordNames.One_Major;
     this.Sequences[8].ChordList[2] = ChordNames.Four_Major;
     this.Sequences[8].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[9] = new ChordSequence();
+    this.Sequences[9] = ChordSequence();
     this.Sequences[9].ChordList[0] = ChordNames.One_Major;
     this.Sequences[9].ChordList[1] = ChordNames.Five_Major;
     this.Sequences[9].ChordList[2] = ChordNames.Four_Major;
     this.Sequences[9].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[10] = new ChordSequence();
+    this.Sequences[10] = ChordSequence();
     this.Sequences[10].ChordList[0] = ChordNames.One_Major;
     this.Sequences[10].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[10].ChordList[2] = ChordNames.Five_Major_7;
     this.Sequences[10].ChordList[3] = ChordNames.One_Major;
     
-    this.Sequences[11] = new ChordSequence();
+    this.Sequences[11] = ChordSequence();
     this.Sequences[11].ChordList[0] = ChordNames.One_Major;
     this.Sequences[11].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[11].ChordList[2] = ChordNames.One_Major;
     this.Sequences[11].ChordList[3] = ChordNames.Five_Major_7;
     
-    this.Sequences[12] = new ChordSequence();
+    this.Sequences[12] = ChordSequence();
     this.Sequences[12].ChordList[0] = ChordNames.Five_Major;
     this.Sequences[12].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[12].ChordList[2] = ChordNames.One_Major;
     this.Sequences[12].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[13] = new ChordSequence();
+    this.Sequences[13] = ChordSequence();
     this.Sequences[13].ChordList[0] = ChordNames.Four_Major;
     this.Sequences[13].ChordList[1] = ChordNames.One_Major;
     this.Sequences[13].ChordList[2] = ChordNames.Four_Major;
     this.Sequences[13].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[14] = new ChordSequence();
+    this.Sequences[14] = ChordSequence();
     this.Sequences[14].ChordList[0] = ChordNames.Five_Major;
     this.Sequences[14].ChordList[1] = ChordNames.Six_Minor;
     this.Sequences[14].ChordList[2] = ChordNames.Four_Major;
     this.Sequences[14].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[15] = new ChordSequence();
+    this.Sequences[15] = ChordSequence();
     this.Sequences[15].ChordList[0] = ChordNames.Five_Major;
     this.Sequences[15].ChordList[1] = ChordNames.One_Major;
     this.Sequences[15].ChordList[2] = ChordNames.Six_Minor;
     this.Sequences[15].ChordList[3] = ChordNames.Four_Major;
     
-    this.Sequences[16] = new ChordSequence();
+    this.Sequences[16] = ChordSequence();
     this.Sequences[16].ChordList[0] = ChordNames.Six_Minor;
     this.Sequences[16].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[16].ChordList[2] = ChordNames.Five_Major;
     this.Sequences[16].ChordList[3] = ChordNames.Six_Minor;
     
-    this.Sequences[17] = new ChordSequence();
+    this.Sequences[17] = ChordSequence();
     this.Sequences[17].ChordList[0] = ChordNames.Six_Minor;
     this.Sequences[17].ChordList[1] = ChordNames.Two_Minor;
     this.Sequences[17].ChordList[2] = ChordNames.Five_Major;
     this.Sequences[17].ChordList[3] = ChordNames.One_Major;
     
-    this.Sequences[18] = new ChordSequence();
+    this.Sequences[18] = ChordSequence();
     this.Sequences[18].ChordList[0] = ChordNames.Six_Minor;
     this.Sequences[18].ChordList[1] = ChordNames.Four_Major;
     this.Sequences[18].ChordList[2] = ChordNames.Six_Minor;
     this.Sequences[18].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[19] = new ChordSequence();
+    this.Sequences[19] = ChordSequence();
     this.Sequences[19].ChordList[0] = ChordNames.One_Major;
     this.Sequences[19].ChordList[1] = ChordNames.Six_Minor;
     this.Sequences[19].ChordList[2] = ChordNames.Two_Minor;
     this.Sequences[19].ChordList[3] = ChordNames.Five_Major;
     
-    this.Sequences[20] = new ChordSequence();
+    this.Sequences[20] = ChordSequence();
     this.Sequences[20].ChordList[0] = ChordNames.Four_Major;
     this.Sequences[20].ChordList[1] = ChordNames.One_Major;
     this.Sequences[20].ChordList[2] = ChordNames.Six_Minor;
@@ -292,20 +295,28 @@ class MusicManager : ZilchComponent
   }
 }
 
-// Object to hold a list of notes for a specific chord
+//**********************************************************************************
+//
+// Object to hold a list of MIDI notes for a specific chord
+//
+//**********************************************************************************
 class NoteList
 {
+  // List of notes for this particular chord
   var Notes : Array[Integer] = Array[Integer]();
   
   function AddNote(note : Integer)
   {
+    // Add this note to the list
     this.Notes.Push(note);
   }
   
   // Pass in a RandomContext to get a randomly selected note
   function GetNote(random : RandomContext) : Integer
   {
+    // Get a random index
     var index = random.RangeInclusiveMax(0, this.Notes.Count - 1);
+    // Return the MIDI note value at that index
     return this.Notes[index];
   }
 }
@@ -412,36 +423,47 @@ class InstrumentBaseClass : ZilchComponent
   function AddHarmonics() { }
   
   [Virtual]
-  function AddChordNotes() { }
+  function Setup() { }
   
   [Virtual]
-  function Setup() { }
+  function AddChordNotes() { }
 }
 
+//**********************************************************************************
+//
+// A bell-like instrument used for the procedural music's melody.
+//
+//**********************************************************************************
 class Instrument1 : InstrumentBaseClass
 {
-  //[Property] var PlayOnNoteType : NoteTypes = NoteTypes.EighthNote;
-  //[Property] var MaxBeatsToWait : Integer = 3;
-  //[Property] var MinVolume : Real = 0.15;
-  //[Property] var MaxVolume : Real = 0.25;
-  
   [Override]
   function AddHarmonics()
   {
-    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
+    // Create the AdsrEnvelope and set values for the first harmonic
     var envelope = AdsrEnvelope();
     envelope.AttackTime = 0.09;
     envelope.DecayTime = 0.5;
     envelope.SustainTime = 0.07;
     envelope.SustainLevel = 0.5;
     envelope.ReleaseTime = 1.0;
+    // Add the first harmonic to the synth
     this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.SineWave);
+    
+    // Set values for the second harmonic
     envelope.AttackTime = 0.02;
     envelope.DecayTime = 0;
     envelope.SustainTime = 0.02;
     envelope.SustainLevel = 1.0;
     envelope.ReleaseTime = 0.5;
+    // Add the second harmonic to the synth
     this.Synth.AddHarmonic(3.0, 0.25, envelope, SynthWaveType.SineWave);
+  }
+  
+  [Override]
+  function Setup()
+  {
+    // Add the synth node to the SoundSpace
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
   }
   
   [Override]
@@ -515,45 +537,83 @@ class Instrument1 : InstrumentBaseClass
   }
 }
 
+//**********************************************************************************
+//
+// A synthesized instrument used for the procedural music's harmony.
+//
+//**********************************************************************************
 class Instrument2 : InstrumentBaseClass
 {
-  //[Property] var PlayOnNoteType : NoteTypes = NoteTypes.WholeNote;
-  //[Property] var MaxBeatsToWait : Integer = 1;
-  //[Property] var MinVolume : Real = 0.25;
-  //[Property] var MaxVolume : Real = 0.35;
-  
+  // Reverb effect to add to the synth
   var Reverb : ReverbNode = Audio.ReverbNode();
+  // Modulation effect to apply to the synth
   var Modulator : ModulationNode = Audio.ModulationNode();
+  // Second modulation effect to apply to the synth
   var Modulator2 : ModulationNode = Audio.ModulationNode();
   
   [Override]
   function AddHarmonics()
   {
+    // Create the AdsrEnvelope and set values for the first harmonic
     var envelope = AdsrEnvelope();
     envelope.AttackTime = 0.5;
     envelope.DecayTime = 1.0;
     envelope.SustainTime = 0.5;
     envelope.SustainLevel = 0.5;
     envelope.ReleaseTime = 2.0;
+    // Add the first harmonic to the synth
     this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.SineWave);
+    
+    // Set values for the second harmonic
     envelope.AttackTime = 0.3;
     envelope.DecayTime = 0;
     envelope.SustainTime = 0.6;
     envelope.SustainLevel = 1.0;
     envelope.ReleaseTime = 1.0;
+    // Add the second harmonic to the synth
     this.Synth.AddHarmonic(2.0, 0.25, envelope, SynthWaveType.SineWave);
+    
+    // Set values for the third harmonic
     envelope.AttackTime = 0.4;
     envelope.DecayTime = 0.5;
     envelope.SustainTime = 0.2;
     envelope.SustainLevel = 0.8;
     envelope.ReleaseTime = 0.5;
+    // Add the third harmonic to the synth
     this.Synth.AddHarmonic(3.0, 0.2, envelope, SynthWaveType.SineWave);
+    
+    // Set values for the fourth harmonic
     envelope.AttackTime = 0.6;
     envelope.DecayTime = 0.2;
     envelope.SustainTime = 0.02;
     envelope.SustainLevel = 0.6;
     envelope.ReleaseTime = 1.0;
+    // Add the fourth harmonic to the synth
     this.Synth.AddHarmonic(4.0, 0.2, envelope, SynthWaveType.SineWave);
+  }
+  
+  [Override]
+  function Setup()
+  {
+    // Attach the synth to the first modulation effect
+    this.Modulator.AddInputNode(this.Synth);
+    // Set the values for the modulation
+    this.Modulator.Frequency = 4.0;
+    this.Modulator.UseAmplitudeModulation = true;
+    
+    // Attach the first modulation node to the second
+    this.Modulator2.AddInputNode(this.Modulator);
+    // Set the values for the second modulation
+    this.Modulator2.Frequency = 2000.0;
+    this.Modulator2.WetPercent = 10.0;
+    
+    // Attach the second modulation node to the reverb node
+    this.Reverb.AddInputNode(this.Modulator2);
+    // Set the reverb wet percent
+    this.Reverb.WetPercent = 70;
+    
+    // Attach the reverb node to the SoundSpace
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Reverb);
   }
   
   [Override]
@@ -604,54 +664,52 @@ class Instrument2 : InstrumentBaseClass
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3);
   }
-  
-  [Override]
-  function Setup()
-  {
-    this.Modulator.AddInputNode(this.Synth);
-    this.Modulator.Frequency = 4.0;
-    this.Modulator.UseAmplitudeModulation = true;
-    
-    this.Modulator2.AddInputNode(this.Modulator);
-    this.Modulator2.Frequency = 2000.0;
-    this.Modulator2.WetPercent = 10.0;
-    
-    this.Reverb.AddInputNode(this.Modulator2);
-    this.Reverb.WetPercent = 70;
-    this.Space.SoundSpace.InputNode.AddInputNode(this.Reverb);
-  }
 }
 
+//**********************************************************************************
+//
+// A bass-like instrument used for the procedural music's bass line.
+//
+//**********************************************************************************
 class Instrument3 : InstrumentBaseClass
 {
-  //[Property] var PlayOnNoteType : NoteTypes = NoteTypes.WholeNote;
-  //[Property] var MaxBeatsToWait : Integer = 1;
-  //[Property] var MinVolume : Real = 0.45;
-  //[Property] var MaxVolume : Real = 0.5;
-  
   [Override]
   function AddHarmonics()
   {
-    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
+    // Create AdsrEnvelope object and set values for first harmonic
     var envelope = AdsrEnvelope();
     envelope.AttackTime = 0.09;
     envelope.DecayTime = 0.5;
     envelope.SustainTime = 0.07;
     envelope.SustainLevel = 0.5;
     envelope.ReleaseTime = 2.0;
+    // Add the first harmonic to the synth
     this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.SineWave);
+    
+    // Set values for second harmonic
     envelope.AttackTime = 0.02;
     envelope.DecayTime = 0;
     envelope.SustainTime = 0.02;
     envelope.SustainLevel = 1.0;
     envelope.ReleaseTime = 1.5;
+    // Add the second harmonic to the synth
     this.Synth.AddHarmonic(2.0, 0.25, envelope, SynthWaveType.SineWave);
+    
+    // Set values for third harmonic
     envelope.AttackTime = 0.05;
     envelope.DecayTime = 0.05;
     envelope.SustainTime = 0.02;
     envelope.SustainLevel = 0.5;
     envelope.ReleaseTime = 0.5;
+    // Add the third harmonic to the synth
     this.Synth.AddHarmonic(3.0, 0.2, envelope, SynthWaveType.SineWave);
+  }
+  
+  [Override]
+  function Setup()
+  {
+    // Add the synth node to the SoundSpace
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
   }
   
   [Override]
@@ -679,36 +737,50 @@ class Instrument3 : InstrumentBaseClass
   }
 }
 
+//**********************************************************************************
+//
+// A synthesized instrument used for the procedural music's harmony.
+//
+//**********************************************************************************
 class Instrument4 : InstrumentBaseClass
 {
-  //[Property] var PlayOnNoteType : NoteTypes = NoteTypes.WholeNote;
-  //[Property] var MaxBeatsToWait : Integer = 1;
-  //[Property] var MinVolume : Real = 0.45;
-  //[Property] var MaxVolume : Real = 0.5;
-  
   [Override]
   function AddHarmonics()
   {
-    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
+    // Create the AdsrEnvelope object and set values for the first harmonic
     var envelope = AdsrEnvelope();
     envelope.AttackTime = 0.09;
     envelope.DecayTime = 0.5;
     envelope.SustainTime = 0.07;
     envelope.SustainLevel = 0.5;
     envelope.ReleaseTime = 1.0;
+    // Add the first harmonic to the synth
     this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.TriangleWave);
+    
+    // Set values for the second harmonic
     envelope.AttackTime = 0.02;
     envelope.DecayTime = 0;
     envelope.SustainTime = 0.02;
     envelope.SustainLevel = 1.0;
     envelope.ReleaseTime = 0.5;
+    // Add the second harmonic to the synth
     this.Synth.AddHarmonic(2.0, 0.25, envelope, SynthWaveType.TriangleWave);
+    
+    // Set values for the third harmonic
     envelope.AttackTime = 0.05;
     envelope.DecayTime = 0.05;
     envelope.SustainTime = 0.02;
     envelope.SustainLevel = 0.5;
     envelope.ReleaseTime = 0.25;
+    // Add the third harmonic to the synth
     this.Synth.AddHarmonic(3.0, 0.2, envelope, SynthWaveType.TriangleWave);
+  }
+  
+  [Override]
+  function Setup()
+  {
+    // Add the synth node to the SoundSpace
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
   }
   
   [Override]

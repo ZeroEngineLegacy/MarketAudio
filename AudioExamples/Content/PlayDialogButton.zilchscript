@@ -18,8 +18,9 @@ class PlayDialogButton : ZilchComponent
     // Connect to mouse click events
     Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
     
+    // Play music
     this.Manager.PlayMusic(SoundCue.Music_Run, false);
-    
+    // Play a looping sound effect
     var instance = this.Manager.PlayEffect(SoundCue.FootstepWoodWalk, null, false);
     instance.Looping = true;
     

@@ -1,17 +1,27 @@
+//**********************************************************************************
+//
+// Changes the volume of a specified SoundTag using a specified increment.
+//
+//**********************************************************************************
 class ChangeTagVolume : ZilchComponent
 {
+  // Requires a Reactive component
   [Dependency] var Reactive : Reactive;
   
+  // The SoundTag to change
   [Property] var Tag : SoundTag;
+  // The amount to add to the SoundTag volume on every mouse click
   [Property] var VolumeIncrement : Real;
   
   function Initialize(init : CogInitializer)
   {
+    // Connect to left mouse click events
     Zero.Connect(this.Reactive, Events.LeftMouseDown, this.OnMouseDown);
   }
 
   function OnMouseDown(event : ViewportMouseEvent)
   {
+    // Add the increment to the SoundTag's volume
     this.Tag.Volume = this.Tag.Volume + this.VolumeIncrement;
   }
 }

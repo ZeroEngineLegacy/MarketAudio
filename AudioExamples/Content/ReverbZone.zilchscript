@@ -1,21 +1,39 @@
+//**********************************************************************************
+//
+// Applies a reverb effect inside a zone defined by the collision box of the object.
+// The reverb gets stronger as the SoundListener goes further into the object.
+// Only handles a single SoundListener.
+//
+//**********************************************************************************
 class ReverbZone : ZilchComponent
 {
+  // Requires a Transform component
   [Dependency] var Transform : Transform;
   
+  // The maximum value that the reverb wet percent will reach
   [Property] var MaxWetPercent : Real = 80.0;
   
+  // The reverb effect node to use
   var Reverb : ReverbNode = Audio.ReverbNode();
+  // Keeps track of whether the reverb node has been added to the SoundListener
   var AddedToListener : Boolean = false;
+  // Stores the SoundListener's Transform component
   var ListenerTransform : Transform;
+  // Stores the position of the SoundListener on the previous frame
   var LastListenerPosition : Real3;
+  // Keeps track of whether the reverb is currently turned on or not
   var ReverbOn : Boolean = false;
   
   function Initialize(init : CogInitializer)
   {
+    // Connect to the LogicUpdate event
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    // Connect to collision started events
     Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStart);
+    // Connect to collision ended events
     Zero.Connect(this.Owner, Events.CollisionEnded, this.OnCollisionEnd);
     
+    // Turn the reverb off
     this.Reverb.WetPercent = 0;
   }
 

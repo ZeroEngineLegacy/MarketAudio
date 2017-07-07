@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "MusicChangeSpeed"
-		var ResourceId = 0x58a3dfee91dee967
-	}
-}

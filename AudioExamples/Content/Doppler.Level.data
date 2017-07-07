@@ -408,8 +408,9 @@ Level
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 		}
-		MoveBackAndForth 
+		Movement 
 		{
+			var MoveIncrement = 0.800000012
 		}
 	}
 	Cog 
@@ -434,7 +435,7 @@ Level
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{0, 0, 0, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
-			var Text = "Use Arrow Keys to Move SoundEmitter Left and Right"
+			var Text = "Use Left and Right Arrow Keys to Move SoundEmitter"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 48
 			var PixelsPerUnit = 128
