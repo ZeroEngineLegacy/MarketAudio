@@ -322,7 +322,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Cube"
+		var Name = "Floor"
 		var LinkId = 6
 		Transform 
 		{

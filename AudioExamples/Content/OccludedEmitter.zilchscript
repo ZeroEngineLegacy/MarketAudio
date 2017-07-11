@@ -97,8 +97,10 @@ class OccludedEmitter : ZilchComponent
   {
     // Find the occlusion percentage
     var percent = this.GetOcclusionPercent();
+    // Save the maximum cutoff value (at this value the low pass filter turns off)
+    var maxCutoff = 20000.0;
     // Calculate the low pass cutoff frequency using the occlusion percentage
-    this.LowPass.CutoffFrequency = 20000.0 - ((20000.0 - this.LowPassCutoff) * percent);
+    this.LowPass.CutoffFrequency = maxCutoff - ((maxCutoff - this.LowPassCutoff) * percent);
     // Calculate the volume using the occlusion percentage
     this.Volume.Volume = 1.0 - ((1.0 - this.ReducedVolume) * percent);
   }

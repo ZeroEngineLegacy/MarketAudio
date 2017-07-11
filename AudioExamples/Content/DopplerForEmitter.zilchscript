@@ -59,8 +59,10 @@ class DopplerForEmitter : ZilchComponent
       // Determine the relative velocities, adjusting with distance
       var listenerRelativeVelocity = Math.Dot(listenerVelocity, relativePosition) / distance;
       var emitterRelativeVelocity = Math.Dot(emitterVelocity, relativePosition) / distance;
+      // Save the speed of sound at sea level and 59 degrees farenheit
+      var speedOfSound = 340.29;
       // Determine the pitch adjustment
-      var pitch = (340.29 + listenerRelativeVelocity) / (340.29 + emitterRelativeVelocity);
+      var pitch = (speedOfSound + listenerRelativeVelocity) / (speedOfSound + emitterRelativeVelocity);
       // Translate for Zero's pitch values
       var pitchValue = Math.Log2(pitch);
       // Set the pitch on the SoundEmitter

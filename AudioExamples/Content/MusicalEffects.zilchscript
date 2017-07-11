@@ -268,7 +268,7 @@ class NoteEffects : ZilchComponent
     this.Notes1.Push(MidiNotes.E3 - 12);
     
     // Set the values on the delay filter
-    this.Delay.FeedbackPercent = 30;
+    this.Delay.FeedbackPercent = 40;
     this.Delay.Delay = 0.3;
     // Connect the synth to the delay node
     this.Delay.AddInputNode(this.Synth1);

@@ -191,16 +191,25 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 3365747912
+			var Seed = 918619101
 		}
 		Background 
 		{
+			var Volume = 0.25
+			var MinimumWait = 4.5
+			var MaximumWait = 5.5
 		}
 		Melody 
 		{
+			var MinimumVolume = 0.00999999978
+			var MaximumVolume = 0.100000001
+			var MinimumWait = 0.100000001
+			var MaximumWait = 2
 		}
 		NoteEffects 
 		{
+			var Volume1 = 0.75
+			var Volume2 = 0.25
 		}
 		SpawnCircle 
 		{
@@ -233,6 +242,35 @@ Level
 			var IndirectLighting = true
 			var IndirectIntensity = 1
 			var ToneMap = true
+		}
+	}
+	Cog 
+	{
+		var Name = "SpriteText"
+		var LinkId = 6
+		Transform 
+		{
+			var Translation = Real3{0, 6.29399538, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		SpriteText 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{1, 1, 1, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "Click to place circles, which will be destroyed on collision."
+			var Font = "57343753bb4eaaec:NotoSans-Regular"
+			var FontSize = 48
+			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 }

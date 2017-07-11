@@ -7,6 +7,14 @@
 //**********************************************************************************
 class MIDI : ZilchComponent
 {
+  [Property] var Harmonic1Attack :  Real = 0.09;
+  [Property] var Harmonic1Decay : Real = 0.6;
+  [Property] var Harmonic1Sustain : Real = 0.0;
+  [Property] var Harmonic1SusLevel : Real = 0.5;
+  [Property] var Harmonic1Release : Real = 0.7;
+  [Property] var Harmonic1Volume : Real = 0.5;
+  [Property] var Harmonic1Type : SynthWaveType = SynthWaveType.SquareWave;
+  
   // Create the AdditiveSynthNode to use for playing notes
   var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
   // Create the LowPassNode 
@@ -21,7 +29,7 @@ class MIDI : ZilchComponent
   var Pitch : PitchNode = Audio.PitchNode();
   // The base frequency for the modulation node
   var ModFrequency : Real = 5.0;
-  
+    
   function Initialize(init : CogInitializer)
   {
     // Connect to the MIDI events sent by the SoundSpace

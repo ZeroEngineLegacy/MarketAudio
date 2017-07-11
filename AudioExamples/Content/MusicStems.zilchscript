@@ -36,6 +36,8 @@ class MusicStems : ZilchComponent
   // The volume curve to use for the sixth stem
   [Property] var Cue6Curve : SampleCurve;
   
+  // The width of the floor object to use when calculating position percentage
+  var FloorWidth : Real;
   // The SoundInstances created when the SoundCues are played
   var Instance1 : SoundInstance;
   var Instance2 : SoundInstance;
@@ -65,7 +67,9 @@ class MusicStems : ZilchComponent
     this.Instance6 = this.Cue6.PlayCueOnNode(this.Volume, true);
     
     // Set the stems' volumes using the object's current position
-    this.SetParameter((this.PositionObject.Cog.Transform.WorldTranslation.X + 10.0) / 20.0);
+    // (the percentage of how far it's moved toward the right edge of the floor)
+    this.FloorWidth = this.Space.FindObjectByName("Floor").Transform.Scale.X;
+    this.SetParameter((this.PositionObject.Cog.Transform.WorldTranslation.X + (this.FloorWidth / 2.0)) / this.FloorWidth);
     
     // Resume playing the SoundInstances
     this.Instance1.Paused = false;
@@ -83,7 +87,8 @@ class MusicStems : ZilchComponent
   function OnLogicUpdate(event : UpdateEvent)
   {
     // Set the stems' volumes using the object's current position
-    this.SetParameter((this.PositionObject.Cog.Transform.WorldTranslation.X + 10.0) / 20.0);
+    // (the percentage of how far it's moved toward the right edge of the floor)
+    this.SetParameter((this.PositionObject.Cog.Transform.WorldTranslation.X + (this.FloorWidth / 2.0)) / this.FloorWidth);
   }
   
   // This function expects a value in the range 0.0 to 1.0

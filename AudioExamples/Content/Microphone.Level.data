@@ -457,7 +457,7 @@ Level
 		{
 			var Volume = 1.02999997
 			var Pitch = 0
-			var Attenuator = "58b3eab73224cfd9:ShortAttenuation"
+			var Attenuator = "591ae38c4af1a45f:MediumAttenuation"
 			var Directional = false
 			var EmitAngle = 89
 			var RearVolume = 0.200000003

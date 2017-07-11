@@ -42,7 +42,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 2561376658
+			var Seed = 2132093783
 		}
 	}
 	Cog 
@@ -113,15 +113,13 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = ""
-			var Mesh = ""
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
 		}
 		DirectionalLight 
 		{
 			var LightColorValue = Real3{1, 1, 1}
 			var LightIntensityValue = 2
-			var CastShadowsValue = true
-			var NormalOffsetBias = 0.100000001
 		}
 		CameraViewport 
 		{
@@ -177,6 +175,7 @@ Level
 		ShadowRenderer 
 		{
 			var ResolutionValue = ShadowResolution.High
+			var NormalOffsetBias = 0.100000001
 		}
 	}
 	Cog 
@@ -185,7 +184,7 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{0, 3.73648167, 9.84807777}
+			var Translation = Real3{0, 3.91910887, 10.8838081}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{-0.0871557519, -1.09695906e-08, -1.90484961e-09, 0.99619478}
 		}
@@ -244,7 +243,7 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 10
+			var LookDistance = 11.0517082
 			var VerticalAngle = 0.17453292
 			var HorizontalAngle = 0
 			var LookTarget = Real3{0, 2, 0}
@@ -353,6 +352,36 @@ Level
 			var Cue3Day = "5944f09038e06e22:Starling"
 			var Cue3Night = "5944f016264c9b9e:Owl"
 			var Wait3MinMax = Real2{10, 20}
+			var DayIndicator = CogPath
+			{
+				var Path = ":/Sun"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 7
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var NightIndicator = CogPath
+			{
+				var Path = ":/Moon"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 8
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 		}
 		SoundListener 
 		{
@@ -362,7 +391,7 @@ Level
 	Cog 
 	{
 		var Name = "PlayDay"
-		var LinkId = 7
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{-3, 3.27141404, 0}
@@ -383,7 +412,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "Play Day Version"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 53
+			var FontSize = 52
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}
@@ -399,7 +428,7 @@ Level
 	Cog 
 	{
 		var Name = "PlayNight"
-		var LinkId = 8
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{3, 3.27141404, 0}
@@ -420,7 +449,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "Play Night Version"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 53
+			var FontSize = 52
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}
@@ -431,6 +460,66 @@ Level
 		AmbienceSetCycle 
 		{
 			var SetAmbienceToDay = false
+		}
+	}
+	Cog 
+	{
+		var Name = "Sun"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Real3{-3, 4.5, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Sprite 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{1, 0.850199997, 0.464999974, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var SpriteSource = "5274db4c2e7c11f9:Circle"
+			var FlipX = false
+			var FlipY = false
+			var AnimationActive = true
+			var AnimationSpeed = 1
+			var StartFrame = 0
+		}
+	}
+	Cog 
+	{
+		var Name = "Moon"
+		var LinkId = 8
+		Transform 
+		{
+			var Translation = Real3{3, 4.5, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Sprite 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{0.86500001, 0.995949984, 1, 0}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var SpriteSource = "5274db4c2e7c11f9:Circle"
+			var FlipX = false
+			var FlipY = false
+			var AnimationActive = true
+			var AnimationSpeed = 1
+			var StartFrame = 0
 		}
 	}
 }

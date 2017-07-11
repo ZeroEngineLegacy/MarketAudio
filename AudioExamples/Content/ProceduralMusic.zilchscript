@@ -353,6 +353,8 @@ class InstrumentBaseClass : ZilchComponent
   var WaitBeats : Integer = 1;
   // The number of beats that have passed while waiting
   var BeatCount : Integer = 0;
+  // The number of MIDI notes in an octave
+  var NotesPerOctave : Integer = 12;
   
   function Initialize(init : CogInitializer)
   {
@@ -479,20 +481,20 @@ class Instrument1 : InstrumentBaseClass
     this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3);
     this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.A3);
     this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.B3);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 + 12);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.D3 + 12);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 + 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.D3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 + this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
     this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3);
     this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3);
     this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.G3);
     this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.C3 + 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 + 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 + 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.G3 + 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 + 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.C3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.G3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 + this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Four_Major] = NoteList();
     this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3);
@@ -501,19 +503,19 @@ class Instrument1 : InstrumentBaseClass
     this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3);
     this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.G3);
     this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 + 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.D3 + 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 + 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 + 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.D3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 + this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Five_Major] = NoteList();
     this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3);
     this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3);
     this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.A3);
     this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.C3 + 12);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 + 12);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.C3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 + this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
     this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3);
@@ -521,19 +523,19 @@ class Instrument1 : InstrumentBaseClass
     this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3);
     this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.A3);
     this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.C3 + 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 + 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 + 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 + 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.C3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 + this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.F3);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 + 12);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 + 12);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 + 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 + this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 + this.NotesPerOctave);
   }
 }
 
@@ -622,45 +624,45 @@ class Instrument2 : InstrumentBaseClass
     this.NotesPerChord = Array[NoteList](6);
     
     this.NotesPerChord[ChordNames.One_Major] = NoteList();
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - 24);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - 12);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 - 12);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3);
     
     this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - 24);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - 24);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Four_Major] = NoteList();
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - 24);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 - 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3);
     
     this.NotesPerChord[ChordNames.Five_Major] = NoteList();
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - 24);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3);
     
     this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - 24);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3);
     
     this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 - 12);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 - 12);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3);
   }
@@ -718,22 +720,22 @@ class Instrument3 : InstrumentBaseClass
     this.NotesPerChord = Array[NoteList](6);
     
     this.NotesPerChord[ChordNames.One_Major] = NoteList();
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - 24);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - (this.NotesPerOctave * 2));
     
     this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - 24);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - (this.NotesPerOctave * 2));
     
     this.NotesPerChord[ChordNames.Four_Major] = NoteList();
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - 24);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - (this.NotesPerOctave * 2));
     
     this.NotesPerChord[ChordNames.Five_Major] = NoteList();
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - 24);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - (this.NotesPerOctave * 2));
     
     this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - 24);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - (this.NotesPerOctave * 2));
     
     this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - 24);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - (this.NotesPerOctave * 2));
   }
 }
 
@@ -789,45 +791,45 @@ class Instrument4 : InstrumentBaseClass
     this.NotesPerChord = Array[NoteList](6);
     
     this.NotesPerChord[ChordNames.One_Major] = NoteList();
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - 24);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - 12);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 - 12);
-    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - 12);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.E3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.G3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.One_Major].AddNote(MidiNotes.C3);
     
     this.NotesPerChord[ChordNames.Two_Minor] = NoteList();
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - 24);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - 24);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - 12);
-    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.D3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.F3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Two_Minor].AddNote(MidiNotes.A3 - this.NotesPerOctave);
     
     this.NotesPerChord[ChordNames.Four_Major] = NoteList();
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - 24);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 - 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - 12);
-    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.F3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.A3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Four_Major].AddNote(MidiNotes.C3);
     
     this.NotesPerChord[ChordNames.Five_Major] = NoteList();
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - 24);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.G3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.B3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Five_Major].AddNote(MidiNotes.D3);
     
     this.NotesPerChord[ChordNames.Five_Major_7] = NoteList();
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - 24);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - 12);
-    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - 12);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - (this.NotesPerOctave * 2));
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.F3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.G3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.B3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Five_Major_7].AddNote(MidiNotes.D3);
     
     this.NotesPerChord[ChordNames.Six_Minor] = NoteList();
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 - 12);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 - 12);
-    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - 12);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3 - this.NotesPerOctave);
+    this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.A3 - this.NotesPerOctave);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.C3);
     this.NotesPerChord[ChordNames.Six_Minor].AddNote(MidiNotes.E3);
   }
