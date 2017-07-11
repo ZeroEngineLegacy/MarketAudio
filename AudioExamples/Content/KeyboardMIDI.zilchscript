@@ -22,13 +22,13 @@ class KeyboardMIDI : ZilchComponent
   function OnNoteOn(event : NoteEvent)
   {
     // Play the specified note 
-    this.MIDI.Synth.NoteOn(event.MIDINumber, this.Volume);
+    this.MIDI.Synthesizer.NoteOn(event.MIDINumber as Integer, this.Volume);
   }
   
   function OnNoteOff(event : NoteEvent)
   {
     // Turn off the specified note
-    this.MIDI.Synth.NoteOff(event.MIDINumber);
+    this.MIDI.Synthesizer.NoteOff(event.MIDINumber as Integer);
   }
 }
 

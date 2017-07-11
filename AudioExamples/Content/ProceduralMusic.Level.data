@@ -39,43 +39,6 @@ Level
 			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
-		RandomContext 
-		{
-			var RandomSeed = true
-			var Seed = 335529976
-		}
-		MusicManager 
-		{
-			var BackgroundCue = "58a78ad8806226df:Drums_2"
-		}
-		Instrument1 
-		{
-			var PlayOnNoteType = NoteTypes.EighthNote
-			var MaxBeatsToWait = 3
-			var MinVolume = 0.100000001
-			var MaxVolume = 0.150000006
-		}
-		Instrument4 
-		{
-			var PlayOnNoteType = NoteTypes.QuarterNote
-			var MaxBeatsToWait = 1
-			var MinVolume = 0.100000001
-			var MaxVolume = 0.200000003
-		}
-		Instrument3 
-		{
-			var PlayOnNoteType = NoteTypes.WholeNote
-			var MaxBeatsToWait = 1
-			var MinVolume = 0.150000006
-			var MaxVolume = 0.25
-		}
-		Instrument2 
-		{
-			var PlayOnNoteType = NoteTypes.WholeNote
-			var MaxBeatsToWait = 1
-			var MinVolume = 0.150000006
-			var MaxVolume = 0.25
-		}
 	}
 	Cog 
 	{
@@ -384,6 +347,1825 @@ Level
 			var FontSize = 32
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
+		}
+	}
+	Cog 
+	{
+		var Name = "MusicObject"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 3216162828
+		}
+		MusicManager 
+		{
+			var BackgroundCue = "58a78ad8806226df:Drums_2"
+			var SequencesPerGroup = 2
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 8
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Five_Major
+					var Chord3 = ChordNames.Four_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 9
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.Five_Major
+					var Chord2 = ChordNames.One_Major
+					var Chord3 = ChordNames.Four_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 10
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.Four_Major
+					var Chord2 = ChordNames.One_Major
+					var Chord3 = ChordNames.Five_Major
+					var Chord4 = ChordNames.One_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 11
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.Five_Major
+					var Chord4 = ChordNames.One_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 12
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.Five_Major_7
+					var Chord4 = ChordNames.One_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 13
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.One_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 14
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.One_Major
+					var Chord4 = ChordNames.Five_Major_7
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 15
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.Five_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.One_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 16
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = true
+					var Chord1 = ChordNames.Four_Major
+					var Chord2 = ChordNames.One_Major
+					var Chord3 = ChordNames.Four_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 17
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Five_Major
+					var Chord3 = ChordNames.Four_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 18
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.Five_Major_7
+					var Chord4 = ChordNames.One_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 19
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.One_Major
+					var Chord4 = ChordNames.Five_Major_7
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 20
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Five_Major
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.One_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 21
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Four_Major
+					var Chord2 = ChordNames.One_Major
+					var Chord3 = ChordNames.Four_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 22
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Five_Major
+					var Chord2 = ChordNames.Six_Minor
+					var Chord3 = ChordNames.Four_Major
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 23
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Five_Major
+					var Chord2 = ChordNames.One_Major
+					var Chord3 = ChordNames.Six_Minor
+					var Chord4 = ChordNames.Four_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 24
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Six_Minor
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.Five_Major
+					var Chord4 = ChordNames.Six_Minor
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 25
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Six_Minor
+					var Chord2 = ChordNames.Two_Minor
+					var Chord3 = ChordNames.Five_Major
+					var Chord4 = ChordNames.One_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 26
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Six_Minor
+					var Chord2 = ChordNames.Four_Major
+					var Chord3 = ChordNames.Six_Minor
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 27
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.One_Major
+					var Chord2 = ChordNames.Six_Minor
+					var Chord3 = ChordNames.Two_Minor
+					var Chord4 = ChordNames.Five_Major
+				}
+			}
+			Cog 
+			{
+				var Name = "ChordSequence"
+				var LinkId = 28
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Chords 
+				{
+					var InGroup1 = false
+					var Chord1 = ChordNames.Four_Major
+					var Chord2 = ChordNames.One_Major
+					var Chord3 = ChordNames.Six_Minor
+					var Chord4 = ChordNames.Four_Major
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Instrument1"
+		var LinkId = 29
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Synthesizer 
+		{
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 1244382247
+		}
+		Instrument 
+		{
+			var PlayOnNoteType = NoteTypes.EighthNote
+			var MaxBeatsToWait = 3
+			var MinVolume = 0.100000001
+			var MaxVolume = 0.150000006
+			var AddEffects = false
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 30
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.0900000036
+					var DecayTime = 0.5
+					var SustainTime = 0.0700000003
+					var SustainLevel = 0.5
+					var ReleaseTime = 1
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 31
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 2
+					var Volume = 0.25
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.0199999996
+					var DecayTime = 0
+					var SustainTime = 0.0199999996
+					var SustainLevel = 1
+					var ReleaseTime = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "C3"
+				var LinkId = 32
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = 0
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "D3"
+				var LinkId = 33
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "E3"
+				var LinkId = 34
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.E3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "F3"
+				var LinkId = 35
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = true
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "G3"
+				var LinkId = 36
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A3"
+				var LinkId = 37
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "B3"
+				var LinkId = 38
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.B3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "C4"
+				var LinkId = 39
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = 0
+					var OctaveAdjustment = 1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "D4"
+				var LinkId = 40
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = 1
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "E4"
+				var LinkId = 41
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.E3
+					var OctaveAdjustment = 1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "F4"
+				var LinkId = 42
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = 1
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = true
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "G4"
+				var LinkId = 43
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = 1
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A4"
+				var LinkId = 44
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = 1
+					var OneMajor = true
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = true
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Instrument2"
+		var LinkId = 45
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Synthesizer 
+		{
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 455142740
+		}
+		Instrument 
+		{
+			var PlayOnNoteType = NoteTypes.WholeNote
+			var MaxBeatsToWait = 1
+			var MinVolume = 0.150000006
+			var MaxVolume = 0.25
+			var AddEffects = true
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 46
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.5
+					var DecayTime = 1
+					var SustainTime = 0.5
+					var SustainLevel = 0.5
+					var ReleaseTime = 2
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 47
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 2
+					var Volume = 0.25
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.300000012
+					var DecayTime = 0
+					var SustainTime = 0.600000024
+					var SustainLevel = 1
+					var ReleaseTime = 1
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 48
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 3
+					var Volume = 0.200000003
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.400000006
+					var DecayTime = 0.5
+					var SustainTime = 0.200000003
+					var SustainLevel = 0.800000012
+					var ReleaseTime = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 49
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 4
+					var Volume = 0.200000003
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.600000024
+					var DecayTime = 0.200000003
+					var SustainTime = 0.0199999996
+					var SustainLevel = 0.600000024
+					var ReleaseTime = 1
+				}
+			}
+			Cog 
+			{
+				var Name = "F1"
+				var LinkId = 50
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = 0
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "G1"
+				var LinkId = 51
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = -2
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A1"
+				var LinkId = 52
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "B1"
+				var LinkId = 53
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.B3
+					var OctaveAdjustment = 0
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "C2"
+				var LinkId = 54
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = 0
+					var OctaveAdjustment = -1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "D2"
+				var LinkId = 55
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "E2"
+				var LinkId = 56
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.E3
+					var OctaveAdjustment = -1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "F2"
+				var LinkId = 57
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "G2"
+				var LinkId = 58
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = -1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A2"
+				var LinkId = 59
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "B2"
+				var LinkId = 60
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.B3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "C3"
+				var LinkId = 61
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = 0
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "D3"
+				var LinkId = 62
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = 0
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "E3"
+				var LinkId = 63
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.E3
+					var OctaveAdjustment = 0
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Instrument3"
+		var LinkId = 64
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Synthesizer 
+		{
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 1244382247
+		}
+		Instrument 
+		{
+			var PlayOnNoteType = NoteTypes.WholeNote
+			var MaxBeatsToWait = 1
+			var MinVolume = 0.239999995
+			var MaxVolume = 0.25999999
+			var AddEffects = false
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 65
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.0900000036
+					var DecayTime = 0.5
+					var SustainTime = 0.0700000003
+					var SustainLevel = 0.5
+					var ReleaseTime = 2
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 66
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 2
+					var Volume = 0.25
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.0199999996
+					var DecayTime = 0
+					var SustainTime = 0.0199999996
+					var SustainLevel = 1
+					var ReleaseTime = 1.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 67
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 3
+					var Volume = 0.200000003
+					var WaveType = SynthWaveType.SineWave
+					var AttackTime = 0.0500000007
+					var DecayTime = 0.0500000007
+					var SustainTime = 0.0199999996
+					var SustainLevel = 0.5
+					var ReleaseTime = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "C1"
+				var LinkId = 68
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.C3
+					var OctaveAdjustment = -2
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "D1"
+				var LinkId = 69
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "F1"
+				var LinkId = 70
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "G1"
+				var LinkId = 71
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A1"
+				var LinkId = 72
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Instrument4"
+		var LinkId = 73
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Synthesizer 
+		{
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 366562352
+		}
+		Instrument 
+		{
+			var PlayOnNoteType = NoteTypes.QuarterNote
+			var MaxBeatsToWait = 1
+			var MinVolume = 0.0500000007
+			var MaxVolume = 0.150000006
+			var AddEffects = false
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 74
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.0900000036
+					var DecayTime = 0.5
+					var SustainTime = 0.0700000003
+					var SustainLevel = 0.5
+					var ReleaseTime = 1
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 75
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 2
+					var Volume = 0.25
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.0199999996
+					var DecayTime = 0
+					var SustainTime = 0.0199999996
+					var SustainLevel = 1
+					var ReleaseTime = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 76
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 3
+					var Volume = 0.200000003
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.0500000007
+					var DecayTime = 0.0500000007
+					var SustainTime = 0.0199999996
+					var SustainLevel = 0.5
+					var ReleaseTime = 0.25
+				}
+			}
+			Cog 
+			{
+				var Name = "F1"
+				var LinkId = 77
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "G1"
+				var LinkId = 78
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = -2
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A1"
+				var LinkId = 79
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "B1"
+				var LinkId = 80
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.B3
+					var OctaveAdjustment = -2
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "C2"
+				var LinkId = 81
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.C3
+					var OctaveAdjustment = -1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "D2"
+				var LinkId = 82
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "E2"
+				var LinkId = 83
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.E3
+					var OctaveAdjustment = -1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "F2"
+				var LinkId = 84
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.F3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "G2"
+				var LinkId = 85
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.G3
+					var OctaveAdjustment = -1
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "A2"
+				var LinkId = 86
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.A3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = true
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "B2"
+				var LinkId = 87
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.B3
+					var OctaveAdjustment = -1
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "C3"
+				var LinkId = 88
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.C3
+					var OctaveAdjustment = 0
+					var OneMajor = true
+					var TwoMinor = false
+					var FourMajor = true
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
+			Cog 
+			{
+				var Name = "D3"
+				var LinkId = 89
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.D3
+					var OctaveAdjustment = 0
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = true
+					var FiveMajor7 = true
+					var SixMinor = false
+				}
+			}
+			Cog 
+			{
+				var Name = "E3"
+				var LinkId = 90
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				InstrumentNote 
+				{
+					var NoteName = MidiNotes.E3
+					var OctaveAdjustment = 0
+					var OneMajor = false
+					var TwoMinor = false
+					var FourMajor = false
+					var FiveMajor = false
+					var FiveMajor7 = false
+					var SixMinor = true
+				}
+			}
 		}
 	}
 }

@@ -191,20 +191,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 918619101
-		}
-		Background 
-		{
-			var Volume = 0.25
-			var MinimumWait = 4.5
-			var MaximumWait = 5.5
-		}
-		Melody 
-		{
-			var MinimumVolume = 0.00999999978
-			var MaximumVolume = 0.100000001
-			var MinimumWait = 0.100000001
-			var MaximumWait = 2
+			var Seed = 717195612
 		}
 		NoteEffects 
 		{
@@ -212,6 +199,9 @@ Level
 			var Volume2 = 0.25
 		}
 		SpawnCircle 
+		{
+		}
+		Hierarchy 
 		{
 		}
 	}
@@ -271,6 +261,173 @@ Level
 			var FontSize = 48
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
+		}
+	}
+	Cog 
+	{
+		var Name = "BackgroundMusic"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 1838612816
+		}
+		Synthesizer 
+		{
+		}
+		Background 
+		{
+			var Volume = 0.25
+			var MinimumWait = 4.5
+			var MaximumWait = 5.5
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 8
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 2
+					var DecayTime = 4
+					var SustainTime = 0.00999999978
+					var SustainLevel = 0.5
+					var ReleaseTime = 6
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 9
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 2
+					var Volume = 0.25
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.5
+					var DecayTime = 0
+					var SustainTime = 0.00999999978
+					var SustainLevel = 1
+					var ReleaseTime = 8
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 10
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 3
+					var Volume = 0.200000003
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 1
+					var DecayTime = 0.5
+					var SustainTime = 0.00999999978
+					var SustainLevel = 0.800000012
+					var ReleaseTime = 8
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "MelodyMusic"
+		var LinkId = 11
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		RandomContext 
+		{
+			var RandomSeed = true
+			var Seed = 1254416560
+		}
+		Synthesizer 
+		{
+		}
+		Melody 
+		{
+			var MinimumVolume = 0.00999999978
+			var MaximumVolume = 0.100000001
+			var MinimumWait = 0.100000001
+			var MaximumWait = 2
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 12
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.0900000036
+					var DecayTime = 0.5
+					var SustainTime = 0.0700000003
+					var SustainLevel = 0.5
+					var ReleaseTime = 1
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 13
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 3
+					var Volume = 0.25
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.0199999996
+					var DecayTime = 0
+					var SustainTime = 0.0199999996
+					var SustainLevel = 1
+					var ReleaseTime = 0.5
+				}
+			}
 		}
 	}
 }

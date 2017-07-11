@@ -7,6 +7,8 @@ class Background : ZilchComponent
 {
   // Requires a RandomContext component
   [Dependency] var RandomValues : RandomContext;
+  // Requires a Synthesizer component
+  [Dependency] var Synthesizer : Synthesizer;
   
   // The volume to use when playing notes
   [Property] var Volume : Real = 0.25;
@@ -15,8 +17,6 @@ class Background : ZilchComponent
   // The maximum time to wait to play the next note
   [Property] var MaximumWait : Real = 5.5;
   
-  // The AdditiveSynthNode to use for the notes
-  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
   // The low pass filter to use on the notes
   var LowPass : LowPassNode = Audio.LowPassNode();
   // The high pass filter to use on the notes
@@ -32,40 +32,12 @@ class Background : ZilchComponent
   
   function Initialize(init : CogInitializer)
   {
-    // Create the AdsrEnvelope object and set the values for the first harmonic
-    var envelope = AdsrEnvelope();
-    envelope.AttackTime = 2.0;
-    envelope.DecayTime = 4.0;
-    envelope.SustainTime = 0.01;
-    envelope.SustainLevel = 0.5;
-    envelope.ReleaseTime = 6.0;
-    // Add the first harmonic to the synth
-    this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.TriangleWave);
-    
-    // Set the envelope values for the second harmonic
-    envelope.AttackTime = 0.5;
-    envelope.DecayTime = 0;
-    envelope.SustainTime = 0.01;
-    envelope.SustainLevel = 1.0;
-    envelope.ReleaseTime = 8.0;
-    // Add the second harmonic to the synth
-    this.Synth.AddHarmonic(2.0, 0.25, envelope, SynthWaveType.TriangleWave);
-    
-    // Set the envelope values for the third harmonic
-    envelope.AttackTime = 1.0;
-    envelope.DecayTime = 0.5;
-    envelope.SustainTime = 0.01;
-    envelope.SustainLevel = 0.8;
-    envelope.ReleaseTime = 8.0;
-    // Add the third harmonic to the synth
-    this.Synth.AddHarmonic(3.0, 0.2, envelope, SynthWaveType.TriangleWave);
-    
     // Set the low pass and high pass cutoff values
     this.LowPass.CutoffFrequency = 3000.0;
     this.HighPass.CutoffFrequency = 100.0;
     
     // Connect the synth to the flanger node
-    this.Flanger.AddInputNode(this.Synth);
+    this.Flanger.AddInputNode(this.Synthesizer.SynthNode);
     // Connect the flanger to the high pass node
     this.HighPass.AddInputNode(this.Flanger);
     // Connect the high pass to the low pass
@@ -74,9 +46,6 @@ class Background : ZilchComponent
     this.Reverb.AddInputNode(this.LowPass);
     // Connect the reverb node to the SoundSpace
     this.Space.SoundSpace.InputNode.AddInputNode(this.Reverb);
-    
-    // Play the first note
-    this.Synth.NoteOn(MidiNotes.C3 as Integer - 12, this.Volume);
     
     // Add the possible notes to play to the array
     this.Notes.Push(MidiNotes.C3 - 12);
@@ -87,9 +56,9 @@ class Background : ZilchComponent
     this.Notes.Push(MidiNotes.A3 - 24);
     this.Notes.Push(MidiNotes.G3 - 24);
     
-    // Delay the next note by a random time
+    // Delay the first note so the harmonics are added
     var sequence = Actions.Sequence(this.Owner.Actions);
-    Action.Delay(sequence, this.RandomValues.Range(this.MinimumWait, this.MaximumWait));
+    Action.Delay(sequence, 0.05);
     Action.Call(sequence, this.Play);
   }
   
@@ -104,7 +73,7 @@ class Background : ZilchComponent
     this.PreviousIndex = index;
     
     // Play the note
-    this.Synth.NoteOn(this.Notes[index], this.Volume);
+    this.Synthesizer.NoteOn(this.Notes[index], this.Volume);
     
     // Delay the next note by a random time
     var sequence = Actions.Sequence(this.Owner.Actions);
@@ -122,6 +91,8 @@ class Melody : ZilchComponent
 {
   // Requires a RandomContext component
   [Dependency] var RandomValues : RandomContext;
+  // Requires a Synthesizer component
+  [Dependency] var Synthesizer : Synthesizer;
     
   // The minimum volume to play notes at
   [Property] var MinimumVolume : Real = 0.01;
@@ -132,8 +103,6 @@ class Melody : ZilchComponent
   // The maximum time to wait to play the next note
   [Property] var MaximumWait : Real = 2.0;
   
-  // The AdditiveSynthNode to use for the notes
-  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
   // The array of MIDI note values to use
   var Notes : Array[Integer] = Array[Integer]();
   // Keeps track of the last note value played
@@ -145,26 +114,7 @@ class Melody : ZilchComponent
   function Initialize(init : CogInitializer)
   {
     // Add the synth node to the SoundSpace
-    this.Space.SoundSpace.InputNode.AddInputNode(this.Synth);
-    
-    // Create the AdsrEnvelope and set the values for the first harmonic
-    var envelope = AdsrEnvelope();
-    envelope.AttackTime = 0.09;
-    envelope.DecayTime = 0.5;
-    envelope.SustainTime = 0.07;
-    envelope.SustainLevel = 0.5;
-    envelope.ReleaseTime = 1.0;
-    // Add the first harmonic to the synth
-    this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.TriangleWave);
-    
-    // Set the values for the second harmonic
-    envelope.AttackTime = 0.02;
-    envelope.DecayTime = 0;
-    envelope.SustainTime = 0.02;
-    envelope.SustainLevel = 1.0;
-    envelope.ReleaseTime = 0.5;
-    // Add the second harmonic to the synth
-    this.Synth.AddHarmonic(3.0, 0.25, envelope, SynthWaveType.TriangleWave);
+    this.Space.SoundSpace.InputNode.AddInputNode(this.Synthesizer.SynthNode);
     
     // Add all the possible note values to the array
     this.Notes.Push(MidiNotes.C3);
@@ -195,7 +145,7 @@ class Melody : ZilchComponent
     this.LastIndex = index;
     
     // Play the note, using a random volume
-    this.Synth.NoteOn(this.Notes[index], this.RandomValues.Range(this.MinimumVolume, this.MaximumVolume));
+    this.Synthesizer.NoteOn(this.Notes[index], this.RandomValues.Range(this.MinimumVolume, this.MaximumVolume));
     
     // Delay the next note by a random time
     var sequence = Actions.Sequence(this.Owner.Actions);

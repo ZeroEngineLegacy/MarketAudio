@@ -39,13 +39,6 @@ Level
 			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
-		MIDI 
-		{
-		}
-		KeyboardMIDI 
-		{
-			var Volume = 0.300000012
-		}
 	}
 	Cog 
 	{
@@ -230,8 +223,147 @@ Level
 	}
 	Cog 
 	{
-		var Name = "C"
+		var Name = "MidiSynthObject"
 		var LinkId = 5
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Synthesizer 
+		{
+		}
+		MIDI 
+		{
+		}
+		KeyboardMIDI 
+		{
+			var Volume = 0.800000012
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 6
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 1
+					var Volume = 0.5
+					var WaveType = SynthWaveType.SquareWave
+					var AttackTime = 0.0900000036
+					var DecayTime = 0.600000024
+					var SustainTime = 0
+					var SustainLevel = 0.5
+					var ReleaseTime = 0.699999988
+				}
+			}
+			Cog 
+			{
+				var Name = "Harmonic"
+				var LinkId = 7
+				Transform 
+				{
+					var Translation = Real3{0, 0, 0}
+					var Scale = Real3{1, 1, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SynthHarmonic 
+				{
+					var FreqMultiplier = 2
+					var Volume = 0.5
+					var WaveType = SynthWaveType.TriangleWave
+					var AttackTime = 0.100000001
+					var DecayTime = 0
+					var SustainTime = 0
+					var SustainLevel = 1
+					var ReleaseTime = 0.5
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "RecordButton"
+		var LinkId = 8
+		Transform 
+		{
+			var Translation = Real3{0, -3.20618153, 0}
+			var Scale = Real3{3, 0.800000012, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Sprite 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{0.689999998, 0, 0, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var SpriteSource = "5275aa4d802dd6dc:Square"
+			var FlipX = false
+			var FlipY = false
+			var AnimationActive = true
+			var AnimationSpeed = 1
+			var StartFrame = 0
+		}
+		Reactive 
+		{
+			var Active = true
+		}
+		RecordSoundSpace 
+		{
+			var StartColor = Real4{0.730000019, 0, 0, 1}
+			var StopColor = Real4{0.174999997, 0.25, 0.191500008, 1}
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "SpriteText"
+				var LinkId = 9
+				Transform 
+				{
+					var Translation = Real3{0, -9.53674316e-07, 1}
+					var Scale = Real3{0.333333343, 1.25, 1}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				SpriteText 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "582c575af53d18c9:AlphaSprite"
+					var VertexColor = Real4{1, 1, 1, 1}
+					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "Start Recording"
+					var Font = "57343753bb4eaaec:NotoSans-Regular"
+					var FontSize = 48
+					var PixelsPerUnit = 128
+					var TextAlign = TextAlign.Center
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "C"
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{-3, 0, 0}
@@ -270,7 +402,7 @@ Level
 	Cog 
 	{
 		var Name = "CSharp"
-		var LinkId = 6
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Real3{-2.5, 0.540540695, 1}
@@ -309,7 +441,7 @@ Level
 	Cog 
 	{
 		var Name = "DSharp"
-		var LinkId = 7
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{-1.50000012, 0.540540695, 1}
@@ -348,7 +480,7 @@ Level
 	Cog 
 	{
 		var Name = "FSharp"
-		var LinkId = 8
+		var LinkId = 13
 		Transform 
 		{
 			var Translation = Real3{0.499999881, 0.540540695, 1}
@@ -387,7 +519,7 @@ Level
 	Cog 
 	{
 		var Name = "ASharp"
-		var LinkId = 9
+		var LinkId = 14
 		Transform 
 		{
 			var Translation = Real3{2.5, 0.540540695, 1}
@@ -426,7 +558,7 @@ Level
 	Cog 
 	{
 		var Name = "HighCSharp"
-		var LinkId = 10
+		var LinkId = 15
 		Transform 
 		{
 			var Translation = Real3{4.5, 0.540540695, 1}
@@ -465,7 +597,7 @@ Level
 	Cog 
 	{
 		var Name = "GSharp"
-		var LinkId = 11
+		var LinkId = 16
 		Transform 
 		{
 			var Translation = Real3{1.49999988, 0.540540695, 1}
@@ -504,7 +636,7 @@ Level
 	Cog 
 	{
 		var Name = "D"
-		var LinkId = 12
+		var LinkId = 17
 		Transform 
 		{
 			var Translation = Real3{-2, 0, 0}
@@ -543,7 +675,7 @@ Level
 	Cog 
 	{
 		var Name = "F"
-		var LinkId = 13
+		var LinkId = 18
 		Transform 
 		{
 			var Translation = Real3{-1.1920929e-07, 0, 0}
@@ -582,7 +714,7 @@ Level
 	Cog 
 	{
 		var Name = "G"
-		var LinkId = 14
+		var LinkId = 19
 		Transform 
 		{
 			var Translation = Real3{0.999999881, 0, 0}
@@ -621,7 +753,7 @@ Level
 	Cog 
 	{
 		var Name = "A"
-		var LinkId = 15
+		var LinkId = 20
 		Transform 
 		{
 			var Translation = Real3{1.99999988, 0, 0}
@@ -660,7 +792,7 @@ Level
 	Cog 
 	{
 		var Name = "HighC"
-		var LinkId = 16
+		var LinkId = 21
 		Transform 
 		{
 			var Translation = Real3{4, 0, 0}
@@ -699,7 +831,7 @@ Level
 	Cog 
 	{
 		var Name = "HighD"
-		var LinkId = 17
+		var LinkId = 22
 		Transform 
 		{
 			var Translation = Real3{5, 0, 0}
@@ -738,7 +870,7 @@ Level
 	Cog 
 	{
 		var Name = "B"
-		var LinkId = 18
+		var LinkId = 23
 		Transform 
 		{
 			var Translation = Real3{3, 0, 0}
@@ -777,7 +909,7 @@ Level
 	Cog 
 	{
 		var Name = "E"
-		var LinkId = 19
+		var LinkId = 24
 		Transform 
 		{
 			var Translation = Real3{-1.00000012, 0, 0}
@@ -816,7 +948,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 20
+		var LinkId = 25
 		Transform 
 		{
 			var Translation = Real3{-3, -1.14583302, 2}
@@ -845,7 +977,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 21
+		var LinkId = 26
 		Transform 
 		{
 			var Translation = Real3{-2.5, -0.0833332539, 2}
@@ -874,7 +1006,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 22
+		var LinkId = 27
 		Transform 
 		{
 			var Translation = Real3{4.5, -0.0833332539, 2}
@@ -903,7 +1035,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 23
+		var LinkId = 28
 		Transform 
 		{
 			var Translation = Real3{2.5, -0.0833332539, 2}
@@ -932,7 +1064,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 24
+		var LinkId = 29
 		Transform 
 		{
 			var Translation = Real3{1.49999988, -0.0833332539, 2}
@@ -957,11 +1089,14 @@ Level
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}
+		Hierarchy 
+		{
+		}
 	}
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 25
+		var LinkId = 30
 		Transform 
 		{
 			var Translation = Real3{0.499999881, -0.0833332539, 2}
@@ -990,7 +1125,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 26
+		var LinkId = 31
 		Transform 
 		{
 			var Translation = Real3{-1.50000012, -0.0833332539, 2}
@@ -1019,7 +1154,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 27
+		var LinkId = 32
 		Transform 
 		{
 			var Translation = Real3{-2, -1.14583302, 2}
@@ -1048,7 +1183,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 28
+		var LinkId = 33
 		Transform 
 		{
 			var Translation = Real3{5, -1.14583302, 2}
@@ -1077,7 +1212,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 29
+		var LinkId = 34
 		Transform 
 		{
 			var Translation = Real3{4, -1.14583302, 2}
@@ -1106,7 +1241,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 30
+		var LinkId = 35
 		Transform 
 		{
 			var Translation = Real3{3, -1.14583302, 2}
@@ -1135,7 +1270,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 31
+		var LinkId = 36
 		Transform 
 		{
 			var Translation = Real3{1.99999988, -1.14583302, 2}
@@ -1164,7 +1299,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 32
+		var LinkId = 37
 		Transform 
 		{
 			var Translation = Real3{0.999999881, -1.14583302, 2}
@@ -1193,7 +1328,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 33
+		var LinkId = 38
 		Transform 
 		{
 			var Translation = Real3{-1.1920929e-07, -1.14583302, 2}
@@ -1222,7 +1357,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 34
+		var LinkId = 39
 		Transform 
 		{
 			var Translation = Real3{-1.00000012, -1.14583302, 2}
@@ -1251,7 +1386,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 35
+		var LinkId = 40
 		Transform 
 		{
 			var Translation = Real3{0, 3.7659905, 0}
@@ -1280,7 +1415,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 36
+		var LinkId = 41
 		Transform 
 		{
 			var Translation = Real3{0, -4.14768028, 0}
@@ -1309,7 +1444,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 37
+		var LinkId = 42
 		Transform 
 		{
 			var Translation = Real3{0, 4.732934, 0}
@@ -1337,80 +1472,8 @@ Level
 	}
 	Cog 
 	{
-		var Name = "RecordButton"
-		var LinkId = 38
-		Transform 
-		{
-			var Translation = Real3{0, -3.20618153, 0}
-			var Scale = Real3{3, 0.800000012, 1}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Sprite 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var OverrideBoundingBox = false
-			var LocalAabbCenter = Real3{0, 0, 0}
-			var LocalAabbHalfExtents = Real3{1, 1, 1}
-			var GroupSortValue = 0
-			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{0.689999998, 0, 0, 1}
-			var GeometryMode = SpriteGeometryMode.ZPlane
-			var SpriteSource = "5275aa4d802dd6dc:Square"
-			var FlipX = false
-			var FlipY = false
-			var AnimationActive = true
-			var AnimationSpeed = 1
-			var StartFrame = 0
-		}
-		Reactive 
-		{
-			var Active = true
-		}
-		RecordSoundSpace 
-		{
-			var FileName = "RecordedAudio"
-			var StartColor = Real4{0.730000019, 0, 0, 1}
-			var StopColor = Real4{0.174999997, 0.25, 0.191500008, 1}
-		}
-		Hierarchy 
-		{
-			Cog 
-			{
-				var Name = "SpriteText"
-				var LinkId = 39
-				Transform 
-				{
-					var Translation = Real3{0, -9.53674316e-07, 1}
-					var Scale = Real3{0.333333343, 1.25, 1}
-					var Rotation = Quaternion{0, 0, 0, 1}
-				}
-				SpriteText 
-				{
-					var Visible = true
-					var ViewCulling = true
-					var VisibilityEvents = true
-					var OverrideBoundingBox = false
-					var LocalAabbCenter = Real3{0, 0, 0}
-					var LocalAabbHalfExtents = Real3{1, 1, 1}
-					var GroupSortValue = 0
-					var Material = "582c575af53d18c9:AlphaSprite"
-					var VertexColor = Real4{1, 1, 1, 1}
-					var GeometryMode = SpriteGeometryMode.ZPlane
-					var Text = "Start Recording"
-					var Font = "57343753bb4eaaec:NotoSans-Regular"
-					var FontSize = 48
-					var PixelsPerUnit = 128
-					var TextAlign = TextAlign.Center
-				}
-			}
-		}
-	}
-	Cog 
-	{
 		var Name = "Sprite"
-		var LinkId = 40
+		var LinkId = 43
 		Transform 
 		{
 			var Translation = Real3{0, -3.20618153, -1}
@@ -1440,7 +1503,7 @@ Level
 	Cog 
 	{
 		var Name = "D"
-		var LinkId = 41
+		var LinkId = 44
 		Transform 
 		{
 			var Translation = Real3{-9, 0, 0}
@@ -1479,7 +1542,7 @@ Level
 	Cog 
 	{
 		var Name = "FSharp"
-		var LinkId = 42
+		var LinkId = 45
 		Transform 
 		{
 			var Translation = Real3{-6.50000048, 0.540540695, 1}
@@ -1518,7 +1581,7 @@ Level
 	Cog 
 	{
 		var Name = "F"
-		var LinkId = 43
+		var LinkId = 46
 		Transform 
 		{
 			var Translation = Real3{-7, 0, 0}
@@ -1557,7 +1620,7 @@ Level
 	Cog 
 	{
 		var Name = "C"
-		var LinkId = 44
+		var LinkId = 47
 		Transform 
 		{
 			var Translation = Real3{-10, 0, 0}
@@ -1596,7 +1659,7 @@ Level
 	Cog 
 	{
 		var Name = "A"
-		var LinkId = 45
+		var LinkId = 48
 		Transform 
 		{
 			var Translation = Real3{-5.00000048, 0, 0}
@@ -1635,7 +1698,7 @@ Level
 	Cog 
 	{
 		var Name = "GSharp"
-		var LinkId = 46
+		var LinkId = 49
 		Transform 
 		{
 			var Translation = Real3{-5.50000048, 0.540540695, 1}
@@ -1674,7 +1737,7 @@ Level
 	Cog 
 	{
 		var Name = "ASharp"
-		var LinkId = 47
+		var LinkId = 50
 		Transform 
 		{
 			var Translation = Real3{-4.50000048, 0.540540695, 1}
@@ -1713,7 +1776,7 @@ Level
 	Cog 
 	{
 		var Name = "E"
-		var LinkId = 48
+		var LinkId = 51
 		Transform 
 		{
 			var Translation = Real3{-8, 0, 0}
@@ -1752,7 +1815,7 @@ Level
 	Cog 
 	{
 		var Name = "B"
-		var LinkId = 49
+		var LinkId = 52
 		Transform 
 		{
 			var Translation = Real3{-4.00000048, 0, 0}
@@ -1791,7 +1854,7 @@ Level
 	Cog 
 	{
 		var Name = "DSharp"
-		var LinkId = 50
+		var LinkId = 53
 		Transform 
 		{
 			var Translation = Real3{-8.5, 0.540540695, 1}
@@ -1830,7 +1893,7 @@ Level
 	Cog 
 	{
 		var Name = "CSharp"
-		var LinkId = 51
+		var LinkId = 54
 		Transform 
 		{
 			var Translation = Real3{-9.5, 0.540540695, 1}
@@ -1869,7 +1932,7 @@ Level
 	Cog 
 	{
 		var Name = "G"
-		var LinkId = 52
+		var LinkId = 55
 		Transform 
 		{
 			var Translation = Real3{-6.00000048, 0, 0}
@@ -1908,7 +1971,7 @@ Level
 	Cog 
 	{
 		var Name = "B"
-		var LinkId = 53
+		var LinkId = 56
 		Transform 
 		{
 			var Translation = Real3{10, 0, 0}
@@ -1947,7 +2010,7 @@ Level
 	Cog 
 	{
 		var Name = "GSharp"
-		var LinkId = 54
+		var LinkId = 57
 		Transform 
 		{
 			var Translation = Real3{8.49999905, 0.540540695, 1}
@@ -1986,7 +2049,7 @@ Level
 	Cog 
 	{
 		var Name = "F"
-		var LinkId = 55
+		var LinkId = 58
 		Transform 
 		{
 			var Translation = Real3{7, 0, 0}
@@ -2025,7 +2088,7 @@ Level
 	Cog 
 	{
 		var Name = "ASharp"
-		var LinkId = 56
+		var LinkId = 59
 		Transform 
 		{
 			var Translation = Real3{9.5, 0.540540695, 1}
@@ -2064,7 +2127,7 @@ Level
 	Cog 
 	{
 		var Name = "E"
-		var LinkId = 57
+		var LinkId = 60
 		Transform 
 		{
 			var Translation = Real3{6, 0, 0}
@@ -2103,7 +2166,7 @@ Level
 	Cog 
 	{
 		var Name = "DSharp"
-		var LinkId = 58
+		var LinkId = 61
 		Transform 
 		{
 			var Translation = Real3{5.5, 0.540540695, 1}
@@ -2142,7 +2205,7 @@ Level
 	Cog 
 	{
 		var Name = "FSharp"
-		var LinkId = 59
+		var LinkId = 62
 		Transform 
 		{
 			var Translation = Real3{7.49999952, 0.540540695, 1}
@@ -2181,7 +2244,7 @@ Level
 	Cog 
 	{
 		var Name = "A"
-		var LinkId = 60
+		var LinkId = 63
 		Transform 
 		{
 			var Translation = Real3{8.99999905, 0, 0}
@@ -2220,7 +2283,7 @@ Level
 	Cog 
 	{
 		var Name = "G"
-		var LinkId = 61
+		var LinkId = 64
 		Transform 
 		{
 			var Translation = Real3{7.99999952, 0, 0}

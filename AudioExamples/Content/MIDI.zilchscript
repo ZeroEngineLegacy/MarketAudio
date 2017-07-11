@@ -7,16 +7,8 @@
 //**********************************************************************************
 class MIDI : ZilchComponent
 {
-  [Property] var Harmonic1Attack :  Real = 0.09;
-  [Property] var Harmonic1Decay : Real = 0.6;
-  [Property] var Harmonic1Sustain : Real = 0.0;
-  [Property] var Harmonic1SusLevel : Real = 0.5;
-  [Property] var Harmonic1Release : Real = 0.7;
-  [Property] var Harmonic1Volume : Real = 0.5;
-  [Property] var Harmonic1Type : SynthWaveType = SynthWaveType.SquareWave;
+  [Dependency] var Synthesizer : Synthesizer;
   
-  // Create the AdditiveSynthNode to use for playing notes
-  var Synth : AdditiveSynthNode = Audio.AdditiveSynthNode();
   // Create the LowPassNode 
   var LowPass : LowPassNode = Audio.LowPassNode();
   // Create the HighPassNode
@@ -37,22 +29,7 @@ class MIDI : ZilchComponent
     Zero.Connect(this.Space.SoundSpace, Events.MIDINoteOff, this.OnNoteOff);
     Zero.Connect(this.Space.SoundSpace, Events.MIDIPitchWheel, this.OnPitch);
     Zero.Connect(this.Space.SoundSpace, Events.MIDIModWheel, this.OnMod);
-    
-    // Add two harmonics to the AdditiveSynthNode
-    var envelope = AdsrEnvelope();
-    envelope.AttackTime = 0.09;
-    envelope.DecayTime = 0.6;
-    envelope.SustainTime = 0.0;
-    envelope.SustainLevel = 0.5;
-    envelope.ReleaseTime = 0.7;
-    this.Synth.AddHarmonic(1.0, 0.5, envelope, SynthWaveType.SquareWave);
-    envelope.AttackTime = 0.1;
-    envelope.DecayTime = 0;
-    envelope.SustainTime = 0.0;
-    envelope.SustainLevel = 1.0;
-    envelope.ReleaseTime = 0.5;
-    this.Synth.AddHarmonic(2.0, 0.5, envelope, SynthWaveType.TriangleWave);
-    
+        
     // Set the LowPassNode's cutoff frequency
     this.LowPass.CutoffFrequency = 2000.0;
     // Set the HighPassNode's cutoff frequency
@@ -63,7 +40,7 @@ class MIDI : ZilchComponent
     this.Mod.BypassPercent = 50;
     
     // Connect the AdditiveSynthNode to the ModulationNode
-    this.Mod.AddInputNode(this.Synth);
+    this.Mod.AddInputNode(this.Synthesizer.SynthNode);
     // Connect the ModulationNode to the FlangerNode
     this.Flanger.AddInputNode(this.Mod);
     // Connect the FlangerNode to the HighPassNode
@@ -80,13 +57,13 @@ class MIDI : ZilchComponent
   function OnNoteOn(event : MidiEvent)
   {
     //Console.WriteLine("Note on `event.MIDINumber` `event.Value`");
-    this.Synth.NoteOn(event.MIDINumber, event.Value / 127.0);
+    this.Synthesizer.NoteOn(event.MIDINumber as Integer, event.Value / 127.0);
   }
   
   function OnNoteOff(event : MidiEvent)
   {
     //Console.WriteLine("Note off `event.MIDINumber`");
-    this.Synth.NoteOff(event.MIDINumber);
+    this.Synthesizer.NoteOff(event.MIDINumber as Integer);
   }
   
   function OnPitch(event : MidiEvent)
