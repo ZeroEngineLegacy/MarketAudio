@@ -26,7 +26,7 @@ Level
 		}
 		GridDraw 
 		{
-			var Active = true
+			var Active = false
 			var HalfCellOffset = false
 			var CellSize = 1
 			var Axis = AxisDirection.Z
@@ -51,9 +51,9 @@ Level
 			var GameDebugDraw = true
 			var RenderDiffuse = true
 			var RenderSpecular = true
-			var RenderSkybox = true
+			var RenderSkybox = false
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var ClearColor = Real4{0, 0, 0, 1}
+			var ClearColor = Real4{0.127500013, 0.284475029, 0.300000012, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -239,7 +239,7 @@ Level
 		}
 		KeyboardMIDI 
 		{
-			var Volume = 0.800000012
+			var Volume = 0.200000003
 		}
 		Hierarchy 
 		{
@@ -1432,7 +1432,7 @@ Level
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
 			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{0.214999974, 0.214999974, 0.214999974, 1}
+			var VertexColor = Real4{0.649999976, 0.649999976, 0.649999976, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "File will be saved in Documents/Zero as RecordedAudio.wav"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"

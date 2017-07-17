@@ -51,9 +51,9 @@ Level
 			var GameDebugDraw = true
 			var RenderDiffuse = true
 			var RenderSpecular = true
-			var RenderSkybox = true
+			var RenderSkybox = false
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var ClearColor = Real4{0, 0, 0, 1}
+			var ClearColor = Real4{0.629999995, 0.988900006, 1, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -356,7 +356,7 @@ Level
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{0, 0, 0, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
-			var Text = "(this will reduce the music's volume)"
+			var Text = "(this will reduce the music's volume but not the volume of the footsteps)"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 38
 			var PixelsPerUnit = 128

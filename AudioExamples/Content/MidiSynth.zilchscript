@@ -78,3 +78,79 @@ class MIDI : ZilchComponent
     this.Mod.Frequency = this.ModFrequency + (this.ModFrequency * (event.Value / 127.0));
   }
 }
+
+//**********************************************************************************
+//
+// Contains an AdditiveSynthNode and functions for playing and stopping notes.
+// Harmonics are added by using SynthHarmonic components on child objects.
+//
+//**********************************************************************************
+class Synthesizer : ZilchComponent
+{
+  // The AdditiveSynthNode to use for this synthesizer
+  var SynthNode : AdditiveSynthNode = Audio.AdditiveSynthNode();
+  
+  function Initialize(init : CogInitializer)
+  {
+    
+  }
+  
+  function NoteOn(midiNumber : Integer, volume : Real)
+  {
+    // Call the NoteOn method on the AdditiveSynthNode
+    this.SynthNode.NoteOn(midiNumber, volume);
+  }
+  
+  function NoteOff(midiNumber : Integer)
+  {
+    // Call the NoteOff method on the AdditiveSynthNode
+    this.SynthNode.NoteOff(midiNumber);
+  }
+}
+
+//**********************************************************************************
+//
+// Adds a harmonic to a Synthesizer component on this object's parent
+//
+//**********************************************************************************
+class SynthHarmonic : ZilchComponent
+{
+  // The multiplier applied to the base frequency of the note
+  [Property] var FreqMultiplier : Real;
+  // The volume of this harmonic
+  [Property] var Volume : Real;
+  // The type of wave to use for this harmonic
+  [Property] var WaveType : SynthWaveType;
+  // Attack time for the AdsrEnvelope object
+  [Property] var AttackTime : Real;
+  // Decay time for the AdsrEnvelope object
+  [Property] var DecayTime : Real;
+  // Sustain time for the AdsrEnvelope object
+  [Property] var SustainTime : Real;
+  // Sustain level for the AdsrEnvelope object
+  [Property] var SustainLevel : Real;
+  // Release time for the AdsrEnvelope object
+  [Property] var ReleaseTime : Real;
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Make sure the Synthesizer component exists
+    if (this.Owner.Parent == null || this.Owner.Parent.Synthesizer == null)
+    {
+      Console.WriteLine("No Synthesizer on parent object for SynthHarmonic");
+      return;
+    }
+    
+    // Create the AdsrEnvelope object and set its values
+    var envelope = AdsrEnvelope();
+    envelope.AttackTime = this.AttackTime;
+    envelope.DecayTime = this.DecayTime;
+    envelope.SustainTime = this.SustainTime;
+    envelope.SustainLevel = this.SustainLevel;
+    envelope.ReleaseTime = this.ReleaseTime;
+    
+    // Add the harmonic to the AdditiveSynthNode
+    this.Owner.Parent.Synthesizer.SynthNode.AddHarmonic(this.FreqMultiplier, 
+      this.Volume, envelope, this.WaveType);
+  }
+}

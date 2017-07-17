@@ -28,10 +28,6 @@ class BackgroundAmbience : ZilchComponent
   [Property] var Cue3Night : SoundCue;
   // The minimum and maximum seconds that will pass before this cue is played again
   [Property] var Wait3MinMax : Real2 = Real2(3.0, 10.0);
-  // Sprite that is shown to indicate that day ambience is playing
-  [Property] var DayIndicator : CogPath = CogPath();
-  // Sprite that is shown to indicate that night ambience is playing
-  [Property] var NightIndicator : CogPath = CogPath();
   
   // An object with a SoundEmitter for the first ambience cue
   var Emitter1 : Cog;
@@ -97,32 +93,10 @@ class BackgroundAmbience : ZilchComponent
       
     // If switching from day to night, play the night background
     if (this.Day == true && event.Day == false)
-    {
       this.BackgroundInstance = this.Space.SoundSpace.PlayCuePaused(this.BackgroundNight);
-      
-      // Hide the day indicator
-      var color = this.DayIndicator.Cog.Sprite.VertexColor;
-      color.W = 0;
-      this.DayIndicator.Cog.Sprite.VertexColor = color;
-      // Show the night indicator
-      color = this.NightIndicator.Cog.Sprite.VertexColor;
-      color.W = 1;
-      this.NightIndicator.Cog.Sprite.VertexColor = color;
-    }
     // Otherwise play the day background
     else
-    {
       this.BackgroundInstance = this.Space.SoundSpace.PlayCuePaused(this.BackgroundDay);
-      
-      // Show the day indicator
-      var color = this.DayIndicator.Cog.Sprite.VertexColor;
-      color.W = 1;
-      this.DayIndicator.Cog.Sprite.VertexColor = color;
-      // Hide the night indicator
-      color = this.NightIndicator.Cog.Sprite.VertexColor;
-      color.W = 0;
-      this.NightIndicator.Cog.Sprite.VertexColor = color;
-    }
       
     // Set the volume to 0
     var previousVolume = this.BackgroundInstance.Volume;

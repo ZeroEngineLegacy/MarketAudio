@@ -51,9 +51,9 @@ Level
 			var GameDebugDraw = true
 			var RenderDiffuse = true
 			var RenderSpecular = true
-			var RenderSkybox = true
+			var RenderSkybox = false
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var ClearColor = Real4{0, 0, 0, 1}
+			var ClearColor = Real4{0.534999967, 0.734949887, 1, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -113,8 +113,8 @@ Level
 		}
 		DirectionalLight 
 		{
-			var LightColorValue = Real3{1, 1, 1}
-			var LightIntensityValue = 2
+			var LightColor = Real4{1, 1, 1, 1}
+			var LightIntensity = 1
 		}
 		CameraViewport 
 		{
@@ -181,7 +181,7 @@ Level
 		{
 			var Translation = Real3{1.11137742e-05, 6.90580463, 19.5308094}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.12273556, 2.78160343e-07, 3.38955815e-08, 0.992439449}
+			var Rotation = Quaternion{-0.122735567, 2.78160343e-07, 3.38955815e-08, 0.992439449}
 		}
 		CameraViewport 
 		{
@@ -354,6 +354,14 @@ Level
 		}
 		UnderWaterZone 
 		{
+			var ReverbWetPercent = 20
+			var LowPassCutoff = 3000
+			var EQBand1Gain = 0.5
+			var EQBand2Gain = 0.400000006
+			var EQBand3Gain = 0.5
+			var CompressorThreshold = -12
+			var ChorusMinDelay = 4
+			var ChorusMaxDelay = 5
 		}
 	}
 	Cog 

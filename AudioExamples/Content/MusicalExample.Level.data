@@ -191,7 +191,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 717195612
+			var Seed = 2097460006
 		}
 		NoteEffects 
 		{
@@ -256,7 +256,7 @@ Level
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
-			var Text = "Click to place circles, which will be destroyed on collision."
+			var Text = "Click to place circles, which will be destroyed and play musical notes when they collide with each other"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 48
 			var PixelsPerUnit = 128
@@ -276,7 +276,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 1838612816
+			var Seed = 1630429990
 		}
 		Synthesizer 
 		{
@@ -370,7 +370,7 @@ Level
 		RandomContext 
 		{
 			var RandomSeed = true
-			var Seed = 1254416560
+			var Seed = 1688924463
 		}
 		Synthesizer 
 		{

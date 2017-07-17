@@ -51,9 +51,9 @@ Level
 			var GameDebugDraw = true
 			var RenderDiffuse = true
 			var RenderSpecular = true
-			var RenderSkybox = true
+			var RenderSkybox = false
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var ClearColor = Real4{0, 0, 0, 1}
+			var ClearColor = Real4{0.715000033, 0.905950069, 1, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -113,8 +113,8 @@ Level
 		}
 		DirectionalLight 
 		{
-			var LightColorValue = Real3{1, 1, 1}
-			var LightIntensityValue = 2
+			var LightColor = Real4{1, 1, 1, 1}
+			var LightIntensity = 1
 		}
 		CameraViewport 
 		{
@@ -251,7 +251,7 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Real3{0, 2, 10}
+			var Translation = Real3{0, 4, 15}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -380,6 +380,22 @@ Level
 		}
 		MusicStems 
 		{
+			var OverallVolume = 0.600000024
+			var Cue1 = "5944d7376bf020b2:Stems_Drum_1"
+			var Cue1Curve = "5912a90c438f1823:VolumeCurve1"
+			var Cue2 = "5944d7cd75faff19:Stems_Drum_2"
+			var Cue2Curve = "5912ab56a060a984:VolumeCurve2"
+			var Cue3 = "5944d7dd7607bf11:Stems_Melody"
+			var Cue3Curve = "5912ab2ab66ec971:VolumeCurve3"
+			var Cue4 = "5944d7dd7605ba56:Stems_Harmony_1"
+			var Cue4Curve = "5912abc0b9ed46a8:VolumeCurve4"
+			var Cue5 = "5944d7dd7602ab7f:Stems_Harmony_2"
+			var Cue5Curve = "5912abfec094d0b3:VolumeCurve5"
+			var Cue6 = "5944d7dd7604cb45:Stems_Metal"
+			var Cue6Curve = "5912ab9ece391a9d:VolumeCurve6"
+		}
+		SetMusicStemParam 
+		{
 			var PositionObject = CogPath
 			{
 				var Path = "."
@@ -395,19 +411,21 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var OverallVolume = 0.600000024
-			var Cue1 = "5944d7376bf020b2:Stems_Drum_1"
-			var Cue1Curve = "5912a90c438f1823:VolumeCurve1"
-			var Cue2 = "5944d7cd75faff19:Stems_Drum_2"
-			var Cue2Curve = "5912ab56a060a984:VolumeCurve2"
-			var Cue3 = "5944d7dd7607bf11:Stems_Melody"
-			var Cue3Curve = "5912ab2ab66ec971:VolumeCurve3"
-			var Cue4 = "5944d7dd7605ba56:Stems_Harmony_1"
-			var Cue4Curve = "5912abc0b9ed46a8:VolumeCurve4"
-			var Cue5 = "5944d7dd7602ab7f:Stems_Harmony_2"
-			var Cue5Curve = "5912abfec094d0b3:VolumeCurve5"
-			var Cue6 = "5944d7dd7604cb45:Stems_Metal"
-			var Cue6Curve = "5912ab9ece391a9d:VolumeCurve6"
+			var FloorObject = CogPath
+			{
+				var Path = ":/Floor"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 		}
 	}
 	Cog 
@@ -434,7 +452,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "Use Left and Right Arrow Keys to Move Back and Forth"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 44
+			var FontSize = 52
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}
@@ -461,9 +479,38 @@ Level
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{0, 0, 0, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
-			var Text = "Music will change as X position changes, according to specified curves"
+			var Text = "Music will change as X position changes, according to curves"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 32
+			var FontSize = 42
+			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
+		}
+	}
+	Cog 
+	{
+		var Name = "SpriteText"
+		var LinkId = 10
+		Transform 
+		{
+			var Translation = Real3{0, 4.416821, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		SpriteText 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{0, 0, 0, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "specified in the MusicStems script on the Player object"
+			var Font = "57343753bb4eaaec:NotoSans-Regular"
+			var FontSize = 42
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}

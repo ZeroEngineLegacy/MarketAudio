@@ -51,9 +51,9 @@ Level
 			var GameDebugDraw = true
 			var RenderDiffuse = true
 			var RenderSpecular = true
-			var RenderSkybox = true
+			var RenderSkybox = false
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var ClearColor = Real4{0, 0, 0, 1}
+			var ClearColor = Real4{0.620000005, 0.806199908, 1, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -113,8 +113,8 @@ Level
 		}
 		DirectionalLight 
 		{
-			var LightColorValue = Real3{1, 1, 1}
-			var LightIntensityValue = 2
+			var LightColor = Real4{1, 1, 1, 1}
+			var LightIntensity = 1
 		}
 		CameraViewport 
 		{
@@ -179,9 +179,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{-0.126899391, 6.84781647, 24.2300987}
+			var Translation = Real3{0.258813202, 7.74590778, 24.1573601}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.0340253934, -0.0104675991, -0.000356391538, 0.999366105}
+			var Rotation = Quaternion{-0.0523359552, -0.00261865905, -0.000137240699, 0.998626113}
 		}
 		CameraViewport 
 		{
@@ -239,8 +239,8 @@ Level
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
 			var LookDistance = 24.5960102
-			var VerticalAngle = 0.0680676624
-			var HorizontalAngle = 6.30413294
+			var VerticalAngle = 0.104720101
+			var HorizontalAngle = 6.28842974
 			var LookTarget = Real3{0.387098044, 5.17491627, -0.303572595}
 			var MoveSensitivity = 1
 		}
@@ -327,7 +327,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{-7.5, 0, 0}
-			var Scale = Real3{15, 1, 15}
+			var Scale = Real3{15, 1, 10}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -359,7 +359,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{7.5, 0, 0}
-			var Scale = Real3{15, 1, 15}
+			var Scale = Real3{15, 1, 10}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -391,7 +391,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{7.5, 3.5, 0}
-			var Scale = Real3{15, 8, 15}
+			var Scale = Real3{15, 8, 10}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -427,7 +427,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{15, 3.5, 0}
-			var Scale = Real3{1, 8, 15}
+			var Scale = Real3{1, 8, 10}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -458,7 +458,7 @@ Level
 		var LinkId = 10
 		Transform 
 		{
-			var Translation = Real3{7.5, 3.5, -8}
+			var Translation = Real3{7.5, 3.5, -5}
 			var Scale = Real3{15, 8, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -490,7 +490,7 @@ Level
 		var LinkId = 11
 		Transform 
 		{
-			var Translation = Real3{0, 11.0230141, 6}
+			var Translation = Real3{0, 11.0456982, -0.776074409}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -508,7 +508,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "Use A and D to walk, Left and Right arrows to run"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 72
+			var FontSize = 91
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}
@@ -519,7 +519,7 @@ Level
 		var LinkId = 12
 		Transform 
 		{
-			var Translation = Real3{8.59982491, 7.60280418, 6.19809675}
+			var Translation = Real3{12.0271778, 8.23609257, -6.27737379}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -537,20 +537,59 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "Reverb increases inside the room"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 48
+			var FontSize = 72
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Center
 		}
 	}
-	Cog [InheritId:"591c018b15983858:Player"]
+	Cog 
 	{
+		var Name = "Player"
+		var LinkId = 13
 		Transform 
 		{
 			var Translation = Real3{-3.16555548, 1.5, 0}
-			var Rotation = Quaternion{0, -0.707106829, 0, 0.707106829}
 			var Scale = Real3{0.800000012, 2, 0.800000012}
+			var Rotation = Quaternion{0, -0.707106829, 0, 0.707106829}
 		}
-		SoundEmitter [LocallyAdded]
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "591e8a66e2d519f1:Gray"
+			var Mesh = "4de0354322b3572e:Cylinder"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Kinematic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		CylinderCollider 
+		{
+			var Ghost = true
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var Radius = 0.5
+			var Height = 1
+			var Direction = AxisDirection.Y
+		}
+		SoundListener 
+		{
+			var Active = true
+		}
+		SoundEmitter 
 		{
 			var Volume = 1
 			var Pitch = 0
@@ -559,7 +598,7 @@ Level
 			var EmitAngle = 90
 			var RearVolume = 0.200000003
 		}
-		Footsteps [LocallyAdded]
+		Footsteps 
 		{
 			var WalkTime = 0.5
 			var RunTime = 0.25
@@ -568,11 +607,57 @@ Level
 			var WoodWalkCue = "5944f20c822a78cc:FootstepWoodWalk"
 			var WoodRunCue = "5944f27080aa0f2d:FootstepWoodRun"
 		}
-		FootstepMovement [LocallyAdded]
+		FootstepMovement 
 		{
 		}
-		Movement [LocallyRemoved]
+		Hierarchy 
 		{
+			Cog 
+			{
+				var Name = "Head"
+				var LinkId = 14
+				Transform 
+				{
+					var Translation = Real3{0, 0.682920456, 0}
+					var Scale = Real3{1.5, 0.600000024, 1.5}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "591e8a66e2d519f1:Gray"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+			}
+			Cog 
+			{
+				var Name = "Arms"
+				var LinkId = 15
+				Transform 
+				{
+					var Translation = Real3{0, 0.260177463, 0}
+					var Scale = Real3{0.200000003, 3, 0.249999955}
+					var Rotation = Quaternion{0, 0, 0.707106829, 0.707106829}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "594588228b008efb:WoodMaterial"
+					var Mesh = "4de0354322b3572e:Cylinder"
+				}
+			}
 		}
 	}
 }

@@ -164,10 +164,16 @@ class FootstepMovement : ZilchComponent
     {
       // Get the current position
       var position = this.Transform.WorldTranslation;
-      // Add the increment along the X axis
-      position.X += this.Increment;
-      // Set the object's new position
-      this.Transform.WorldTranslation = position;
+      
+      // Make sure we haven't moved too far 
+      if ((this.Increment < 0 && position.X > -14) ||
+            (this.Increment > 0 && position.X < 14))
+      {
+        // Add the increment along the X axis
+        position.X += this.Increment;
+        // Set the object's new position
+        this.Transform.WorldTranslation = position;
+      }
     }
   }
   

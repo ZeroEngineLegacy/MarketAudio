@@ -1,14 +1,11 @@
 //**********************************************************************************
 //
 // Plays several different music stems at once, adjusting their volume based on
-// a parameter (in this case, the X position of the object).
+// a parameter which can go from 0.0 to 1.0
 //
 //**********************************************************************************
 class MusicStems : ZilchComponent
 {
-  // An object with a Transform component whose position will be checked
-  // for determining which version of the music to play
-  [Property] var PositionObject : CogPath = CogPath();
   // The overall volume adjustment applied to the music
   [Property] var OverallVolume : Real = 0.6;
   // The first music stem 
@@ -36,8 +33,6 @@ class MusicStems : ZilchComponent
   // The volume curve to use for the sixth stem
   [Property] var Cue6Curve : SampleCurve;
   
-  // The width of the floor object to use when calculating position percentage
-  var FloorWidth : Real;
   // The SoundInstances created when the SoundCues are played
   var Instance1 : SoundInstance;
   var Instance2 : SoundInstance;
@@ -51,9 +46,6 @@ class MusicStems : ZilchComponent
   
   function Initialize(init : CogInitializer)
   {
-    // Connect to the LogicUpdate event
-    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-    
     // Set the overall music volume
     this.Volume.Volume = this.OverallVolume;
     
@@ -66,10 +58,8 @@ class MusicStems : ZilchComponent
     this.Instance5 = this.Cue5.PlayCueOnNode(this.Volume, true);
     this.Instance6 = this.Cue6.PlayCueOnNode(this.Volume, true);
     
-    // Set the stems' volumes using the object's current position
-    // (the percentage of how far it's moved toward the right edge of the floor)
-    this.FloorWidth = this.Space.FindObjectByName("Floor").Transform.Scale.X;
-    this.SetParameter((this.PositionObject.Cog.Transform.WorldTranslation.X + (this.FloorWidth / 2.0)) / this.FloorWidth);
+    // Start the parameter at 0
+    this.SetParameter(0);
     
     // Resume playing the SoundInstances
     this.Instance1.Paused = false;
@@ -82,13 +72,6 @@ class MusicStems : ZilchComponent
     // Add the VolumeNode to the input node of the SoundSpace
     // This will make all the stems start playing simultaneously
     this.Space.SoundSpace.InputNode.AddInputNode(this.Volume);
-  }
-
-  function OnLogicUpdate(event : UpdateEvent)
-  {
-    // Set the stems' volumes using the object's current position
-    // (the percentage of how far it's moved toward the right edge of the floor)
-    this.SetParameter((this.PositionObject.Cog.Transform.WorldTranslation.X + (this.FloorWidth / 2.0)) / this.FloorWidth);
   }
   
   // This function expects a value in the range 0.0 to 1.0

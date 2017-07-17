@@ -7,6 +7,21 @@ enum OcclusionQuality { SingleCast, Low, Medium, High }
 
 //**********************************************************************************
 //
+// Stores occlusion data for an object which will occlude a SoundEmitter.
+//
+//**********************************************************************************
+class OcclusionObject : ZilchComponent
+{
+  // The volume the SoundEmitter will be reduced to when occluded
+  [Property] var OccludedVolume : Real = 0.5;
+  // The cutoff frequency of the low pass filter
+  [Property] var LowPassCutoff : Real = 500.0;
+  
+  
+}
+
+//**********************************************************************************
+//
 // Changes the volume and low pass on a SoundEmitter if occlusion objects
 // are between it and a specified SoundListener.
 //

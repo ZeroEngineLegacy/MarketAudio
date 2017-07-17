@@ -21,7 +21,7 @@ class PlayDialogButton : ZilchComponent
     // Play music
     this.Manager.PlayMusic(SoundCue.Music_Run, false);
     // Play a looping sound effect
-    var instance = this.Manager.PlayEffect(SoundCue.FootstepWoodWalk, null, false);
+    var instance = this.Manager.PlayEffect(SoundCue.FootstepWoodRun, null, false);
     instance.Looping = true;
     
   }

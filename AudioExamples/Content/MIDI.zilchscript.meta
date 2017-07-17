@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "MIDI"
-		var ResourceId = 0x588f8e2844f68fdf
-	}
-}
