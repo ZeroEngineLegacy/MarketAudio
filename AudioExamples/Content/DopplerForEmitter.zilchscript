@@ -16,12 +16,16 @@ class DopplerForEmitter : ZilchComponent
   // The script needs to know about the object with the SoundListener
   [Property] var ListenerObject : CogPath = CogPath();
 
-  // Stores the position of this object on the last update
+  // The position of this object on the last update
   var PreviousEmitterPosition : Real3;
-  // Stores the position of the listener on the last update
+  // The position of the listener on the last update
   var PreviousListenerPosition : Real3;
+  // The relative position between emitter and listener ont he last update
+  var PreviousRelativePosition : Real3;
   // A quick way to access the SoundListener component directly
   var Listener : SoundListener;
+  // The speed of sound at sea level and 59 degrees farenheit
+  var SpeedOfSound : Real = 340.29;
   
   function Initialize(init : CogInitializer)
   {
@@ -35,6 +39,8 @@ class DopplerForEmitter : ZilchComponent
       this.PreviousListenerPosition = this.Listener.Owner.Transform.WorldTranslation;
       // Store this object's current position
       this.PreviousEmitterPosition = this.Owner.Transform.WorldTranslation;
+      // Store the relative position
+      this.PreviousRelativePosition = this.PreviousListenerPosition - this.PreviousEmitterPosition;
     }
     else
       Console.WriteLine("Select listener object for DopplerForEmitter script");
@@ -48,21 +54,21 @@ class DopplerForEmitter : ZilchComponent
     // Store the emitter and listener current positions
     this.PreviousEmitterPosition = this.Owner.Transform.WorldTranslation;
     this.PreviousListenerPosition = this.Listener.Owner.Transform.WorldTranslation;
+    // Get the relative position between the listener and the emitter
+    var relativePosition = this.PreviousListenerPosition - this.PreviousEmitterPosition;
     
     // Check if the objects are moving relative to each other
-    if (emitterVelocity != Real3(0,0,0) || listenerVelocity != Real3(0,0,0))
+    if (relativePosition != this.PreviousRelativePosition)
     {
-      // Get the relative position between the listener and the emitter
-      var relativePosition = this.PreviousListenerPosition - this.PreviousEmitterPosition;
+      // Store the relative position
+      this.PreviousRelativePosition = relativePosition;
       // Save the length of the relative position vector
       var distance = Math.Length(relativePosition);
       // Determine the relative velocities, adjusting with distance
       var listenerRelativeVelocity = Math.Dot(listenerVelocity, relativePosition) / distance;
       var emitterRelativeVelocity = Math.Dot(emitterVelocity, relativePosition) / distance;
-      // Save the speed of sound at sea level and 59 degrees farenheit
-      var speedOfSound = 340.29;
       // Determine the pitch adjustment
-      var pitch = (speedOfSound + listenerRelativeVelocity) / (speedOfSound + emitterRelativeVelocity);
+      var pitch = (this.SpeedOfSound + listenerRelativeVelocity) / (this.SpeedOfSound + emitterRelativeVelocity);
       // Translate for Zero's pitch values
       var pitchValue = Math.Log2(pitch);
       // Set the pitch on the SoundEmitter

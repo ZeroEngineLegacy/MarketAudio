@@ -7,6 +7,6 @@ SoundAttenuator
 	var UseLowPassFilter = false
 	var LowPassStartDistance = 20
 	var LowPassCutoffFreq = 1000
-	var CustomFalloffCurve = ""
+	var CustomFalloffCurve = "null"
 	var FalloffCurveType = FalloffCurveType.Log
 }

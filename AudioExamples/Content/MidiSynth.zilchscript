@@ -7,6 +7,7 @@
 //**********************************************************************************
 class MIDI : ZilchComponent
 {
+  // Requires a Synthesizer component
   [Dependency] var Synthesizer : Synthesizer;
   
   // Create the LowPassNode 

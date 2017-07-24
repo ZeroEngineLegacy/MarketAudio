@@ -51,7 +51,7 @@ Level
 			var GameDebugDraw = true
 			var RenderDiffuse = true
 			var RenderSpecular = true
-			var RenderSkybox = false
+			var RenderSkybox = true
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
 			var ClearColor = Real4{0.629999995, 0.988900006, 1, 1}
 			var DirectLighting = true

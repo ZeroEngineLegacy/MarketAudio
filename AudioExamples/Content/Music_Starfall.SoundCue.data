@@ -3,11 +3,11 @@ SoundCue
 {
 	var PlayMode = SoundPlayMode.Looping
 	var Volume = 0.588843644
-	var UseDecibelVariation = true
+	var UseDecibelVariation = false
 	var VolumeVariation = 0
 	var DecibelVariation = 0
 	var Pitch = 0
-	var UseSemitoneVariation = true
+	var UseSemitoneVariation = false
 	var PitchVariation = 0
 	var SemitoneVariation = 0
 	var ShowMusicOptions = true

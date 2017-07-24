@@ -179,7 +179,7 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{1.11137742e-05, 6.90580463, 19.5308094}
+			var Translation = Real3{1.50020214e-05, 8.62214184, 26.3638287}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{-0.122735567, 2.78160343e-07, 3.38955815e-08, 0.992439449}
 		}
@@ -238,7 +238,7 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 20.1375141
+			var LookDistance = 27.1827927
 			var VerticalAngle = 0.246091634
 			var HorizontalAngle = -5.69038093e-07
 			var LookTarget = Real3{0, 2, 0}
@@ -584,6 +584,64 @@ Level
 			var StartPlaying = true
 			var Positional = true
 			var Cue = "588f889bc5057ac8:Music_Starfall"
+		}
+	}
+	Cog 
+	{
+		var Name = "SpriteText"
+		var LinkId = 13
+		Transform 
+		{
+			var Translation = Real3{0, 12.1186867, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		SpriteText 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{0, 0, 0, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "Use left and right arrows to move side to side, up and down arrows to move up and down"
+			var Font = "57343753bb4eaaec:NotoSans-Regular"
+			var FontSize = 73
+			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
+		}
+	}
+	Cog 
+	{
+		var Name = "SpriteText"
+		var LinkId = 14
+		Transform 
+		{
+			var Translation = Real3{0, 11.205986, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		SpriteText 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{0, 0, 0, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "The audio will change when the player goes underwater"
+			var Font = "57343753bb4eaaec:NotoSans-Regular"
+			var FontSize = 73
+			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 }

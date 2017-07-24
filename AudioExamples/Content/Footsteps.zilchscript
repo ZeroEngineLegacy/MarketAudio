@@ -1,19 +1,5 @@
 //**********************************************************************************
 //
-// Types of ground that the player could walk on
-//
-//**********************************************************************************
-enum FootstepGroundType { Grass, Wood }
-
-//**********************************************************************************
-//
-// Speeds that the player could move
-//
-//**********************************************************************************
-enum FootstepSpeed { Walk, Run }
-
-//**********************************************************************************
-//
 // Uses switch containers to track states for the ground time and the movement
 // speed and plays the appropriate SoundCues while the player is moving.
 //
@@ -219,3 +205,17 @@ class FootstepMovement : ZilchComponent
     }
   }
 }
+
+//**********************************************************************************
+//
+// Types of ground that the player could walk on
+//
+//**********************************************************************************
+enum FootstepGroundType { Grass, Wood }
+
+//**********************************************************************************
+//
+// Speeds that the player could move
+//
+//**********************************************************************************
+enum FootstepSpeed { Walk, Run }

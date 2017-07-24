@@ -8,7 +8,7 @@ Cog
 		var ProjectOwner = ""
 		var DefaultLevel = "Music"
 		var ProjectSpace = "Space"
-		var ProjectEngineRevision = 17437
+		var ProjectEngineRevision = 17562
 		var AutoTakeProjectScreenshot = true
 		var Guid = 0x5813312a0649d59f
 	}
@@ -20,15 +20,6 @@ Cog
 		var ScriptReloadGame = ScriptReloadMethod.PatchObjects
 		var AutoUpdateContentChanges = true
 	}
-	LauncherProjectInfo 
-	{
-		var Tags = ""
-		var ExperimentalBranchName = "BraveCobra"
-		var MajorVersion = 0
-		var MinorVersion = 0
-		var PatchVersion = 0
-		var RevisionId = 15222
-	}
 	ProjectConfig 
 	{
 		var EditorMode = EditorMode.Mode3D
@@ -39,5 +30,14 @@ Cog
 		var MixType = AudioMixTypes.AutoDetect
 		var MinVolumeThreshold = 0.0149999997
 		var Latency = AudioLatency.Low
+	}
+	LauncherProjectInfo 
+	{
+		var Tags = ""
+		var ExperimentalBranchName = "BraveCobra"
+		var MajorVersion = 0
+		var MinorVersion = 0
+		var PatchVersion = 0
+		var RevisionId = 17355
 	}
 }

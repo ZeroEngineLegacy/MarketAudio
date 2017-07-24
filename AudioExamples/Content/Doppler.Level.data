@@ -53,7 +53,7 @@ Level
 			var RenderSpecular = true
 			var RenderSkybox = false
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var ClearColor = Real4{0.470000029, 0.825100064, 1, 1}
+			var ClearColor = Real4{0.471199989, 0.570896029, 0.620000005, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1

@@ -7,6 +7,8 @@ class ChangeTagVolume : ZilchComponent
 {
   // Requires a Reactive component
   [Dependency] var Reactive : Reactive;
+  // Requires a Sprite component
+  [Dependency] var Sprite : Sprite;
   
   // The SoundTag to change
   [Property] var Tag : SoundTag;
@@ -23,5 +25,10 @@ class ChangeTagVolume : ZilchComponent
   {
     // Add the increment to the SoundTag's volume
     this.Tag.Volume = this.Tag.Volume + this.VolumeIncrement;
+    
+    // Change the button color
+    this.Sprite.VertexColor = Real4(1.0, 1.0, 1.0, 0.3);
+    // Slowly change it back
+    Actions.Property(this.Owner.Actions, @this.Sprite.VertexColor, Real4(1.0,1.0,1.0,1.0), 0.3, Ease.SinIn);
   }
 }
